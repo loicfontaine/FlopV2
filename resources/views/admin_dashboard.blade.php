@@ -150,6 +150,7 @@ Dashboard animateur | Couleur 3 Interact
                         @endif
                         @endforeach
                     </div>
+                </div>
                 @endforeach
             </div>
         </div>
