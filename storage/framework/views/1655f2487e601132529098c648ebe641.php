@@ -1,20 +1,21 @@
-@extends("template")
-@section('css')
-<link rel="stylesheet" href="{{asset('css/accueil.css')}}">
-@endsection
-@section('title')
+
+<?php $__env->startSection('css'); ?>
+<link rel="stylesheet" href="<?php echo e(asset('css/accueil.css')); ?>">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?>
 Accueil | Couleur 3 Interact
-@endsection
-@section('content')
-@if(session('success'))
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<?php if(session('success')): ?>
     <div class="alert alert-success">
-        {{ session('success') }}
+        <?php echo e(session('success')); ?>
+
     </div>
-@endif
+<?php endif; ?>
 <div id="app"></div> 
 <div id="video-container">
     <div id="video">
-        <img id="direct-live" src="{{asset('img/directVideo1.jpg')}}" alt="Image">
+        <img id="direct-live" src="<?php echo e(asset('img/directVideo1.jpg')); ?>" alt="Image">
     </div>
     <div id="video-side">
         <div id="texte-container">
@@ -45,7 +46,7 @@ Accueil | Couleur 3 Interact
     <div class="container-article">
         <div class="article">
             <div class="img-article">
-                <img class="img" src="{{asset('img/article2.jpg')}}" alt="Article 1">
+                <img class="img" src="<?php echo e(asset('img/article2.jpg')); ?>" alt="Article 1">
             </div>
             <div class="text-article">
                 <h2 class="titre">Les joueurs mettent les buts, Couleur 3 met l’ambiance!</h2>
@@ -56,7 +57,7 @@ Accueil | Couleur 3 Interact
         </div>
         <div class="article">
             <div class="img-article">
-                <img class="img" src="{{asset('img/article1.jpg')}}" alt="Article 1">
+                <img class="img" src="<?php echo e(asset('img/article1.jpg')); ?>" alt="Article 1">
             </div>
             <div class="text-article">
                 <h2 class="titre">Nouvelle émission radio</h2>
@@ -67,7 +68,7 @@ Accueil | Couleur 3 Interact
         </div>
         <div class="article">
             <div class="img-article">
-                <img class="img" src="{{asset('img/article4.jpg')}}" alt="Article 1">
+                <img class="img" src="<?php echo e(asset('img/article4.jpg')); ?>" alt="Article 1">
             </div>
             <div class="text-article">
                 <h2 class="titre">Ciao Roma !</h2>
@@ -96,4 +97,5 @@ Accueil | Couleur 3 Interact
     })
 
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("template", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\leata\OneDrive\Documents\HeigComem\04QuatriemeSemestre\ProjArtFlop\FlopV2\resources\views/homePage.blade.php ENDPATH**/ ?>
