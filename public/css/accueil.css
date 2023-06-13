@@ -1,0 +1,363 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+h1 {
+    font-family: 'Inter', sans-serif;
+    color: white;
+    font-size: 2.5em;
+    margin-top: 20px;
+}
+
+#btn-boutique {
+    background-color: #E60096;
+    border-radius: 8px;
+}
+
+#btn-boutique a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: white;
+
+}
+
+#plus-video {
+    background-color: #E60096;
+    font-size: 1.5em;
+    color: white;
+    border-radius: 8px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#plus-video a {
+    text-decoration: none;
+    color: white;
+}
+
+#audio-live {
+    background-color:  #E60096;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+h3.live {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5em;
+    color: white;
+}
+
+.red {
+    color: red !important;
+}
+
+h1.titre-live{
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5em;
+    color: white;
+    margin-left: 20px;
+}
+
+p.texte-live {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-size: 1.5em;
+}
+
+#texte-container{
+    background-color:  #303030;
+    border-radius: 8px;
+}
+
+.text-article {
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+    border-radius: 0px 0px 8px 8px;
+}
+
+h2.titre {
+    font-size : 2em;
+}
+
+.text-article p {
+    font-size: 1.5em;
+    text-align: justify;
+}
+
+.article {
+    background-color: white;
+    border-radius: 8px 8px 8px 8px;
+}
+
+#video {
+    cursor: pointer;
+}
+
+
+
+@media (min-width: 769px) {
+    #video-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #banniere {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #video-side {
+        width: 45%;
+        height: 100%;
+    }
+
+    #video {
+        width: 45%;
+        height: min-content;
+    }
+
+    #direct-live {
+        width: 100%;
+        height: 100%;
+    }
+
+    #texte {
+        padding: 20px;
+        text-align: center;
+    }
+
+    #audio-live p {
+        font-family: 'Montserrat', sans-serif;
+        color: white;
+        font-size: 1.5em;
+        text-align: center;
+        margin: 0px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    #audio-live {
+     margin-top:20px;
+    }
+
+    #actualite {
+        width: 80%;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #boutique {
+        width: 80%;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #nos-videos {
+        width: 80%;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .container-article {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width:100%;
+    }
+
+    .article {
+        width: 33.33%;
+        margin-left: 20px;
+        margin-right:20px;
+    }
+
+    .img {
+        border-radius: 8px 8px  0px 0px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .text-article {
+        margin: 20px;
+    }
+
+    #video-container2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #plus-video {
+        width:25%;
+    }
+
+    #banniere {
+        height: 300px;
+        width: 100%;
+        background-image: url("../img/banniere_desktop.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    #btn-boutique {
+        width: fit-content;
+        margin-left: 70%;
+        margin-right: auto;
+        padding:20px;
+    }
+
+    .titre-live {
+         margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 0px !important;
+    }
+
+    
+}
+
+@media (max-width: 768px) {
+
+   #boutique {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+   }
+
+    #video-container {
+        width : 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #actualite {
+        width:80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #nos-videos {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #video-container2 {
+        position: relative;
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+    }
+
+    #video {
+        width: 100%;
+        height: 100%;
+        margin-top:30px;
+        margin-bottom: 30px;
+    }
+
+    #video-side {
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
+
+    #texte {
+        padding: 10px;
+        text-align: center;
+    }
+
+
+    #direct-live {
+        width: 100%;
+        height: 100%;
+    }
+
+    .img {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px 8px 0px 0px;
+    }
+
+    .titre-live {
+        font-size: 1.5em !important;
+         margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 0px !important;
+    }
+
+    #audio-live {
+        width: 50%;
+    }
+
+  #audio-live {
+    margin-top: 20px;
+    margin-top: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+  #audio-live p {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.5em;
+        color: white;
+        margin:0px;
+        text-align: center;
+    }
+
+    #banniere {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        border : none;
+        background-image: url("../img/banniere_mobile.png") ;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    #btn-boutique {
+        margin-top: 200px;
+        width: fit-content;
+        margin-right: auto;
+        margin-left: auto;
+        padding:20px;
+    }
+
+    .article {
+        margin-bottom: 30px;
+        border-radius: 8px;
+    }
+
+    .text-article {
+        margin: 20px;
+        padding-bottom: 20px;
+    }
+
+    #plus-video {
+        width:50%;
+    }
+
+ 
+  }
