@@ -68,6 +68,7 @@ class FileController extends Controller
             $fileName = $this->storeFile($request->image);
             $content = Content::create([
                 "texte" => $fileName,
+                "participation_id" => $participation->id,
             ]);
             $content->participation()->associate($participation);
             $content->save();
@@ -78,6 +79,7 @@ class FileController extends Controller
             $fileName = $this->storeFile($request->video);
             $content = Content::create([
                 "texte" => $fileName,
+                "participation_id" => $participation->id,
             ]);
             $content->participation()->associate($participation);
             $content->save();
@@ -90,6 +92,7 @@ class FileController extends Controller
             $file->move('/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation', $fileName);
             $content = Content::create([
                 "texte" => $fileName,
+                "participation_id" => $participation->id,
             ]);
             $content->participation()->associate($participation);
             $content->save();
