@@ -135,7 +135,7 @@ Dashboard animateur | Couleur 3 Interact
         <div class="adminDashboardContentItems">
             <div  id="listPolls">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Liste des sondage</h2>
-                foreach($polls as $poll)
+                @foreach($polls as $poll)
                 <div class="poll">
                     <h3 class="FontInter pollTitle">{{$poll->title}}</h3>
                     <p class="FontInter pollDescription">{{$poll->description}}</p>
