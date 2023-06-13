@@ -49,7 +49,9 @@ class FileController extends Controller
     dir: false
     link: false
         */
-dd(Auth::user()->id);
+
+        dd(Auth::check());
+    $userId = Auth::user()->id;
         $participation = Participation::create([
             "user_id" => $request->input("user_id"),
             "event_id" => $request->input("event_id"),
