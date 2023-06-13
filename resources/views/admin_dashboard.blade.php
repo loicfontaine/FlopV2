@@ -621,24 +621,6 @@ Dashboard animateur | Couleur 3 Interact
             // Supprimer le dernier élément de champ de texte
             conteneurOptions.removeChild(conteneurOptions.lastChild);
         }
-    }
-    //FIN TEST SCRIPT POLL
-    document.addEventListener('DOMContentLoaded', function() {
-    var dropdownItems = document.querySelectorAll('.dropdown-item');
-    var myDivs = document.querySelectorAll('.adminDiv');
-
-    dropdownItems.forEach(function(item) {
-        item.addEventListener('click', function() {
-        var target = this.getAttribute('data-target');
-        myDivs.forEach(function(div) {
-            if (div.id === target) {
-            div.classList.add('display');
-            } else {
-            div.classList.remove('display');
-            }
-        });
-        });
-    });
-    });
+    };
 </script>
 @endsection
