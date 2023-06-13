@@ -36,7 +36,7 @@ Accueil | Couleur 3 Interact
     <h1>Boutique</h1>
     <div id="banniere">
         <div id="btn-boutique">
-            <a href="#boutique">Découvre notre boutique</a>
+            <a href="https://flop-pingouin.heig-vd.ch/boutique">Découvre notre boutique</a>
         </div>
     </div>
 </div>
