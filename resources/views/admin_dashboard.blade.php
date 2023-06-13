@@ -251,6 +251,7 @@ Dashboard animateur | Couleur 3 Interact
                         </div>
                     </div>
                     @endforeach
+                </div>
             </div>
         </div>
         <!-- FORMULAIRE CREATE CONTEST -->
