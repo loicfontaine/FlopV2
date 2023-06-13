@@ -149,6 +149,7 @@ Dashboard animateur | Couleur 3 Interact
                         @endif
                         @endforeach
                     </div>
+                @endforeach
             </div>
         </div>
         <!-- FORMULAIRE CREATE CHALLENGE -->
