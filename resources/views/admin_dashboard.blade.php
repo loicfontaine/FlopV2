@@ -10,8 +10,6 @@ Dashboard animateur | Couleur 3 Interact
 @section('content')
 <div id="adminDashboardContainer">
     <div id="adminDashboardMenu">
-        <div class="adminDashboardMenuItems active" style="display:none;">
-        </div>
 
         <div class="adminDashboardMenuItems" id="menuCreatePoll">
             <svg class="adminDashboardMenuItemsIcons" width="25" height="28" viewBox="0 0 25 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,7 +87,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE CREATION POLL -->
         <div class="adminDashboardContentItems">
-            <div class="adminDiv" id="createPoll">
+            <div  id="createPoll">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un sondage</h2>
                 <form method="POST" action="{{route('poll.store')}}" accept-charset="UTF-8">
                     @csrf
@@ -133,15 +131,29 @@ Dashboard animateur | Couleur 3 Interact
                 </form>
             </div>
         </div>
-                <!-- FORMULAIRE LIST POLLs -->
-                <div class="adminDashboardContentItems">
-            <div class="adminDiv" id="createPoll">
-                <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un sondage</h2>
+        <!-- FORMULAIRE LIST POLLs -->
+        <div class="adminDashboardContentItems">
+            <div  id="listPolls">
+                <h2 class="adminDashboardContentItemsTitle FontInter">Liste des sondage</h2>
+                foreach($polls as $poll)
+                <div class="poll">
+                    <h3 class="FontInter pollTitle">{{$poll->title}}</h3>
+                    <p class="FontInter pollDescription">{{$poll->description}}</p>
+                    <p class="FontInter pollEndTime">{{$poll->end_time}}</p>
+                    <div id="options">
+                        @foreach($options as $option)
+                        @if($option->poll_id == $poll->id)
+                        <div id="option">
+                            <p>{{$option->text}}</p>
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
             </div>
         </div>
         <!-- FORMULAIRE CREATE CHALLENGE -->
         <div class="adminDashboardContentItems">
-            <div class="adminDiv" id="createChallenge">
+            <div  id="createChallenge">
                 <h2 class="adminDashboardContentTitle FontInter">Lancer un défi</h2>
                 <form method="POST" action="{{route('challenge.store')}}" accept-charset="UTF-8">
                     @csrf
@@ -198,47 +210,10 @@ Dashboard animateur | Couleur 3 Interact
                     </div>
                 </form>
             </div>
-            <!-- liste tous les défis en cours -->
-            <div class="adminDiv" id="listChallenge">
-                <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
-                <div class="listChallenge">
-                    @foreach($challenges as $challenge)
-                    <div class="challenge">
-                        <h3 class="FontInter challengeTitle">{{$challenge->title}}</h3>
-                        <p class="FontInter challengeDescription">{{$challenge->description}}</p>
-                        <p class="FontInter challengeEndTime">{{$challenge->end_time}}</p>
-                        <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="" hidden>
-                            @foreach($participations as $participation)
-                            <div id="participation">
-                                <p>{{ $participation->user->nickname }}</p>
-                                @foreach($contents as $content)
-                                    @if($content->participation_id == $participation->id)
-                                        @if($participation->challenge_id == $challenge->id)
-                                        <div id="content">
-                                            @if($content->type == "text")
-                                                <p class="FontInter challengeContent">{{$content->text}}</p>
-                                            @elseif($content->type == "photo")
-                                                <img class="challengeContent" src="img/contents/{{$content->text}}">
-                                            @elseif($content->type == "video")
-                                                <video class="challengeContent" src="img/contents/{{$content->text}}"></video>
-                                            @elseif($content->type == "audio")
-                                                <audio class="challengeContent" src="img/contents/{{$content->text}}"></audio>
-                                            @endif
-                                        </div>
-                                        @endif
-                                    @endif
-                                @endforeach
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    @endforeach
-            </div>
         </div>
         <!-- FORMULAIRE LIST CHALLENGE -->
         <div class="adminDashboardContentItems">
-            <div class="adminDiv" id="listChallenge">
+            <div  id="listChallenge">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
                 <div class="listChallenge">
                     @foreach($challenges as $challenge)
@@ -275,9 +250,158 @@ Dashboard animateur | Couleur 3 Interact
                     @endforeach
             </div>
         </div>
-        <!-- FORMULAIRE CONTEST -->
+        <!-- FORMULAIRE CREATE CONTEST -->
         <div class="adminDashboardContentItems">
-            <div class="adminDiv" id="createContest">
+            <div id="createContest">
+                <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un concours</h2>
+                <form method="POST" action="{{route('challenge.store')}}" accept-charset="UTF-8">
+                    @csrf
+                    <span class='FontInter formLabel'>Nom</span>
+                    <input class='form' required="required" type="text" name="title" v-model="name">
+
+                    <span class='FontInter formLabel'>Description</span>
+                    <input class='form' required="required" type="text-area" name="description" v-model="description">
+
+                    <span class='FontInter formLabel'>Type</span>
+                    <fieldset class="checkbox-group">
+                        <div class="checkbox">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" name="type-text" class="checkbox-input" />
+                                <span class="checkbox-tile">
+                                    <span class="checkbox-label FontMonserrat">Texte</span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" name="type-photo" class="checkbox-input" />
+                                <span class="checkbox-tile">
+                                    <span class="checkbox-label FontMonserrat">Photo</span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" name="type-video" class="checkbox-input" />
+                                <span class="checkbox-tile">
+                                    <span class="checkbox-label FontMonserrat">Vidéo</span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" name="type-audio" class="checkbox-input" />
+                                <span class="checkbox-tile">
+                                    <span class="checkbox-label FontMonserrat">Audio</span>
+                                </span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <span class='FontInter formLabel'>Récompense</span>
+                    <div class='column-item'>
+
+
+                        @foreach($articles as $article)
+                        <div class='item'>
+                            <input class="articlesQuantity" type="number" id="quantity" name="quantity-{{ $article->id }}" min="0" value="0">
+                            <img src="img/articles/{{$article->image}}" class='img-item'>
+                            <h1 class='item-title FontMonserrat'>{{$article->name}}</h1>
+                            <div class='item-price'>
+                                <h1 class='price'>{{$article->price}}</h1>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="cc" viewBox="0 0 1061.26 1061.27">
+                                    <defs>
+                                        <style>
+                                            .cls-1 {
+                                                fill: #fff;
+                                            }
+
+                                            .cls-2 {
+                                                fill: #e84a97;
+                                            }
+
+                                            .cls-3 {
+                                                fill: #7cf5ac;
+                                            }
+                                        </style>
+                                    </defs>
+                                    <g id="Calque_1-2">
+                                        <path class="cls-1" d="m530.34,80.55c-250.04,0-452.74,202.68-452.74,452.71s202.7,452.74,452.74,452.74,452.71-202.7,452.71-452.74S780.37,80.55,530.34,80.55Zm.29,102.68v144.44c-34.7.34-64.05,22.95-74.47,54.2l-138.63-45.02c29.69-89.25,113.87-153.62,213.1-153.62Zm0,692.32c-123.13,0-222.95-99.81-222.95-222.92,0-23.99,3.8-47.04,10.8-68.69l137.6,44.7c-2.58,7.8-3.96,16.11-3.96,24.76,0,43.8,35.5,79.3,79.28,79.3s79.28-35.5,79.28-79.3c0-11.86-2.6-23.14-7.3-33.25-12.55-27.16-40.06-46.03-71.98-46.03-.27,0-.5,0-.77.03v-144.44c25.21,0,49.48,4.19,72.09,11.91,47.75,16.32,88.19,48.37,115.14,90,22.58,34.86,35.69,76.41,35.69,121.01,0,123.11-99.81,222.92-222.92,222.92Z" />
+                                        <path class="cls-2" d="m530.63,0C237.56,0,0,237.57,0,530.64s237.56,530.63,530.63,530.63,530.63-237.56,530.63-530.63S823.67,0,530.63,0Zm-.29,986c-250.04,0-452.74-202.7-452.74-452.74S280.3,80.55,530.34,80.55s452.71,202.68,452.71,452.71-202.68,452.74-452.71,452.74Z" />
+                                        <path class="cls-3" d="m530.63,183.23v144.44c-34.7.34-64.05,22.95-74.47,54.2l-138.63-45.02c29.69-89.25,113.87-153.62,213.1-153.62Z" />
+                                        <path class="cls-3" d="m753.55,652.63c0,123.11-99.81,222.92-222.92,222.92s-222.95-99.81-222.95-222.92c0-23.99,3.8-47.04,10.8-68.69l137.6,44.7c-2.58,7.8-3.96,16.11-3.96,24.76,0,43.8,35.5,79.3,79.28,79.3s79.28-35.5,79.28-79.3c0-11.86-2.6-23.14-7.3-33.25-12.55-27.16-40.06-46.03-71.98-46.03-.27,0-.5,0-.77.03v-144.44c25.21,0,49.48,4.19,72.09,11.91,47.75,16.32,88.19,48.37,115.14,90,22.58,34.86,35.69,76.41,35.69,121.01Z" />
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        @endforeach
+                        <!--
+                        <div class='item'>
+                            <input class="articlesQuantity" type="number" id="quantity" name="quantity-1" min="0" value="0">
+                            <img src="img/articles/badge2.png" class='img-item'>
+                            <h1 class='item-title FontMonserrat'>Article</h1>
+                            <div class='item-price'>
+                                <h1 class='price'>12</h1>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="cc" viewBox="0 0 1061.26 1061.27"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#e84a97;}.cls-3{fill:#7cf5ac;}</style></defs><g id="Calque_1-2"><path class="cls-1" d="m530.34,80.55c-250.04,0-452.74,202.68-452.74,452.71s202.7,452.74,452.74,452.74,452.71-202.7,452.71-452.74S780.37,80.55,530.34,80.55Zm.29,102.68v144.44c-34.7.34-64.05,22.95-74.47,54.2l-138.63-45.02c29.69-89.25,113.87-153.62,213.1-153.62Zm0,692.32c-123.13,0-222.95-99.81-222.95-222.92,0-23.99,3.8-47.04,10.8-68.69l137.6,44.7c-2.58,7.8-3.96,16.11-3.96,24.76,0,43.8,35.5,79.3,79.28,79.3s79.28-35.5,79.28-79.3c0-11.86-2.6-23.14-7.3-33.25-12.55-27.16-40.06-46.03-71.98-46.03-.27,0-.5,0-.77.03v-144.44c25.21,0,49.48,4.19,72.09,11.91,47.75,16.32,88.19,48.37,115.14,90,22.58,34.86,35.69,76.41,35.69,121.01,0,123.11-99.81,222.92-222.92,222.92Z"/><path class="cls-2" d="m530.63,0C237.56,0,0,237.57,0,530.64s237.56,530.63,530.63,530.63,530.63-237.56,530.63-530.63S823.67,0,530.63,0Zm-.29,986c-250.04,0-452.74-202.7-452.74-452.74S280.3,80.55,530.34,80.55s452.71,202.68,452.71,452.71-202.68,452.74-452.71,452.74Z"/><path class="cls-3" d="m530.63,183.23v144.44c-34.7.34-64.05,22.95-74.47,54.2l-138.63-45.02c29.69-89.25,113.87-153.62,213.1-153.62Z"/><path class="cls-3" d="m753.55,652.63c0,123.11-99.81,222.92-222.92,222.92s-222.95-99.81-222.95-222.92c0-23.99,3.8-47.04,10.8-68.69l137.6,44.7c-2.58,7.8-3.96,16.11-3.96,24.76,0,43.8,35.5,79.3,79.28,79.3s79.28-35.5,79.28-79.3c0-11.86-2.6-23.14-7.3-33.25-12.55-27.16-40.06-46.03-71.98-46.03-.27,0-.5,0-.77.03v-144.44c25.21,0,49.48,4.19,72.09,11.91,47.75,16.32,88.19,48.37,115.14,90,22.58,34.86,35.69,76.41,35.69,121.01Z"/></g></svg>
+                            </div>
+                        </div>
+
+                        <div class='item'>
+                            <input class="articlesQuantity" type="number" id="quantity" name="quantity-1" min="0" value="0">
+                            <img src="img/articles/stickers5.png" class='img-item'>
+                            <h1 class='item-title FontMonserrat'>Article</h1>
+                            <div class='item-price'>
+                                <h1 class='price'>12</h1>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="cc" viewBox="0 0 1061.26 1061.27"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#e84a97;}.cls-3{fill:#7cf5ac;}</style></defs><g id="Calque_1-2"><path class="cls-1" d="m530.34,80.55c-250.04,0-452.74,202.68-452.74,452.71s202.7,452.74,452.74,452.74,452.71-202.7,452.71-452.74S780.37,80.55,530.34,80.55Zm.29,102.68v144.44c-34.7.34-64.05,22.95-74.47,54.2l-138.63-45.02c29.69-89.25,113.87-153.62,213.1-153.62Zm0,692.32c-123.13,0-222.95-99.81-222.95-222.92,0-23.99,3.8-47.04,10.8-68.69l137.6,44.7c-2.58,7.8-3.96,16.11-3.96,24.76,0,43.8,35.5,79.3,79.28,79.3s79.28-35.5,79.28-79.3c0-11.86-2.6-23.14-7.3-33.25-12.55-27.16-40.06-46.03-71.98-46.03-.27,0-.5,0-.77.03v-144.44c25.21,0,49.48,4.19,72.09,11.91,47.75,16.32,88.19,48.37,115.14,90,22.58,34.86,35.69,76.41,35.69,121.01,0,123.11-99.81,222.92-222.92,222.92Z"/><path class="cls-2" d="m530.63,0C237.56,0,0,237.57,0,530.64s237.56,530.63,530.63,530.63,530.63-237.56,530.63-530.63S823.67,0,530.63,0Zm-.29,986c-250.04,0-452.74-202.7-452.74-452.74S280.3,80.55,530.34,80.55s452.71,202.68,452.71,452.71-202.68,452.74-452.71,452.74Z"/><path class="cls-3" d="m530.63,183.23v144.44c-34.7.34-64.05,22.95-74.47,54.2l-138.63-45.02c29.69-89.25,113.87-153.62,213.1-153.62Z"/><path class="cls-3" d="m753.55,652.63c0,123.11-99.81,222.92-222.92,222.92s-222.95-99.81-222.95-222.92c0-23.99,3.8-47.04,10.8-68.69l137.6,44.7c-2.58,7.8-3.96,16.11-3.96,24.76,0,43.8,35.5,79.3,79.28,79.3s79.28-35.5,79.28-79.3c0-11.86-2.6-23.14-7.3-33.25-12.55-27.16-40.06-46.03-71.98-46.03-.27,0-.5,0-.77.03v-144.44c25.21,0,49.48,4.19,72.09,11.91,47.75,16.32,88.19,48.37,115.14,90,22.58,34.86,35.69,76.41,35.69,121.01Z"/></g></svg>
+                            </div>
+                        </div>
+
+                        <div class='item'>
+                            <input class="articlesQuantity" type="number" id="quantity" name="quantity-1" min="0" value="0">
+                            <img src="img/articles/tshirt6.png" class='img-item'>
+                            <h1 class='item-title FontMonserrat'>Article</h1>
+                            <div class='item-price'>
+                                <h1 class='price'>12</h1>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="cc" viewBox="0 0 1061.26 1061.27"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#e84a97;}.cls-3{fill:#7cf5ac;}</style></defs><g id="Calque_1-2"><path class="cls-1" d="m530.34,80.55c-250.04,0-452.74,202.68-452.74,452.71s202.7,452.74,452.74,452.74,452.71-202.7,452.71-452.74S780.37,80.55,530.34,80.55Zm.29,102.68v144.44c-34.7.34-64.05,22.95-74.47,54.2l-138.63-45.02c29.69-89.25,113.87-153.62,213.1-153.62Zm0,692.32c-123.13,0-222.95-99.81-222.95-222.92,0-23.99,3.8-47.04,10.8-68.69l137.6,44.7c-2.58,7.8-3.96,16.11-3.96,24.76,0,43.8,35.5,79.3,79.28,79.3s79.28-35.5,79.28-79.3c0-11.86-2.6-23.14-7.3-33.25-12.55-27.16-40.06-46.03-71.98-46.03-.27,0-.5,0-.77.03v-144.44c25.21,0,49.48,4.19,72.09,11.91,47.75,16.32,88.19,48.37,115.14,90,22.58,34.86,35.69,76.41,35.69,121.01,0,123.11-99.81,222.92-222.92,222.92Z"/><path class="cls-2" d="m530.63,0C237.56,0,0,237.57,0,530.64s237.56,530.63,530.63,530.63,530.63-237.56,530.63-530.63S823.67,0,530.63,0Zm-.29,986c-250.04,0-452.74-202.7-452.74-452.74S280.3,80.55,530.34,80.55s452.71,202.68,452.71,452.71-202.68,452.74-452.71,452.74Z"/><path class="cls-3" d="m530.63,183.23v144.44c-34.7.34-64.05,22.95-74.47,54.2l-138.63-45.02c29.69-89.25,113.87-153.62,213.1-153.62Z"/><path class="cls-3" d="m753.55,652.63c0,123.11-99.81,222.92-222.92,222.92s-222.95-99.81-222.95-222.92c0-23.99,3.8-47.04,10.8-68.69l137.6,44.7c-2.58,7.8-3.96,16.11-3.96,24.76,0,43.8,35.5,79.3,79.28,79.3s79.28-35.5,79.28-79.3c0-11.86-2.6-23.14-7.3-33.25-12.55-27.16-40.06-46.03-71.98-46.03-.27,0-.5,0-.77.03v-144.44c25.21,0,49.48,4.19,72.09,11.91,47.75,16.32,88.19,48.37,115.14,90,22.58,34.86,35.69,76.41,35.69,121.01Z"/></g></svg>
+                            </div>
+                        </div>
+
+                        <div class='item'>
+                            <input class="articlesQuantity" type="number" id="quantity" name="quantity-1" min="0" value="0">
+                            <img src="img/articles/badge2.png" class='img-item'>
+                            <h1 class='item-title FontMonserrat'>Article</h1>
+                            <div class='item-price'>
+                                <h1 class='price'>12</h1>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="cc" viewBox="0 0 1061.26 1061.27"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#e84a97;}.cls-3{fill:#7cf5ac;}</style></defs><g id="Calque_1-2"><path class="cls-1" d="m530.34,80.55c-250.04,0-452.74,202.68-452.74,452.71s202.7,452.74,452.74,452.74,452.71-202.7,452.71-452.74S780.37,80.55,530.34,80.55Zm.29,102.68v144.44c-34.7.34-64.05,22.95-74.47,54.2l-138.63-45.02c29.69-89.25,113.87-153.62,213.1-153.62Zm0,692.32c-123.13,0-222.95-99.81-222.95-222.92,0-23.99,3.8-47.04,10.8-68.69l137.6,44.7c-2.58,7.8-3.96,16.11-3.96,24.76,0,43.8,35.5,79.3,79.28,79.3s79.28-35.5,79.28-79.3c0-11.86-2.6-23.14-7.3-33.25-12.55-27.16-40.06-46.03-71.98-46.03-.27,0-.5,0-.77.03v-144.44c25.21,0,49.48,4.19,72.09,11.91,47.75,16.32,88.19,48.37,115.14,90,22.58,34.86,35.69,76.41,35.69,121.01,0,123.11-99.81,222.92-222.92,222.92Z"/><path class="cls-2" d="m530.63,0C237.56,0,0,237.57,0,530.64s237.56,530.63,530.63,530.63,530.63-237.56,530.63-530.63S823.67,0,530.63,0Zm-.29,986c-250.04,0-452.74-202.7-452.74-452.74S280.3,80.55,530.34,80.55s452.71,202.68,452.71,452.71-202.68,452.74-452.71,452.74Z"/><path class="cls-3" d="m530.63,183.23v144.44c-34.7.34-64.05,22.95-74.47,54.2l-138.63-45.02c29.69-89.25,113.87-153.62,213.1-153.62Z"/><path class="cls-3" d="m753.55,652.63c0,123.11-99.81,222.92-222.92,222.92s-222.95-99.81-222.95-222.92c0-23.99,3.8-47.04,10.8-68.69l137.6,44.7c-2.58,7.8-3.96,16.11-3.96,24.76,0,43.8,35.5,79.3,79.28,79.3s79.28-35.5,79.28-79.3c0-11.86-2.6-23.14-7.3-33.25-12.55-27.16-40.06-46.03-71.98-46.03-.27,0-.5,0-.77.03v-144.44c25.21,0,49.48,4.19,72.09,11.91,47.75,16.32,88.19,48.37,115.14,90,22.58,34.86,35.69,76.41,35.69,121.01Z"/></g></svg>
+                            </div>
+                        </div>
+
+                        <div class='item'>
+                            <input class="articlesQuantity" type="number" id="quantity" name="quantity-1" min="0" value="0">
+                            <img src="img/articles/badge2.png" class='img-item'>
+                            <h1 class='item-title FontMonserrat'>Article</h1>
+                            <div class='item-price'>
+                                <h1 class='price'>12</h1>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="cc" viewBox="0 0 1061.26 1061.27"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#e84a97;}.cls-3{fill:#7cf5ac;}</style></defs><g id="Calque_1-2"><path class="cls-1" d="m530.34,80.55c-250.04,0-452.74,202.68-452.74,452.71s202.7,452.74,452.74,452.74,452.71-202.7,452.71-452.74S780.37,80.55,530.34,80.55Zm.29,102.68v144.44c-34.7.34-64.05,22.95-74.47,54.2l-138.63-45.02c29.69-89.25,113.87-153.62,213.1-153.62Zm0,692.32c-123.13,0-222.95-99.81-222.95-222.92,0-23.99,3.8-47.04,10.8-68.69l137.6,44.7c-2.58,7.8-3.96,16.11-3.96,24.76,0,43.8,35.5,79.3,79.28,79.3s79.28-35.5,79.28-79.3c0-11.86-2.6-23.14-7.3-33.25-12.55-27.16-40.06-46.03-71.98-46.03-.27,0-.5,0-.77.03v-144.44c25.21,0,49.48,4.19,72.09,11.91,47.75,16.32,88.19,48.37,115.14,90,22.58,34.86,35.69,76.41,35.69,121.01,0,123.11-99.81,222.92-222.92,222.92Z"/><path class="cls-2" d="m530.63,0C237.56,0,0,237.57,0,530.64s237.56,530.63,530.63,530.63,530.63-237.56,530.63-530.63S823.67,0,530.63,0Zm-.29,986c-250.04,0-452.74-202.7-452.74-452.74S280.3,80.55,530.34,80.55s452.71,202.68,452.71,452.71-202.68,452.74-452.71,452.74Z"/><path class="cls-3" d="m530.63,183.23v144.44c-34.7.34-64.05,22.95-74.47,54.2l-138.63-45.02c29.69-89.25,113.87-153.62,213.1-153.62Z"/><path class="cls-3" d="m753.55,652.63c0,123.11-99.81,222.92-222.92,222.92s-222.95-99.81-222.95-222.92c0-23.99,3.8-47.04,10.8-68.69l137.6,44.7c-2.58,7.8-3.96,16.11-3.96,24.76,0,43.8,35.5,79.3,79.28,79.3s79.28-35.5,79.28-79.3c0-11.86-2.6-23.14-7.3-33.25-12.55-27.16-40.06-46.03-71.98-46.03-.27,0-.5,0-.77.03v-144.44c25.21,0,49.48,4.19,72.09,11.91,47.75,16.32,88.19,48.37,115.14,90,22.58,34.86,35.69,76.41,35.69,121.01Z"/></g></svg>
+                            </div>
+                        </div>-->
+                    </div>
+
+                    <span class='FontInter formLabel'>Date de fin</span>
+                    <input required="required" type="datetime-local" class="form challenge_endTime" name="end_time">
+
+                    <span class='FontInter formLabel'>Récompense en ColorCoins</span>
+                    <input class="form" type="number" id="quantity" name="colorCoins" min="0" max="50" value="10">
+
+                    <div class="form-submit">
+                        <button type="submit" class='submit buttonLabel'>Créer un concours</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- FORMULAIRE LIST CONTEST -->
+        <div class="adminDashboardContentItems">
+            <div id="listContest">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un concours</h2>
                 <form method="POST" action="{{route('challenge.store')}}" accept-charset="UTF-8">
                     @csrf
