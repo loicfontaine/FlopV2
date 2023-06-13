@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/svg" href="img/favicon.svg">
 
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css'>
+
     <!-- PWA  -->
     <meta name="theme-color" content="#303030"/>
     <link rel="apple-touch-icon" href="{{ asset('img/logoPWA.png') }}">
@@ -74,6 +76,9 @@
             </a>
         </div>
     </nav>
+
+    <div id="notification-container"></div>
+
     <img class="logoC3" src="img/RTSCouleur3.png" alt="logo couleur 3">
         @yield("content")
     <footer id="footer">
@@ -130,13 +135,75 @@
             </a>
         </div>
     </footer>
-    <script src="{{ asset('/sw.js') }}"></script>
     <script>
         if (!navigator.serviceWorker.controller) {
             navigator.serviceWorker.register("/sw.js").then(function (reg) {
                 console.log("Service worker has been registered for scope: " + reg.scope);
             });
         }
+
+        // NOTIFICATIONS BY RYAN MORR CODEPEN
+        var notification;
+        var container = document.querySelector('#notification-container');
+        var visible = false;
+        var queue = [];
+
+        function createNotification() {
+            notification = document.createElement('div');
+            var btn = document.createElement('button');
+            var title = document.createElement('div');
+            var msg = document.createElement('div');
+            btn.className = 'notification-close';
+            title.className = 'notification-title';
+            msg.className = 'notification-message';
+            btn.addEventListener('click', hideNotification, false);
+            notification.addEventListener('animationend', hideNotification, false);
+            notification.addEventListener('webkitAnimationEnd', hideNotification, false);
+            notification.appendChild(btn);
+            notification.appendChild(title);
+            notification.appendChild(msg);
+        }
+
+        function updateNotification(type, title, message) {
+            notification.className = 'notification notification-' + type;
+            notification.querySelector('.notification-title').innerHTML = title;
+            notification.querySelector('.notification-message').innerHTML = message;
+        }
+
+        function showNotification(type, title, message) {
+            if (visible) {
+                queue.push([type, title, message]);
+                return;
+            }
+            if (!notification) {
+                createNotification();
+            }
+            updateNotification(type, title, message);
+            container.appendChild(notification);
+            visible = true;
+        }
+
+        function hideNotification() {
+            if (visible) {
+                visible = false;
+                container.removeChild(notification);
+                if (queue.length) {
+                    showNotification.apply(null, queue.shift());
+                }
+            } 
+        }
     </script>
+
+    @if (session()->has('success'))
+        <script>
+            showNotification.bind(null, 'success', 'Bravo !', "{{ session()->get('success') }}")();
+        </script>
+        {{ session()->forget('success') }}
+    @elseif (session()->has('error'))
+        <script>
+            showNotification.bind(null, 'error', 'Aïe !', "{{ session()->get('error') }}")();
+        </script>
+        {{ session()->forget('error') }}
+    @endif
 </body>
 </html>
