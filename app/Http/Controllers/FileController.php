@@ -57,10 +57,12 @@ class FileController extends Controller
             return response()->json(['error' => 'You must be logged in.']);
         }
     
-        $participation = Participation::create([
-            "user_id" => $userId,
-            "event_id" => $request->input("event_id"),
-        ]);
+        $participation = new Participation();
+           $participation->user_id = $userId;
+            //$participation->event_id = $request->input("event_id");
+            $participation->event_id = 1;
+        $participation->save();
+        
 
         if ($request->image != "undefined") {
             $fileName = $this->storeFile($request->image);
