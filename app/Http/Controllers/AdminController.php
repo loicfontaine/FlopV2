@@ -9,6 +9,7 @@ use App\Models\Participation;
 use App\Models\Content;
 use App\Models\Participation_type;
 use App\Models\Poll;
+use App\Models\Option;
 
 class AdminController extends Controller
 {
@@ -28,13 +29,15 @@ class AdminController extends Controller
             $now = date("Y-m-d H:i:s");
             // get challenges that end_time is greater than $now
             $challenges = Challenge::where("end_time", ">", $now)->where('is_contest', '=', 0)->get();
-            // get all data from participation table
-            $participations = Participation::all();
-            // get contents from table contents
-            $contents = Content::all();
             // get all polls
             $polls = Poll::all();
+            // get all data from participation table
+            $participations = Participation::all();
+            //get all from options table
+            $options = Option::all();
+            // get contents from table contents
+            $contents = Content::all();
 
-         return view("admin_dashboard", compact("articles", "challenges", "polls", "participations", "contents"));
+         return view("admin_dashboard", compact("articles", "challenges", "polls", "participations", "options", "contents"));
     }
 }
