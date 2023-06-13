@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Participation;
 use App\Models\Content;
+use Illuminate\Support\Facades\Auth;
 
 class FileController extends Controller
 {
