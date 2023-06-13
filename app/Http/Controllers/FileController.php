@@ -50,10 +50,15 @@ class FileController extends Controller
     link: false
         */
 
-        dd(Auth::check());
-    $userId = Auth::user()->id;
+        if(Auth::check()) {
+            $userId = Auth::user()->id;
+        } else {
+            //erreur session
+            return response()->json(['error' => 'You must be logged in.']);
+        }
+    
         $participation = Participation::create([
-            "user_id" => $request->input("user_id"),
+            "user_id" => $userId,
             "event_id" => $request->input("event_id"),
         ]);
 
