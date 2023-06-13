@@ -135,8 +135,22 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE LIST POLLs -->
         <div class="adminDashboardContentItems">
-            <div  id="createPoll">
-                <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un sondage</h2>
+            <div  id="listPolls">
+                <h2 class="adminDashboardContentItemsTitle FontInter">Liste des sondage</h2>
+                foreach($polls as $poll)
+                <div class="poll">
+                    <h3 class="FontInter pollTitle">{{$poll->title}}</h3>
+                    <p class="FontInter pollDescription">{{$poll->description}}</p>
+                    <p class="FontInter pollEndTime">{{$poll->end_time}}</p>
+                    <div id="options">
+                        @foreach($options as $option)
+                        @if($option->poll_id == $poll->id)
+                        <div id="option">
+                            <p>{{$option->text}}</p>
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
             </div>
         </div>
         <!-- FORMULAIRE CREATE CHALLENGE -->
@@ -197,43 +211,6 @@ Dashboard animateur | Couleur 3 Interact
                         <button type="submit" class='submit buttonLabel'>Créer un défi</button>
                     </div>
                 </form>
-            </div>
-            <!-- liste tous les défis en cours -->
-            <div  id="listChallenge">
-                <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
-                <div class="listChallenge">
-                    @foreach($challenges as $challenge)
-                    <div class="challenge">
-                        <h3 class="FontInter challengeTitle">{{$challenge->title}}</h3>
-                        <p class="FontInter challengeDescription">{{$challenge->description}}</p>
-                        <p class="FontInter challengeEndTime">{{$challenge->end_time}}</p>
-                        <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="" hidden>
-                            @foreach($participations as $participation)
-                            <div id="participation">
-                                <p>{{ $participation->user->nickname }}</p>
-                                @foreach($contents as $content)
-                                    @if($content->participation_id == $participation->id)
-                                        @if($participation->challenge_id == $challenge->id)
-                                        <div id="content">
-                                            @if($content->type == "text")
-                                                <p class="FontInter challengeContent">{{$content->text}}</p>
-                                            @elseif($content->type == "photo")
-                                                <img class="challengeContent" src="img/contents/{{$content->text}}">
-                                            @elseif($content->type == "video")
-                                                <video class="challengeContent" src="img/contents/{{$content->text}}"></video>
-                                            @elseif($content->type == "audio")
-                                                <audio class="challengeContent" src="img/contents/{{$content->text}}"></audio>
-                                            @endif
-                                        </div>
-                                        @endif
-                                    @endif
-                                @endforeach
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    @endforeach
             </div>
         </div>
         <!-- FORMULAIRE LIST CHALLENGE -->
