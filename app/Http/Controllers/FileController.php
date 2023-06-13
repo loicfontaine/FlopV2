@@ -59,8 +59,8 @@ class FileController extends Controller
     
         $participation = new Participation();
            $participation->user_id = $userId;
-            //$participation->event_id = $request->input("event_id");
-            $participation->event_id = 1;
+            //$participation->event_id = $request->input("challenge_id");
+            $participation->challenge_id = 1;
         $participation->save();
         
 
