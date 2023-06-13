@@ -89,7 +89,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE CREATION POLL -->
         <div class="adminDashboardContentItems">
-            <div class="adminDiv" id="createPoll">
+            <div  id="createPoll">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un sondage</h2>
                 <form method="POST" action="{{route('poll.store')}}" accept-charset="UTF-8">
                     @csrf
@@ -133,15 +133,15 @@ Dashboard animateur | Couleur 3 Interact
                 </form>
             </div>
         </div>
-                <!-- FORMULAIRE LIST POLLs -->
-                <div class="adminDashboardContentItems">
-            <div class="adminDiv" id="createPoll">
+        <!-- FORMULAIRE LIST POLLs -->
+        <div class="adminDashboardContentItems">
+            <div  id="createPoll">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un sondage</h2>
             </div>
         </div>
         <!-- FORMULAIRE CREATE CHALLENGE -->
         <div class="adminDashboardContentItems">
-            <div class="adminDiv" id="createChallenge">
+            <div  id="createChallenge">
                 <h2 class="adminDashboardContentTitle FontInter">Lancer un défi</h2>
                 <form method="POST" action="{{route('challenge.store')}}" accept-charset="UTF-8">
                     @csrf
@@ -199,7 +199,7 @@ Dashboard animateur | Couleur 3 Interact
                 </form>
             </div>
             <!-- liste tous les défis en cours -->
-            <div class="adminDiv" id="listChallenge">
+            <div  id="listChallenge">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
                 <div class="listChallenge">
                     @foreach($challenges as $challenge)
@@ -238,7 +238,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE LIST CHALLENGE -->
         <div class="adminDashboardContentItems">
-            <div class="adminDiv" id="listChallenge">
+            <div  id="listChallenge">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
                 <div class="listChallenge">
                     @foreach($challenges as $challenge)
@@ -277,7 +277,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE CONTEST -->
         <div class="adminDashboardContentItems">
-            <div class="adminDiv" id="createContest">
+            <div id="createContest">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un concours</h2>
                 <form method="POST" action="{{route('challenge.store')}}" accept-charset="UTF-8">
                     @csrf
