@@ -560,6 +560,10 @@ Dashboard animateur | Couleur 3 Interact
     var menuItems = document.getElementsByClassName('adminDashboardMenuItems');
     var contentItems = document.getElementsByClassName('adminDashboardContentItems');
 
+    // print menuItems et contentItems dans la console
+    console.log(menuItems);
+    console.log(contentItems);
+
     for (let i = 0; i < menuItems.length; i++) {
         menuItems[i].addEventListener('click', () => {
             for (let j = 0; j < menuItems.length; j++) {

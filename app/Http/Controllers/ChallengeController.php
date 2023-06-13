@@ -129,14 +129,15 @@ class ChallengeController extends Controller
         return redirect()->back();
     }
 
-
-
-    public function endContest(Request $request)
+    // fonction qui permet de terminer un contest, la vue nous envoie l'id du gagnant, l'id de la participation et l'id du reward
+    public function endContest(int $participation_id, int $reward_id)
     {
-        $challenge = Challenge::findOrFail($request->input("challenge_id"));
-        $winner = $request->input("winner");
-        $challenge->reward->user_id = $winner;
-        $challenge->reward->save();
+        $participation = Participation::findOrFail($participation_id);
+        $challenge = Challenge::findOrFail($participation->challenge_id);
+        $reward = Reward::findOrFail($reward_id);
+        $reward->user_id = $participation->user_id;
+        $reward->participation_id = $participation_id;
+        $reward->save();
         $challenge->start_time = $challenge->end_time;
         $challenge->save();
     }
