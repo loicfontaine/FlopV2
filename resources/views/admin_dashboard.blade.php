@@ -10,9 +10,6 @@ Dashboard animateur | Couleur 3 Interact
 @section('content')
 <div id="adminDashboardContainer">
     <div id="adminDashboardMenu">
-        <div class="adminDashboardMenuItems active" style="display:none;">
-        </div>
-
         <div class="adminDashboardMenuItems" id="menuCreatePoll">
             <svg class="adminDashboardMenuItemsIcons" width="25" height="28" viewBox="0 0 25 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22.2222 0H2.77778C1.25 0 0 1.37511 0 3.0558V24.4464C0 26.1271 1.25 27.5022 2.77778 27.5022H22.2222C23.75 27.5022 25 26.1271 25 24.4464V3.0558C25 1.37511 23.75 0 22.2222 0ZM22.2222 24.4464H2.77778V3.0558H22.2222V24.4464ZM5.55556 10.6953H8.33333V21.3906H5.55556V10.6953ZM11.1111 6.11161H13.8889V21.3906H11.1111V6.11161ZM16.6667 15.279H19.4444V21.3906H16.6667V15.279Z" fill="white" />
