@@ -89,7 +89,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE CREATION POLL -->
         <div class="adminDashboardContentItems">
-            <div  id="createPoll">
+            <div>
                 <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un sondage</h2>
                 <form method="POST" action="{{route('poll.store')}}" accept-charset="UTF-8">
                     @csrf
@@ -135,7 +135,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE LIST POLLs -->
         <div class="adminDashboardContentItems">
-            <div  id="listPolls">
+            <div>
                 <h2 class="adminDashboardContentItemsTitle FontInter">Liste des sondage</h2>
                 @foreach($polls as $poll)
                 <div class="poll">
@@ -156,7 +156,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE CREATE CHALLENGE -->
         <div class="adminDashboardContentItems">
-            <div  id="createChallenge">
+            <div>
                 <h2 class="adminDashboardContentTitle FontInter">Lancer un défi</h2>
                 <form method="POST" action="{{route('challenge.store')}}" accept-charset="UTF-8">
                     @csrf
@@ -216,7 +216,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE LIST CHALLENGE -->
         <div class="adminDashboardContentItems">
-            <div  id="listChallenge">
+            <div>
                 <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
                 <div class="listChallenge">
                     @foreach($challenges as $challenge)
@@ -255,7 +255,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE CREATE CONTEST -->
         <div class="adminDashboardContentItems">
-            <div id="createContest">
+            <div>
                 <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un concours</h2>
                 <form method="POST" action="{{route('challenge.store')}}" accept-charset="UTF-8">
                     @csrf
@@ -404,7 +404,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE LIST CONTEST -->
         <div class="adminDashboardContentItems">
-            <div id="listContest">
+            <div>
                 <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un concours</h2>
                 <form method="POST" action="{{route('challenge.store')}}" accept-charset="UTF-8">
                     @csrf
