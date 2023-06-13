@@ -96,6 +96,9 @@ export default {
         formData.append('message', this.message);
         formData.append('video', this.$refs.video.files[0]);
         formData.append('audioBlob', this.audioBlob);
+        formData.append('userId', Auth::user()->id);
+        //NISA A ADAPATER POUR M'ENVOYER LE CHALLENGE ID
+        //formData.append('challengeId', this.data.challenges[0].id);
        /*  console.log(formData.get('audio')); */
         console.log(formData.get('image'));
         console.log(formData.get('message'));
