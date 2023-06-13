@@ -1,0 +1,337 @@
+body{
+    color: #FFFFFF;
+}
+
+.adminDashboardMenuItems{
+    background-color: #303030;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 50px 20px 50px;
+    justify-content: center;
+    height: auto;
+    display: flex;
+    cursor: pointer;
+}
+
+.adminDashboardMenuChat{
+    background-color: #303030;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 50px 20px 50px;
+    justify-content: center;
+    height: auto;
+    display: flex;
+    cursor: pointer;
+}
+
+.adminDashboardMenuItemsLabel{
+    margin: 0;
+    text-align: center;
+    font-size: 2.5em;
+    align-self: center;
+}
+
+.adminDashboardMenuItemsIcons{
+    align-self: center;
+    margin-right: 15px;
+}
+
+.adminDashboardContent{
+    justify-content: center;
+    display: flex;
+    width: 50%;
+}
+
+#adminDashboardContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+#adminDashboardMenu{
+    width: 50%;
+}
+
+/* Active section appears in pink */
+.active{
+    background-color:#E60096;
+}
+
+.adminDashboardContentItems.display{
+    background-color: #303030;
+    border-radius: 10px;
+    display: flex;
+    height: auto;
+    width: 100%;
+    margin: 20px 50px 20px 50px;
+    padding: 5em;
+}
+
+.adminDashboardContentItems{
+    display: none;
+}
+
+.adminDashboardContentItemsTitle{
+    margin-top: 0;
+}
+
+#welcomeMessage{
+    background-color: #000000;
+    padding-top: -4em;
+}
+
+.adminDashboardContentItems#welcomeMessage{
+    padding: 0;
+}
+
+/** Formulaire */
+input.form {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 3em;
+    width: 100%;
+    margin-top: 0.4em;
+    margin-left: auto;
+    margin-right:auto;
+    margin-bottom: 2em;
+    border-radius: 8px;
+    box-shadow: none;
+    border: none;
+    background-color: #000000;
+    color: #F4F1E9;
+}
+
+input.optionForm {
+    margin-bottom: 1em;
+}
+
+input.form:focus {
+    outline: none !important;
+    border:2px solid #E60096;
+  }
+
+
+hr#separation {
+    width: 226px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+hr.separation2 {
+    width: 226px;
+    border: 0.2px solid grey;
+    opacity: 0.5;
+}
+
+.titre {
+    font-size: 22px;
+    text-align: center;
+}
+
+.submit {
+    background-color: #E60096; 
+    font-size: 18px;
+    color: white;
+    border:none;
+    border-radius: 8px;
+    height: 3em;
+    width: 80%;
+    cursor: pointer;
+}
+
+.form-submit {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addDeleteOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+.optionButtonLabel{
+    font-size: 1em;
+    font-weight: bold;
+    width: 45%;
+    margin: 0;
+}
+
+.condition {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/** Checkbox */
+.checkbox-group {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.checkbox-group-legend {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #9c9c9c;
+	text-align: center;
+	margin-bottom: 1.25rem;
+}
+
+.checkbox-input {
+    display: none;
+    &:checked + .checkbox-tile {
+		background-color: #E60096;
+	}
+}
+
+fieldset {
+    border: none;
+}   
+
+.checkbox-tile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 13rem;
+	height: 8rem;
+	border-radius: 0.5rem;
+	background-color: #585956;
+	transition: 0.15s ease;
+	cursor: pointer;
+	position: relative;
+    margin: 0.5rem;
+}
+
+.checkbox-tile:hover {
+    scale: 1.03;
+}
+
+.checkbox-label {
+	color: #F4F1E9;
+    font-size: 1.4rem;
+	transition: .375s ease;
+	text-align: center;
+}
+
+span.formLabel {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+button.buttonLabel {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/** Contest items */
+.column-item {
+    margin: auto;
+    margin-top: 0.4em;
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.img-item {
+    width: 100%;
+    border-radius: 1em 1em 0px 0px;
+}
+
+.centre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item {
+    background-color: white;
+    width: 30%;
+    border-radius: 1em;
+    margin-bottom:15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em;
+}
+
+.item-title {
+    color: #000000;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom : 0px;
+    height: min-content;
+}
+
+.cc {
+    width: 2em;
+    height: 2em;
+    margin-left: 0.4em;
+}
+
+.price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: #000000;
+    margin: 0;
+    margin-right: 0.4em;
+}
+
+.item-price {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: center;
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+}
+
+.articlesQuantity{
+    width: 60%;
+    height: 1.5em;
+    margin-top: 0.4em;
+    position: absolute;
+    align-self: center;
+    border: none;
+    text-align: center;
+    border-radius: 0.4em;
+}
+
+/** date and time */
+input[type="datetime-local"] {
+     color: #FFFFFF;
+     background-color: #000000;
+     border: none;
+     font-size: 2em;
+     cursor: pointer;
+    }
+
+/** poll */
+#createPoll {
+    width: 100%;
+}
+
+
+/** réponse aux défis */
+
+.adminDashboardDéfiShow {
+    background-color: #303030;
+    border-radius: 10px;
+    display: flex;
+    height: auto;
+    width: 100%;
+    margin: 20px 50px 20px 50px;
+    padding: 5em;
+}

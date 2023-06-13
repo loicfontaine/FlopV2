@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+/*
+code couleur rose : #E60096 
+code couleur vert : #62FFAB
+code couleur noir : #303030
+code couleur gris : #F4F1E9
+*/
+
+/*-------- responsive font-size --------*/
+html,
+body{
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 100%;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+@media screen and (max-width: 64em) {
+h1 {
+    font-size: 2.5em;
+  }
+}
+
+@media screen and (max-width: 50em) {
+h1 {
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 30em){
+h1 {
+    font-size: 1.5em;
+  }
+}
+
+p {font-size: 1.5em;}
+
+@media screen and (max-width: 64em) {
+ body {
+      font-size: 90%;
+   }
+}
+
+@media screen and (max-width: 50em) {
+ body {
+       font-size: 75%;
+   }
+}
+
+@media screen and (max-width: 30em) {
+   body {
+        font-size: 50%;
+  }
+}
+
+p {
+    font-size: 1.5em;
+    line-height: 1.3em;
+ }
+ 
+ h1, h2, h3 {line-height: 1.2em;}
+
+ html {font-size: 100%;}
+
+ p {font-size: 1.5rem;}
+ 
+ h1 {font-size: 3rem;}
+ 
+ h2 {font-size: 2.5rem;}
+ 
+ h3 {font-size: 2rem;}
+
+/*-------- Typo & Background --------*/
+
+body {
+    background-color:#000000 !important;
+    margin: 0;
+}
+
+.FontInter {  
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+.FontMonserrat {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+/*-------- Colors --------*/
+.rose {
+    color: #E60096;
+}
+
+.vert {
+    color: #62FFAB;
+}
+
+.noir {
+    color: #303030;
+}
+
+.gris {
+    color: #F4F1E9;
+}
+
+#navigationHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #303030;
+    height: auto;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    align-items: center;
+}
+
+.navigationHeaderItem{
+    padding: 1.2em;
+}
+
+.pointer {
+    cursor: pointer;
+}
+.logoC3 {
+    width: 352px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:30px;
+    padding-top: 5.5em;
+}
+
+.navigationIcons{
+    height: 3em;
+    margin: 0 1em 0 1em;
+}
+
+#footer{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    margin-top: 5em;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    background-color: #303030;
+}
+
+.footerNav{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 5em;
+    border-bottom: solid #6E6C6F 0.2em;
+}
+
+.footerNavLast{
+    border: none;
+    height: 8em;
+}
+
+.footerLink{
+    text-decoration: none;
+    font-size: 1.5em;
+    color: #6E6C6F;
+}
+
+.footerIcons{
+    margin: 0 2.5em 0 2.5em;
+    width: 4em;
+}
+
+
+
+@media screen and (min-width: 50em) {
+    body {
+          font-size: 75%;
+      }
+      .footerNav{
+        height: 4em;
+    }
+    
+    .footerNavLast{
+        height: 6em;
+    }
+
+    .footerIconsItem{
+        width: 45px;
+        height: 45px;
+    }
+   }
+

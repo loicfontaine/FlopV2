@@ -1,0 +1,408 @@
+/*-------- Utilisateur et notif --------*/
+p {
+  font-size: 1.2em;
+}
+
+.text-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    width: 80%;
+  }
+  
+  .left-text {
+    font-size: 20px;
+  }
+  
+  .right-image {
+    width: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .pointer{
+    cursor: pointer;
+  }
+
+/*-------- Séparation --------*/
+
+hr#separation {
+  color:white !important;
+    width: 226px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*-------- Pannel avec nombre de coins --------*/
+
+
+
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    width: 80%;
+    padding-top: 20px;
+    background-color: white;
+}
+
+.titreNombreDeColorCoins {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.ColorCoinsImage {
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8px;
+}
+
+.nombreDeColorCoins {
+    font-size: 22px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 22px;
+}
+
+/*-------- Pannel les options --------*/
+
+.input-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    width: 359px;
+    background-color: #303030;
+  }
+  
+  .input-button {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 14px;
+    margin-top: 0;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+  }
+
+  #bouton-valider{
+    background-color: #E60099; 
+    color: white;
+    width: 50%;
+    border: none;
+    height: 40px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+  }
+  
+  .input-button button {
+    background-color: #E60099; 
+    width: 100%;
+    height: 100px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    border : none;
+  }
+
+  .centrage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .centrage svg {
+    width: 30px; 
+    height: 30px;
+    margin-bottom: 8px; 
+  }
+  
+  .centrage span {
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+/*-------- Panneau message de login et renvoie --------*/
+
+.messageLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.middle-container {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.right-text {
+  font-size: 16px;
+}
+
+.bottom-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+
+.imgLogin {
+  width: 80px;
+}
+
+#boutique {
+  background-color: #E60096; 
+  font-size: 18px;
+  color: white;
+  border:none;
+  border-radius: 8px;
+  width:80%;
+  height: 40px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.bloc h1 {
+  font-size:20px;
+  color:#E60096;
+  font-family: 'Inter', sans-serif;
+  margin-top:5px;
+  margin-left:5px;
+  margin-bottom: 0px;
+}
+
+.bloc p {
+  font-size: 18px;
+  font-family:'Montserrat', sans-serif;
+  color:black;
+  margin: 0px 5px;
+}
+
+#container-infos {
+  border-radius : 8px;
+  width:100%;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+#container-modif-infos {
+  margin-bottom:2px;
+  background-color: white;
+  border-radius : 8px;
+}
+
+#container-participation {
+  border-radius : 8px;
+  width:100%;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 22px;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  margin-bottom: 10px;
+}
+
+#bouton-modifier {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  padding-top:15px;
+  color:#E60096;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+#titre {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cc {
+  width: 22px;
+  height: 22px;
+}
+
+#informations {
+  width:80%;
+}
+
+#participation {
+  width:80%;
+}
+
+.coins span {
+  font-size: 1.125rem;
+  font-family:'Montserrat', sans-serif;
+  color:black;
+
+}
+
+.entete {
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.entete h1 {
+  font-size: 22px;
+  font-family: 'Inter', sans-serif;
+  color:  #E60096;
+  margin-top:5px;
+  margin-left:5px;
+  margin-bottom: 0px;
+}
+
+
+.entete p {
+  font-size: 1.125rem;
+  font-family:'Montserrat', sans-serif;
+  color:black;
+  margin: 5px 0px 5px 0px;
+}
+
+.description h2 {
+  font-size: 1.125rem;
+  font-family:'Montserrat', sans-serif;
+  color:black;
+}
+
+.description p {
+  font-size: 1.125rem;
+  font-family:'Montserrat', sans-serif;
+  color:black;
+}
+
+.bloc {
+  padding:2px;
+  height:55px;
+  border-bottom: 1px #E60096;
+}
+
+.centre {
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.row {
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.blackInter {
+  font-size: 'Inter', sans-serif;
+  font-size: 22px;
+  color: black;
+}
+
+.whiteInter {
+  font-size: 'Inter', sans-serif;
+  font-size: 22px;
+  color: white;
+}
+
+.coins p {
+  font-family: 'Montserrat', sans-serif;
+  color: black;
+  font-size: 18px;
+  margin:0px;
+  
+
+}
+
+.coins {
+  display:flex;
+  flex-direction:row;
+  height: min-content;
+}
+
+.description {
+  margin-left:5px;
+}
+
+.bloc {
+  padding:2px;
+  height:55px;
+  border-bottom: 1px #E60096;
+}
+
+hr {
+  border: 1px solid;
+  margin: 0px;
+}
+
+.pink {
+  color: #E60096;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  cursor:pointer;
+}
+
+input {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  width: 98%;
+}

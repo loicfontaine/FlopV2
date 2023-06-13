@@ -1,0 +1,27 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "@popperjs/core": "^2.11.6",
+        "@vitejs/plugin-vue": "^4.2.3",
+        "axios": "^1.4.0",
+        "bootstrap": "^5.2.3",
+        "laravel-vite-plugin": "^0.7.5",
+        "vite": "^4.3.9"
+    },
+    "dependencies": {
+        "@prettier/plugin-php": "^0.19.6",
+        "laravel-echo": "^1.15.1",
+        "prettier": "^2.8.8",
+        "pusher-js": "^8.1.0",
+        "recorder-js": "^1.0.7",
+        "recorder.js": "^1.2.2",
+        "sass": "^1.56.1",
+        "vue": "^3.3.4"
+    }
+}
