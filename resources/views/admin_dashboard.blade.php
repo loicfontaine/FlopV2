@@ -224,11 +224,14 @@ Dashboard animateur | Couleur 3 Interact
                         <h3 class="FontInter challengeTitle">{{$challenge->title}}</h3>
                         <p class="FontInter challengeDescription">{{$challenge->description}}</p>
                         <p class="FontInter challengeEndTime">{{$challenge->end_time}}</p>
+                        <button onclick="afficherParticipations({{$challenge->id}})">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="" hidden>
+                        <div id="participationsContainer-{{$challenge->id}}" hidden>
                             @foreach($participations as $participation)
+                            @if($participation->challenge_id == $challenge->id)
                             <div id="participation">
-                                <p>{{ $participation->user->nickname }}</p>
+                                <!-- affiche le nickname de l'user ayant soumis la participation -->
+                                <p class="FontInter participationNickname">{{$participation->user->nickname}}</p>
                                 @foreach($contents as $content)
                                     @if($content->participation_id == $participation->id)
                                         @if($participation->challenge_id == $challenge->id)
@@ -247,6 +250,10 @@ Dashboard animateur | Couleur 3 Interact
                                     @endif
                                 @endforeach
                             </div>
+                            <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
+                            @else
+                            <p>Il n'y a aucune participation pour ce défi</p>
+                            @endif
                             @endforeach
                         </div>
                     </div>
@@ -404,23 +411,26 @@ Dashboard animateur | Couleur 3 Interact
             </div>
         </div>
         <!-- FORMULAIRE LIST CONTEST -->
-        <div id="listContests" class="adminDashboardContentItems">
+        <div id="listContest" class="adminDashboardContentItems">
             <div>
-                <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
-                <div class="listContests">
+                <h2 class="adminDashboardContentItemsTitle FontInter">Concours en cours</h2>
+                <div class="listContest">
                     @foreach($contests as $contest)
                     <div class="contest">
                         <h3 class="FontInter contestTitle">{{$contest->title}}</h3>
                         <p class="FontInter contestDescription">{{$contest->description}}</p>
                         <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
+                        <button onclick="afficherParticipations({{$contest->id}})">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="" hidden>
+                        <div id="participationsContainer-{{$contest->id}}" hidden>
                             @foreach($participations as $participation)
+                            @if($participation->contest_id == $contest->id)
                             <div id="participation">
-                                <p>{{ $participation->user->nickname }}</p>
+                                <!-- affiche le nickname de l'user ayant soumis la participation -->
+                                <p class="FontInter participationNickname">{{$participation->user->nickname}}</p>
                                 @foreach($contents as $content)
                                     @if($content->participation_id == $participation->id)
-                                        @if($participation->contest == $contest->id)
+                                        @if($participation->contest_id == $contest->id)
                                         <div id="content">
                                             @if($content->type == "text")
                                                 <p class="FontInter contestContent">{{$content->text}}</p>
@@ -436,6 +446,10 @@ Dashboard animateur | Couleur 3 Interact
                                     @endif
                                 @endforeach
                             </div>
+                            <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
+                            @else
+                            <p>Il n'y a aucune participation pour ce concours</p>
+                            @endif
                             @endforeach
                         </div>
                     </div>
@@ -518,5 +532,32 @@ Dashboard animateur | Couleur 3 Interact
             conteneurOptions.removeChild(conteneurOptions.lastChild);
         }
     };
+
+    function enregistrerParticipationGagnante(participationId) {
+        // Effectuez ici une requête AJAX pour enregistrer la participation gagnante dans la base de données
+        
+        // Exemple de requête AJAX avec Axios
+        axios.post('/challenges/endContest', {
+            participation_id: participationId,
+        })
+        .then(response => {
+            // Traitement de la réponse de la requête
+            console.log(response.data);
+        })
+        .catch(error => {
+            // Gestion des erreurs de la requête
+            console.error(error);
+        });
+    };
+
+    function afficherParticipations(challengeId) {
+        var participationsContainer = document.getElementById('participationsContainer-' + challengeId);
+        participationsContainer.removeAttribute('hidden');
+    }
+
+    function afficherParticipations(contestId) {
+        var participationsContainer = document.getElementById('participationsContainer-' + contestId);
+        participationsContainer.removeAttribute('hidden');
+    }
 </script>
 @endsection
