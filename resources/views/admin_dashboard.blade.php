@@ -458,7 +458,8 @@ Dashboard animateur | Couleur 3 Interact
                             @else
                             <p>Il n'y a aucune participation pour ce défis</p>
                             @endif
-                         </div>
+                            </div>
+                        </div>
                     </div>
                     @endforeach
                 </div>
