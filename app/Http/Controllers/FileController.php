@@ -50,6 +50,7 @@ class FileController extends Controller
     link: false
         */
 
+        dd($request->all());
         if(Auth::check()) {
             $userId = Auth::user()->id;
         } else {
