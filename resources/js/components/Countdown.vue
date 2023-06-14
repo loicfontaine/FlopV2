@@ -3,7 +3,7 @@
 
   <div v-for="item in data" :key="item.id" class="countdown-container" :class="{ 'expanded': item.isExpanded }" >
       <form @submit.prevent="uploadFiles(item)" :class="{ 'expanded': item.isExpanded }" >
-        <input type="hidden" name="challengeId" :value="item.id" ref="challengeId" v-model="challengeId">
+       <!--  <input type="hidden" name="challengeId" :value="item.id" ref="challengeId" v-model="challengeId"> -->
 
       <div class="arrow-container" @click="toggleExpand(item)">
         <i class="arrow-icon" :class="{ expanded: item.isExpanded }"></i>
@@ -36,7 +36,7 @@
       <button class="expanded-button audio FontMonserrat" @click="stopRecording" v-if="isRecording">Arrêter l'enregistrement</button>
       <input type="hidden" ref="audio" name="audioBlob"></div>
       <input class="expanded-input FontMonserrat champsTexte" type="text" placeholder="Envoyer un message..." name="message" v-model="message" ref="expandedInput" v-if="afficherChampsTexte(item)">
-      <button class="expanded-button envoi FontMonserrat" type="submit" @click="getItemId(item)">Envoyer ma participation</button>
+      <button class="expanded-button envoi FontMonserrat" type="submit">Envoyer ma participation</button>
       
     </div> </form>
   </div>
@@ -156,10 +156,6 @@ return participationTypes.includes('audio'); },
         console.error(error);
       });
   }, */
-  getItemId(item) {
-    console.log(item.id);
-    return item.id;
-  },
   uploadFiles(item) {
       const formData = new FormData();
       /* formData.append('audio', this.$refs.audio.files[0]); */
