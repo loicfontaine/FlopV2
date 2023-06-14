@@ -298,21 +298,21 @@ input[type="text"]::placeholder {
 }
 
 p .perso {
-    color: aqua;
+    color: aqua !important;
 }
 
 p .vert {
-    color: green;
+    color: green !important;
 }
 
 p .rouge {
-    color: red;
+    color: red !important;
 }
 
 p .orange {
-    color: orange;
+    color: orange !important;
 }
 
 p .violet {
-    color: purple;
+    color: purple !important;
 }
