@@ -227,35 +227,33 @@ Dashboard animateur | Couleur 3 Interact
                         <button onclick="afficherParticipations({{$challenge->id}})">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsContainer-{{$challenge->id}}" class="participations-container" hidden>
-                            <div class="participations-grid">
-                                @if(count($challenge->participations) == 0)
-                                <p class="FontInter">Aucune participation</p>
-                                @else
-                                @foreach($challenge->participations as $participation)
-                                        <div id="contentContainer">
-                                            <!-- affiche le nickname de l'user ayant soumis la participation -->
-                                            {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
-                                                    @foreach($participation->contents as $content)
-                                                        <div id="content">
-                                                            @if($content->participation_type_id == 4)
-                                                                <p class="FontInter contestContent">{{$content->text}}</p>
-                                                            @endif
-                                                            @if($content->participation_type_id == 2)
-                                                                <img class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}">
-                                                            @endif
-                                                            @if($content->participation_type_id == 3)
-                                                                <video class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}"></video>
-                                                            @endif
-                                                            @if($content->participation_type_id == 1)
-                                                                <audio class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}"></audio>
-                                                            @endif
-                                                        </div>
-                                                    @endforeach
-                                                    <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
-                                        </div>
-                                @endforeach
-                                @endif
-                            </div>
+                            @if(count($challenge->participations) == 0)
+                            <p class="FontInter">Aucune participation</p>
+                            @else
+                            @foreach($challenge->participations as $participation)
+                                    <div id="contentContainer">
+                                        <!-- affiche le nickname de l'user ayant soumis la participation -->
+                                        {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
+                                                @foreach($participation->contents as $content)
+                                                    <div id="content">
+                                                        @if($content->participation_type_id == 4)
+                                                            <p class="FontInter contestContent">{{$content->text}}</p>
+                                                        @endif
+                                                        @if($content->participation_type_id == 2)
+                                                            <img class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}">
+                                                        @endif
+                                                        @if($content->participation_type_id == 3)
+                                                            <video class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}"></video>
+                                                        @endif
+                                                        @if($content->participation_type_id == 1)
+                                                            <audio class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}"></audio>
+                                                        @endif
+                                                    </div>
+                                                @endforeach
+                                                <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
+                                    </div>
+                            @endforeach
+                            @endif
                         </div>
                     </div>
                     @endforeach
