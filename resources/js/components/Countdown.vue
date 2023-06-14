@@ -427,9 +427,6 @@ form .image-container-title {
   display: none;
 } 
 
-div:not(.expanded) form {
-  display: flex;
-}
 
 .description{
   font-size: 15px;
