@@ -31,7 +31,7 @@ Accueil | Couleur 3 Interact
     <div class="bouton audio-live" id="live">
         <p>Chat live</p>
     </div>
-    <div class="bouton audio-live">
+    <div class="bouton audio-live" id="audio">
         <p>Audio live</p>
     </div>
 </div>
@@ -104,6 +104,12 @@ Accueil | Couleur 3 Interact
     //si clique sur boutique, redirige sur page boutique
     boutique.addEventListener("click", function(){
         window.location.href = 'boutique';
+    })
+
+    audio = document.getElementById("audio")
+    //si clique sur audio, redirige sur page audio
+    audio.addEventListener("click", function(){
+        window.location.href = 'https://www.rts.ch/audio-podcast/livepopup/couleur-3/';
     })
 
 
