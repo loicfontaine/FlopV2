@@ -588,17 +588,19 @@ Dashboard animateur | Couleur 3 Interact
         radioElement.checked = true;
   });
 
-    function afficherParticipations(id) {
-    var participationsContainer = document.getElementById('participationsContainer' + id);
-    var button = document.getElementById('toggleButton' + id);
+  function afficherParticipations(id) {
+    var participationsContainer = document.getElementById('participationsContainer-' + id);
+    var button = document.getElementById('toggleButton-' + id);
 
-    if (participationsContainer.hidden) {
+    if (participationsContainer.hasAttribute('hidden')) {
         participationsContainer.removeAttribute('hidden');
         button.textContent = 'Masquer le contenu';
     } else {
         participationsContainer.setAttribute('hidden', 'true');
         button.textContent = 'Afficher les participations';
-    }}
+    }
+}
+
 
     function updateWinnerId(participationId) {
         document.getElementById('winnerId').value = participationId;
