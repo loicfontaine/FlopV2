@@ -587,7 +587,7 @@ Dashboard animateur | Couleur 3 Interact
     }
 
     function selectWinner(contentDiv) {
-    var selectWinnerDiv = contentDiv.next('.selectWinner');
+    var selectWinnerDiv = contentDiv.closest('.selectWinner');
     var winnerButton = selectWinnerDiv.querySelector('input[type="radio"]');
     winnerButton.checked = true;
 }
