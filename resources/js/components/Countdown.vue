@@ -3,7 +3,7 @@
 
   <div v-for="item in data" :key="item.id" class="countdown-container" :class="{ 'expanded': item.isExpanded }" >
       <form @submit.prevent="uploadFiles(item)" :class="{ 'expanded': item.isExpanded }" >
-      <input type="hidden" name="challenge_id" :value="item.id" ref="challengeIdInput">
+      <input type="hidden" name="challenge_id" :value="item.id" ref="challengeIdInput" v-model="challengeId">
       <div class="arrow-container" @click="toggleExpand(item)">
         <i class="arrow-icon" :class="{ expanded: item.isExpanded }"></i>
     </div>
@@ -61,6 +61,7 @@ data() {
     selectedImage: null,
     audioUrl: null,
     message: '',
+    challengeId: null,
     form: {
       video: null,
       image: null,
@@ -154,7 +155,7 @@ return participationTypes.includes('audio'); },
         console.error(error);
       });
   }, */
-  uploadFiles(item) {
+  uploadFiles() {
       const formData = new FormData();
       /* formData.append('audio', this.$refs.audio.files[0]); */
       /* if (this.$refs.image && this.$refs.image.files && this.$refs.image.files.length > 0) {
@@ -163,7 +164,7 @@ formData.append('image', this.$refs.image.files[0]);
       if (this.$refs.video && this.$refs.video.files && this.$refs.video.files.length > 0) {
 formData.append('video', this.$refs.video.files[0]);
 } */
-const challenge_id = this.item.id;
+formData.append('challenge_id', this.challengeId);
       formData.append('challenge_id', challenge_id);
       formData.append('message', this.message);
       formData.append('audioBlob', this.audioBlob);
