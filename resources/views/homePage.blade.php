@@ -28,10 +28,10 @@ Accueil | Couleur 3 Interact
     </div>      
 </div>
 <div id="boutonLiveAudio">
-    <div class="bouton" class="audio-live">
+    <div class="bouton audio-live">
         <p>Chat live</p>
     </div>
-    <div class="bouton" class="audio-live">
+    <div class="bouton audio-live">
         <p>Audio live</p>
     </div>
 </div>
