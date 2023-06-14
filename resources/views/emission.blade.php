@@ -63,27 +63,27 @@ COMEDY CLUB | Couleur 3 Interact
                 <hr class="hrTop">
                 <div class="boxMessage">
                     <div class='message'>
-                        <p class='pseudo'>Bedia : </p>
+                        <p class='pseudo vert'>Bedia : </p>
                         <p class='texte'>Hahahahah trop drôle !</p>
                     </div>
                     <div class='message'>
-                        <p class='pseudo'>Loup-anonyme : </p>
+                        <p class='pseudo orange'>Loup-anonyme : </p>
                         <p class='texte'>Hello tout le monde cava?</p>
                     </div>
                     <div class='message'>
-                        <p class='pseudo'>Squeezie : </p>
+                        <p class='pseudo rouge'>Squeezie : </p>
                         <p class='texte'>Est-ce que c'est bon pour vous ?</p>
                     </div>
                     <div class='message'>
-                        <p class='pseudo'>Maghla : </p>
+                        <p class='pseudo violet'>Maghla : </p>
                         <p class='texte'>Bon je dois y aller, ciaoooo tout le monde</p>
                     </div>
                     <div class='message'>
-                        <p class='pseudo'>Hamilton : </p>
+                        <p class='pseudo vert'>Hamilton : </p>
                         <p class='texte'>J'adore les voitures</p>
                     </div>
                     <div class='message'>
-                        <p class='pseudo'>R7 : </p>
+                        <p class='pseudo orange'>R7 : </p>
                         <p class='texte'>Suiiiiii</p>
                     </div>
                 </div>
@@ -171,7 +171,7 @@ COMEDY CLUB | Couleur 3 Interact
     boutonChat.addEventListener('click', () => {
         const inputMessage = document.querySelector('.input-message').value;
         var html = `<div class='message'>
-                        <p class='pseudo'>{{Auth::user()->firstname}} : </p>
+                        <p class='pseudo perso'>{{Auth::user()->firstname}} : </p>
                         <p class='texte'>${inputMessage}</p>
                     </div> `;
         boxMessage.innerHTML += html;

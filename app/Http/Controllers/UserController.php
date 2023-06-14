@@ -94,13 +94,12 @@ class UserController extends Controller
             return redirect("/login");
         } else {
             $participations = User::findOrFail(Auth::user()->id)->participations;
+            $challengesEtParticipations = [];
             //get challenge from each participations
             if ($participations->isEmpty()) {
                 session()->flash('error', 'Tu n\'as pas encore participé à un challenge !');
-                return view('dashboard');
+                return view("dashboard", compact("challengesEtParticipations"));
             }
-
-            $challengesEtParticipations = [];
             foreach ($participations as $participation) {
                 $challengesEtParticipations[$participation->id] = [$participation, $participation->challenge];
             }

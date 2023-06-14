@@ -34,27 +34,28 @@ class HomeController extends Controller
 
         $challengesRewards = [];
         foreach ($challenges as $challenge) {
+            $challenge->participation_types;
             if ($challenge->is_contest) {
-                $challengesRewards[$challenge->id] = ["challenge" => $challenge, "rewards" => $challenge->rewards, "participation_types" => $challenge->participation_types];
-            } else {
-                $challengesRewards[$challenge->id] = ["challenge" => $challenge, "participation_types" => $challenge->participation_types];
+                $challenge->rewards;
+                foreach ($challenge->rewards as $reward) {
+                    $reward->article;
+                }
             }
+                $challengesRewards[$challenge->id] = $challenge;
+
         }
         // get all polls where start_date + duration > now
         $sondages = Sondage::whereRaw("DATE_ADD(start_date, INTERVAL duration MINUTE) > NOW()")->get();
 
         $pollArray = [];
-        $optionsPourLesSondages = [];
 
         foreach ($sondages as $sondage) {
             // stocke les infos du sondage dans le tableau $pollArray
-            $pollArray[$sondage->id] = ["id" => $sondage->id, "title" => $sondage->title, "description" => $sondage->description, "start_date" => $sondage->start_date, "duration" => $sondage->duration, "options" => $sondage->options];
-            // va chercher les options du sondage
-            $pollOptions = DB::table('options')->where('poll_id', $sondage->id)->get();
-            // stocke les options du sondage dans le tableau $pollOptions
-            $optionsPourLesSondages[$pollOptions->id] = DB::table('options')->where('poll_id', $sondage->id)->get();
+            $sondage->options;
+            $pollArray[$sondage->id] = $sondage;
+
         }
 
-        return response()->json(array("challenges" => $challengesRewards, "sondages" => [$pollArray], "options" => [$optionsPourLesSondages]));
+        return response()->json(array("challenges" => $challengesRewards, "sondages" => [$pollArray]));
     }
 }

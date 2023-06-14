@@ -202,7 +202,6 @@ p.p1 {
 .message p {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-    color:white;
     margin-bottom: 10px;
 }
 
@@ -210,7 +209,6 @@ p.pseudo {
     /*texte sur une ligne */
     white-space: nowrap;
     font-family: 'Montserrat', sans-serif;
-    color : #E60096;
     margin-right: 10px;
 }
 
@@ -228,6 +226,8 @@ p.pseudo {
     font-family: 'Montserrat', sans-serif;
     margin-top: 20px;
     margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 18px;
     text-align: center;
     color: white;
@@ -294,4 +294,28 @@ input[type="text"]::placeholder {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.perso {
+    color: aqua !important;
+}
+
+.vert {
+    color: green !important;
+}
+
+.rouge {
+    color: red !important;
+}
+
+.orange {
+    color: orange !important;
+}
+
+.violet {
+    color: purple !important;
+}
+
+.texte {
+    color: white !important;
 }

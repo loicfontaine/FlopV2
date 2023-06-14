@@ -49,9 +49,6 @@ class FileController extends Controller
     dir: false
     link: false
         */
-        if (Participation::where("user_id", "=", $request->input("user_id"))->where("event_id", "=", $request->input("event_id"))->first()) {
-            session()->flash('error', 'Tu as déjà participer à ce défi !');
-        } else {
 
         if(Auth::check()) {
             $userId = Auth::user()->id;
@@ -59,61 +56,65 @@ class FileController extends Controller
             //erreur session
             return response()->json(['error' => 'You must be logged in.']);
         }
+
+        if (Participation::where("user_id", "=", $userId)->where("challenge_id", "=", $request->input("challenge_id"))->first()) {
+            session()->flash('error', 'Tu as déjà participé à ce défi !');
+        } else {
+
+
     
         $participation = new Participation();
            $participation->user_id = $userId;
-            //$participation->event_id = $request->input("challenge_id");
+            //$participation->challenge_id = $request->input("challenge_id");
             $participation->challenge_id = 1;
         $participation->save();
         
-try {
+
         if ($request->image != "undefined") {
             $fileName = $this->storeFile($request->image);
-            $content = Content::create([
-                "texte" => $fileName,
+            $image = Content::create([
+                "text" => $fileName,
                 "participation_id" => $participation->id,
+                "participation_type_id" => 2,
             ]);
-            $content->participation()->associate($participation);
-            $content->save();
-            return response()->json(['success' => 'You have successfully uploaded image.']);
+            $image->participation()->associate($participation);
+            $image->save();
+            
         }
 
         if ($request->video != "undefined") {
             $fileName = $this->storeFile($request->video);
-            $content = Content::create([
-                "texte" => $fileName,
+            $video = Content::create([
+                "text" => $fileName,
                 "participation_id" => $participation->id,
+                "participation_type_id" => 3,
             ]);
-            $content->participation()->associate($participation);
-            $content->save();
-            return response()->json(['success' => 'You have successfully uploaded video.']);
+            $video->participation()->associate($participation);
+            $video->save();
+    
         }
 
-        if ($request->audioBlob != "undefined") {
+        if ($request->audioBlob) {
             $file = $request->audioBlob;
             $fileName = time() . '.' . $file->getClientOriginalExtension() . "wav";
             $file->move('/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation', $fileName);
-            $content = Content::create([
-                "texte" => $fileName,
+            $audio = Content::create([
+                "text" => $fileName,
                 "participation_id" => $participation->id,
+                "participation_type_id" => 1,
             ]);
-
-            if ($request->message) {
-                $content = Content::create([
-                    "texte" => $request->message,
-                ]);
-                $content->participation()->associate($participation);
-                $content->save(); }
-
-
         }
-        } catch (\Exception $e) {
-            session()->flash('error', 'Ta participation n\'a pas pu être uploadée !');
-        }
-            $content->participation()->associate($participation);
-            $content->save();
+        if ($request->message) {
+            $message = Content::create([
+                "text" => $request->message,
+                "participation_id" => $participation->id,
+                "participation_type_id" => 4,
+            ]);
+            $message->participation()->associate($participation);
+            $message->save(); }
+        
             session()->flash('success', 'Ta participation a bien été uploadée !');
-            return response()->json(['success' => 'You have successfully uploaded audio.']);
+            return response()->json(['success' => 'You have successfully your participation.']);
         }
     }
     
