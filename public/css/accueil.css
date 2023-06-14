@@ -307,7 +307,8 @@ h2.titre {
 
     #direct-live {
         width: 100%;
-        height: 100%;
+        height: 250px;
+        border:none;
     }
 
     .img {
