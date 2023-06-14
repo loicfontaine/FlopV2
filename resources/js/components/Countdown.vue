@@ -330,12 +330,11 @@ afficherChampsAudio(item) {
   transform: rotate(-90deg);
 }
 
-.image-container-title {
+form .image-container-title {
   padding-top: 36px;
   padding-bottom: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  width: fit-content;
 }
 
 .image-container-title img {
