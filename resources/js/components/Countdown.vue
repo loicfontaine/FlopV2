@@ -293,7 +293,7 @@ computed: {
 
 
 
-<style>
+<style scoped>
 .countdown-container {
 display: flex;
 align-items: center;
