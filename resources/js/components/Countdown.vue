@@ -45,6 +45,7 @@
 <script>
 import json from './../../../public/data/challenges.json';
 import axios from 'axios';
+import moment from 'moment';
 export default{
   data() {
     return {
