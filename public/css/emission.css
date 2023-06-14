@@ -297,3 +297,23 @@ input[type="text"]::placeholder {
     flex-direction: column;
     justify-content: center;
 }
+
+.perso {
+    color: aqua;
+}
+
+.vert {
+    color: green;
+}
+
+.rouge {
+    color: red;
+}
+
+.orange {
+    color: orange;
+}
+
+.violet {
+    color: purple;
+}
