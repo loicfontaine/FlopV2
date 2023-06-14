@@ -448,10 +448,10 @@ Dashboard animateur | Couleur 3 Interact
                                                                 <img class="contestContent" src="{{ asset('/storage/participation/' . $content->text) }}">
                                                             @endif
                                                             @if($content->participation_type_id == 3)
-                                                                <video class="contestContent" src="{{ asset('/storage/participation/' . $content->text) }}"></video>
+                                                                <video controls class="contestContent" type="video/mp4" src="{{ asset('/storage/participation/' . $content->text) }}"></video>
                                                             @endif
                                                             @if($content->participation_type_id == 1)
-                                                                <audio class="contestContent" src="{{ asset('/storage/participation/' . $content->text) }}"></audio>
+                                                                <audio controls class="contestContent" type="audio/wav" src="{{ asset('/storage/participation/' . $content->text)}}"></audio>
                                                             @endif
                                                         </div>
                                                     @endforeach
