@@ -245,21 +245,20 @@ Dashboard animateur | Couleur 3 Interact
                                                 <video class="challengeContent" src="img/contents/{{$content->text}}"></video>
                                             @elseif($content->type == "audio")
                                                 <audio class="challengeContent" src="img/contents/{{$content->text}}"></audio>
-                                            @endif
-                                        </div>
-                                        @endif
+                                                @endif
+                                            </div>
+                                    @endforeach
+                                    <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
                                     @endif
+                                    @endif
+                                </div>
                                 @endforeach
-                            </div>    
+                                @else
+                                <p>Il n'y a aucune participation pour ce défis</p>
+                                @endif
                             </div>
-                            <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
-                            @else
-                            <p>Il n'y a aucune participation pour ce défi</p>
-                            @endif
-                            @endforeach
                         </div>
-                    </div>
-                    @endforeach
+                        @endforeach
                 </div>
             </div>
         </div>
@@ -429,10 +428,10 @@ Dashboard animateur | Couleur 3 Interact
                             @if($participation->contest_id == $contest->id)
                             <div id="participation">
                                 <!-- affiche le nickname de l'user ayant soumis la participation -->
-                                <p class="FontInter participationNickname">{{$participation->user->nickname}}</p>
+                                <p class="FontInter participationNickname">{{$participation->user->nickname}}</p>   
+                                @if($content->participation_id == $participation->id)
+                                @if($participation->contest_id == $contest->id)
                                 @foreach($contents as $content)
-                                    @if($content->participation_id == $participation->id)
-                                        @if($participation->contest_id == $contest->id)
                                         <div id="content">
                                             @if($content->type == "text")
                                                 <p class="FontInter contestContent">{{$content->text}}</p>
@@ -444,15 +443,15 @@ Dashboard animateur | Couleur 3 Interact
                                                 <audio class="contestContent" src="img/contents/{{$content->text}}"></audio>
                                             @endif
                                         </div>
-                                        @endif
-                                    @endif
                                 @endforeach
+                                <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
+                                @endif
+                                @endif
                             </div>
-                            <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
+                            @endforeach
                             @else
                             <p>Il n'y a aucune participation pour ce concours</p>
                             @endif
-                            @endforeach
                         </div>
                     </div>
                     @endforeach
