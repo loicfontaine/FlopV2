@@ -15,7 +15,7 @@
       <div class="description FontInter">{{ item.description }}</div>
       <div class="titre FontInter">{{ getText(item.is_contest) }} </div>
     </div>
-    <div class="expanded-content" v-if="isExpanded">
+    <div class="expanded-content" v-if="item.isExpanded">
       <label for="video-upload" class="custom-file-upload FontMonserrat" v-if="afficherChampsVideo(item)">
         Choisir une vidéo
         <input id="video-upload" class="expanded-input FontMonserrat champsVideo" type="file" accept="video/*" ref="video" name="video" @change="handleVideoUpload">
