@@ -101,8 +101,10 @@ COMEDY CLUB | Couleur 3 Interact
                     </div>
                 </div>
             </div>
-            <input type='text' placeholder='Chattez publiquement' class='input-message'></input>
-            <button class='bouton-chat'>Envoyer</button>
+            <div id="send-message">
+                <input type='text' placeholder='Chattez publiquement' class='input-message'></input>
+                <button class='bouton-chat'>Envoyer</button>
+            </div>
         </div>
     </div>
     @else
