@@ -163,9 +163,10 @@ formData.append('image', this.$refs.image.files[0]);
       if (this.$refs.video && this.$refs.video.files && this.$refs.video.files.length > 0) {
 formData.append('video', this.$refs.video.files[0]);
 } */
-/* const challengeIdInput = this.$refs.challengeIdInput; */
+const challengeIdInput = this.$refs.challengeIdInput;
       formData.append('message', this.message);
       formData.append('audioBlob', this.audioBlob);
+      formData.append('challengeId', challengeIdInput);
    /*    const files = event.target.files; */
       formData.append('image', this.image);
       formData.append('video', this.video)
@@ -173,6 +174,7 @@ formData.append('video', this.$refs.video.files[0]);
       console.log(formData.get('image'));
      /* console.log(challengeIdInput); */
       console.log(formData.get('message'));
+      console.log(formData.get('challengeId'));
       console.log(formData.get('video'));
       axios.post('/formSubmit', formData)
         .then(response => {
@@ -386,9 +388,6 @@ margin-top: 10px;
 margin-bottom: 10px;
 }
 
-.expanded-button {
-margin-bottom: 10px;
-}
 
 .expanded-input {
 width: 85%;
@@ -414,6 +413,7 @@ font-weight: bold;
 border: none;
 width: 90%;
 font-size: 18px;
+margin-bottom: 10px;
 }
 
 .custom-file-upload {
