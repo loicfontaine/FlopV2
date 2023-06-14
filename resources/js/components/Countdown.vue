@@ -32,8 +32,8 @@
         <source :src="audioUrl" type="audio/webm">
         Votre navigateur ne prend pas en charge la lecture audio
       </audio>
-      <button class="expanded-button audio FontMonserrat" @click="startRecording" v-if="!isRecording">Enregistrer</button>
-      <button class="expanded-button audio FontMonserrat" @click="stopRecording" v-if="isRecording">Arrêter l'enregistrement</button>
+      <button class="expanded-button audio enr FontMonserrat" @click="startRecording" v-if="!isRecording">Enregistrer</button>
+      <button class="expanded-button audio enr FontMonserrat" @click="stopRecording" v-if="isRecording">Arrêter l'enregistrement</button>
       <input type="hidden" ref="audio" name="audioBlob"></div>
       <input class="expanded-input FontMonserrat champsTexte" type="text" placeholder="Envoyer un message..." name="message" v-model="message" ref="expandedInput" v-if="afficherChampsTexte(item)">
       <button class="expanded-button envoi FontMonserrat" type="submit">Envoyer ma participation</button>
@@ -300,7 +300,11 @@ computed: {
   align-items: center;
 }
 .partieAudio button{
-  width:100% !important
+  width:107% !important
+}
+
+.partieAudio button.enr{
+  width:277% !important
 }
 
 .countdown-container {
