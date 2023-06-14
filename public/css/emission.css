@@ -202,7 +202,6 @@ p.p1 {
 .message p {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-    color:white;
     margin-bottom: 10px;
 }
 
@@ -297,22 +296,26 @@ input[type="text"]::placeholder {
     justify-content: center;
 }
 
-p .perso {
+.perso {
     color: aqua !important;
 }
 
-p .vert {
+.vert {
     color: green !important;
 }
 
-p .rouge {
+.rouge {
     color: red !important;
 }
 
-p .orange {
+.orange {
     color: orange !important;
 }
 
-p .violet {
+.violet {
     color: purple !important;
+}
+
+.texte {
+    color: white !important;
 }
