@@ -226,7 +226,7 @@ Dashboard animateur | Couleur 3 Interact
                         <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
                         <button onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer" hidden="hidden">
+                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer" hidden>
                             @if(count($contest->participations) == 0)
                                 <p class="FontInter">Aucune participation</p>
                             @else
@@ -435,7 +435,7 @@ Dashboard animateur | Couleur 3 Interact
                         <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
                         <button onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer" hidden="hidden">
+                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer" hidden>
                             @if(count($contest->participations) == 0)
                                 <p class="FontInter">Aucune participation</p>
                             @else
@@ -593,14 +593,15 @@ Dashboard animateur | Couleur 3 Interact
         var contestId = button.dataset.contestId;
         var participationsContainer = document.getElementById('participationsContainer-' + contestId);
 
-        if (participationsContainer.style.display === 'none') {
-            participationsContainer.style.display = 'block';
-            button.textContent = 'Masquer les participations';
+        if (participationsContainer.hidden) {
+            participationsContainer.hidden = false;
+            button.textContent = 'Masquer le contenu';
         } else {
-            participationsContainer.style.display = 'none';
+            participationsContainer.hidden = true;
             button.textContent = 'Afficher les participations';
         }
-    }
+}
+
 
 
 
