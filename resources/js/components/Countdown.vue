@@ -94,7 +94,7 @@ export default{
   methods: {
     async fetchData() {
       try {
-        const response = await axios.get('https://api.example.com/data');
+        const response = await axios.get('https://flop-pingouin.heig-vd.ch/api/home');
         this.data = response.data; // Assign the API response to the data property
         console.log("api", this.data);
       } catch (error) {
