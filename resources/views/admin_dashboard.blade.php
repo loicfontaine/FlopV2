@@ -86,7 +86,7 @@ Dashboard animateur | Couleur 3 Interact
                 @endif
             </div>
         </div>
-        <!-- FORMULAIRE CREATION POLL -->
+        <!-- FORMULAIRE CREATE POLL -->
         <div id="createPoll" class="adminDashboardContentItems">
             <div>
                 <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un sondage</h2>
@@ -428,33 +428,39 @@ Dashboard animateur | Couleur 3 Interact
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsContainer-{{$contest->id}}" class="participations-container" hidden>
                             <div class="participations-grid">
-                                @if(count($contest->participations) == 0)
+                            @if(count($contest->participations) == 0)
                                 <p class="FontInter">Aucune participation</p>
-                                @else
-                                @foreach($contest->participations as $participation)
+                            @else
+                                <form id="endContestForm" action="{{ route('endContest') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="winner" id="winnerId" value="">
+                                    @foreach($contest->participations as $participation)
                                         <div id="participation">
                                             <!-- affiche le nickname de l'user ayant soumis la participation -->
                                             {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
-                                                    @foreach($participation->contents as $content)
-                                                        <div id="content">
-                                                            @if($content->participation_type_id == 4)
-                                                                <p class="FontInter contestContent">{{$content->text}}</p>
-                                                            @endif
-                                                            @if($content->participation_type_id == 2)
-                                                                <img class="contestContent" src="{{ asset('/storage/participation/' . $content->text) }}">
-                                                            @endif
-                                                            @if($content->participation_type_id == 3)
-                                                                <video controls class="contestContent" type="video/mp4" src="{{ asset('/storage/participation/' . $content->text) }}"></video>
-                                                            @endif
-                                                            @if($content->participation_type_id == 1)
-                                                                <audio controls class="contestContent" type="audio/wav" src="{{ asset('/storage/participation/' . $content->text)}}"></audio>
-                                                            @endif
-                                                        </div>
-                                                    @endforeach
-                                                    <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
+                                            @foreach($participation->contents as $content)
+                                                <div id="content">
+                                                    @if($content->participation_type_id == 4)
+                                                        <p class="FontInter contestContent">{{$content->text}}</p>
+                                                    @endif
+                                                    @if($content->participation_type_id == 2)
+                                                        <img class="contestContent" src="{{ asset('/storage/participation/' . $content->text) }}">
+                                                    @endif
+                                                    @if($content->participation_type_id == 3)
+                                                        <video controls class="contestContent" type="video/mp4" src="{{ asset('/storage/participation/' . $content->text) }}"></video>
+                                                    @endif
+                                                    @if($content->participation_type_id == 1)
+                                                        <audio controls class="contestContent" type="audio/wav" src="{{ asset('/storage/participation/' . $content->text)}}"></audio>
+                                                    @endif
+                                                </div>
+                                            @endforeach
+                                            <label for="winner{{$participation->id}}">Sélectionner comme gagnant :</label>
+                                            <input type="radio" id="winner{{$participation->id}}" name="winnerRadio" value="{{$participation->id}}">
                                         </div>
-                                @endforeach
-                                @endif
+                                    @endforeach
+                                    <button type="submit" id="endContestButton">Terminer le concours</button>
+                                </form>
+                            @endif
                             </div>
                         </div>
                     </div>
@@ -463,7 +469,9 @@ Dashboard animateur | Couleur 3 Interact
                 </div>
             </div>
         </div>
-    </div></div></div>
+    </div>
+</div>
+</div>
 <!-- Composants qui s'affichent et se cachent ici -->
 <script>
     //console.log($articles);
@@ -555,14 +563,21 @@ Dashboard animateur | Couleur 3 Interact
         });
     };
 
-    function afficherParticipations(challengeId) {
-        var participationsContainer = document.getElementById('participationsContainer-' + challengeId);
-        participationsContainer.removeAttribute('hidden');
-    }
+    function afficherParticipations(id) {
+    var participationsContainer = document.getElementById('participationsContainer-' + id);
+    var button = document.getElementById('toggleButton-' + id);
 
-    function afficherParticipations(contestId) {
-        var participationsContainer = document.getElementById('participationsContainer-' + contestId);
+    if (participationsContainer.hidden) {
         participationsContainer.removeAttribute('hidden');
+        button.textContent = 'Masquer le contenu';
+    } else {
+        participationsContainer.setAttribute('hidden', 'true');
+        button.textContent = 'Afficher les participations';
+    }}
+
+    function updateWinnerId(participationId) {
+        document.getElementById('winnerId').value = participationId;
+        document.getElementById('endContestButton').disabled = false;
     }
 </script>
 @endsection
