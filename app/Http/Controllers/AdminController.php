@@ -30,14 +30,12 @@ class AdminController extends Controller
         // get current datetime
         $now = now();
         // get last poll created
-        $poll = Poll::selectAll()->orderBy("id", "desc")->first()->get();
+        $poll = Poll::all()->orderBy("id", "desc")->first()->get();
         $poll->options;
-
-
 
         session()->flash('error', 'No polls found');
 
-    
+
         // get challenges that end_time is greater than $now ordered by desc
 
         $challenges = Challenge::where("end_time", ">", $now)->where('is_contest', '=', 0)->orderBy("end_time", "desc")->get();

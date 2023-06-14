@@ -133,11 +133,11 @@ Dashboard animateur | Couleur 3 Interact
             </div>
         </div>
         <!-- FORMULAIRE LIST POLLs -->
-        <div id="listPoll" class="adminDashboardContentItems">
+        <div id="lastPoll" class="adminDashboardContentItems">
             <div>
-                <h2 class="adminDashboardContentItemsTitle FontInter">Sondages en cours</h2>
+                <h2 class="adminDashboardContentItemsTitle FontInter">Résultats du sondage en cours</h2>
                 @if(poll == null)
-                    <p class="FontInter">Aucun poll en cours</p>
+                    <p class="FontInter">Aucun sondage en cours</p>
                 @else
                     <p class="FontInter">Titre : {{poll->title}}</p>
                     <p class="FontInter">Description : {{poll->description}}</p>
