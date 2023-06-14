@@ -17,6 +17,7 @@
     "dependencies": {
         "@prettier/plugin-php": "^0.19.6",
         "laravel-echo": "^1.15.1",
+        "moment": "^2.29.4",
         "prettier": "^2.8.8",
         "pusher-js": "^8.1.0",
         "recorder-js": "^1.0.7",
