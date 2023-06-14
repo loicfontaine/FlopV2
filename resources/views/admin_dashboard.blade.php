@@ -140,19 +140,19 @@ Dashboard animateur | Couleur 3 Interact
                 @if($poll == null)
                     <span class="FontInter">Aucun sondage en cours</span>
                 @else
-                    <span class="FontInter formLabel">Titre</span>
+                    <h3 class="FontInter listH2">Titre</h3>
                     <br>
-                    <span class="FontInter ">{{$poll->title}}</span>
+                    <p class="FontInter listP">{{$poll->title}}</p>
                     <br>
-                    <span class="FontInter formLabel">Description</span>
+                    <h3 class="FontInter listH2">Description</span>
                     <br>
-                    <span class="FontInter ">{{$poll->description}}</span>
+                    <p class="FontInter listP">{{$poll->description}}</p>
                     <br>
-                    <span class="FontInter formLabel">Durée</span>
+                    <h3 class="FontInter listH2">Durée</h3>
                     <br>
-                    <span class="FontInter ">{{$poll->duration}}</span>
+                    <p class="FontInter listP">{{$poll->duration}}</p>
                     <br>
-                    <span class="FontInter formLabel">Options</span>
+                    <h3 class="FontInter listH2">Options</h3>
                     <ol>
                     @foreach($poll->options as $option)
                         <li class="FontInter form">{{$option->title}}</li>
@@ -399,15 +399,15 @@ Dashboard animateur | Couleur 3 Interact
                     @else
                     @foreach($contests as $contest)
                     <div class="contest">
-                        <h3 class="FontInter ">Titre</h3>
+                        <h3 class="FontInter listh2">Titre</h3>
                         <br>
                         <p class="FontInter listP">{{$contest->name}}</p>
                         <br>
-                        <h3 class="FontInter ">Description</h3>
+                        <h3 class="FontInter listh2">Description</h3>
                         <br>
                         <param class="FontInter listP">{{$contest->description}}</param>
                         <br>
-                        <h3 class="FontInter ">Fini à</h3>
+                        <h3 class="FontInter listh2">Fini à</h3>
                         <br>
                         <p class="FontInter listP">{{$contest->end_time}}</p>
                         <br>
