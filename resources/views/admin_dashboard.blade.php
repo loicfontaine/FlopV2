@@ -212,47 +212,57 @@ Dashboard animateur | Couleur 3 Interact
             </div>
         </div>
         <!-- FORMULAIRE LIST CHALLENGE -->
-        <div id="listChallenge" class="adminDashboardContentItems">
+        <div id="listContest" class="adminDashboardContentItems">
             <div class="container">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
-                <div class="listChallenge">
-                    @if(count($challenges) == 0)
+                <div class="listContest">
+                    @if(count($contests) == 0)
                     <p class="FontInter">Aucun défi</p>
                     @else
-                    @foreach($challenges as $challenge)
-                    <div class="challenge">
-                        <h3 class="FontInter challengeTitle">{{$challenge->name}}</h3>
-                        <p class="FontInter challengeDescription">{{$challenge->description}}</p>
-                        <p class="FontInter challengeEndTime">{{$challenge->end_time}}</p>
-                        <button id="toggleButton-{{$challenge->id}}" onclick="afficherParticipations({{$challenge->id}})">Afficher les participations</button>
+                    @foreach($contests as $contest)
+                    <div class="contest">
+                        <h3 class="FontInter contestTitle">{{$contest->name}}</h3>
+                        <p class="FontInter contestDescription">{{$contest->description}}</p>
+                        <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
+                        <button onclick="afficherParticipations({{$contest->id}})">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="participationsContainer-{{$challenge->id}}" class="participations-container" hidden>
-                            @if(count($challenge->participations) == 0)
-                            <p class="FontInter">Aucune participation</p>
+                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer" hidden>
+                            @if(count($contest->participations) == 0)
+                                <p class="FontInter">Aucune participation</p>
                             @else
-                            @foreach($challenge->participations as $participation)
-                                    <div id="contentContainer">
-                                        <!-- affiche le nickname de l'user ayant soumis la participation -->
-                                        {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
-                                                @foreach($participation->contents as $content)
-                                                    <div id="content">
-                                                        @if($content->participation_type_id == 4)
-                                                            <p class="FontInter contestContent">{{$content->text}}</p>
-                                                        @endif
-                                                        @if($content->participation_type_id == 2)
-                                                            <img class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}">
-                                                        @endif
-                                                        @if($content->participation_type_id == 3)
-                                                            <video class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}"></video>
-                                                        @endif
-                                                        @if($content->participation_type_id == 1)
-                                                            <audio class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}"></audio>
-                                                        @endif
-                                                    </div>
-                                                @endforeach
-                                                <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
-                                    </div>
-                            @endforeach
+                                <form id="endContestForm" action="{{ route('endContest') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="winner" id="winnerId" value="">
+                                    @foreach($contest->participations as $participation)
+                                        <div id="contentContainer">
+                                            <!-- affiche le nickname de l'user ayant soumis la participation -->
+                                            {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
+                                            @foreach($participation->contents as $content)
+                                                <div id="content">
+                                                    @if($content->participation_type_id == 4)
+                                                        <p class="FontInter contestContent">{{$content->text}}</p>
+                                                    @endif
+                                                    @if($content->participation_type_id == 2)
+                                                        <img class="contestContent" src="{{ asset('/storage/participation/' . $content->text) }}">
+                                                    @endif
+                                                    @if($content->participation_type_id == 3)
+                                                        <video controls class="contestContent" type="video/mp4" src="{{ asset('/storage/participation/' . $content->text) }}"></video>
+                                                    @endif
+                                                    @if($content->participation_type_id == 1)
+                                                        <audio controls class="contestContent" type="audio/wav" src="{{ asset('/storage/participation/' . $content->text)}}"></audio>
+                                                    @endif
+                                                </div>
+                                            @endforeach
+                                            <div class="selectWinner">
+                                                <label for="winnerButton">Sélectionner comme gagnant :</label>
+                                                <input type="radio" id="winnerButton" name="participationGagnante" value="{{$participation->id}}">
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </form>
+                                <div>
+                                    <button type="submit" id="endContestButton">Terminer le défi</button>
+                                </div>
                             @endif
                         </div>
                     </div>
@@ -413,10 +423,10 @@ Dashboard animateur | Couleur 3 Interact
         <!-- FORMULAIRE LIST CONTEST -->
         <div id="listContest" class="adminDashboardContentItems">
             <div class="container">
-                <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
+                <h2 class="adminDashboardContentItemsTitle FontInter">Concours en cours</h2>
                 <div class="listContest">
                     @if(count($contests) == 0)
-                    <p class="FontInter">Aucun défi</p>
+                    <p class="FontInter">Aucun concours</p>
                     @else
                     @foreach($contests as $contest)
                     <div class="contest">
