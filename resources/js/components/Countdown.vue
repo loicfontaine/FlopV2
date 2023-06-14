@@ -95,6 +95,29 @@ methods: {
       console.error(error);
     }
   },
+  getCountdown(endTime) {
+      const now = new Date();
+      const endDate = new Date(endTime);
+      const timeDiff = endDate - now;
+
+      if (timeDiff <= 0) {
+        return 'Le délai est écoulé';
+      }
+
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      return `${days}j ${hours}h ${minutes}m ${seconds}s`;
+    },
+    startCountdown() {
+      this.countdownIntervalId = setInterval(() => {
+        this.data.forEach(item => {
+          item.countdown = this.getCountdown(item.end_time);
+        });
+      }, 1000);
+    },
   getImage(isContest) {
 return isContest === 1 ? 'img/concours.png' : 'img/défis.png';
 },
