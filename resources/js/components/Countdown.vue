@@ -79,7 +79,7 @@ export default {
     console.log(json.challenges);
     console.log(json);
     console.log(this.data);
-    axios.get('/api/home')
+    axios.get('https://flop-pingouin.heig-vd.ch/api/home')
         .then(response => {
             console.log(response.challenges);
         })
