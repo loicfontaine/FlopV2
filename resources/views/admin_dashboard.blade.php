@@ -224,7 +224,7 @@ Dashboard animateur | Couleur 3 Interact
                         <h3 class="FontInter challengeTitle">{{$challenge->name}}</h3>
                         <p class="FontInter challengeDescription">{{$challenge->description}}</p>
                         <p class="FontInter challengeEndTime">{{$challenge->end_time}}</p>
-                        <button onclick="afficherParticipations({{$challenge->id}})">Afficher les participations</button>
+                        <button id="toggleButton-{{$challenge->id}}" onclick="afficherParticipations({{$challenge->id}})">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsContainer-{{$challenge->id}}" class="participations-container" hidden>
                             @if(count($challenge->participations) == 0)
@@ -565,8 +565,8 @@ Dashboard animateur | Couleur 3 Interact
     };
 
     function afficherParticipations(id) {
-    var participationsContainer = document.getElementById('participationsContainer-' + id);
-    var button = document.getElementById('toggleButton-' + id);
+    var participationsContainer = document.getElementById('participationsContainer' + id);
+    var button = document.getElementById('toggleButton' + id);
 
     if (participationsContainer.hidden) {
         participationsContainer.removeAttribute('hidden');
