@@ -210,7 +210,6 @@ p.pseudo {
     /*texte sur une ligne */
     white-space: nowrap;
     font-family: 'Montserrat', sans-serif;
-    color : #E60096;
     margin-right: 10px;
 }
 
