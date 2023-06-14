@@ -9,7 +9,7 @@
       <img :src="getImage(item.is_contest)" alt="Image">
     </div>
     <div class="text-container">
-      <p class="countdown FontInter rose">{{ getCountdown(item.end_time) }}</p>
+      <p class="countdown FontInter rose" v-if="item.countdown !== null">{{ item.countdown }}</p>
       <div class="description FontInter">{{ item.description }}</div>
       <div class="titre FontInter">{{ getText(item.is_contest) }} </div>
     </div>
@@ -70,12 +70,11 @@ data() {
   };
 },
 created() {
-  this.fetchData();
-},
-
-mounted() {
-
-},
+    this.fetchData();
+  },
+  mounted() {
+    this.startCountdown();
+  },
 beforeDestroy() {
     clearInterval(this.countdownIntervalId);
   },
@@ -88,33 +87,31 @@ methods: {
       this.data = response.data.challenges; // Assign the API response to the data property
       this.data = response.data.challenges.map(item => ({
           ...item,
-          isExpanded: false}));
-      console.log("api", this.data);
-      this.startCountdown();
-    } catch (error) {
-      console.error(error);
-    }
-  },
-  getCountdown(endTime) {
-      const now = new Date();
-      const endDate = new Date(endTime);
-      const timeDiff = endDate - now;
-
-      if (timeDiff <= 0) {
-        return 'Le délai est écoulé';
+          isExpanded: false,
+          countdown: null,
+        }));
+        this.updateCountdowns();
+      } catch (error) {
+        console.error(error);
       }
-
-      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-
-      return `${days}j ${hours}h ${minutes}m ${seconds}s`;
     },
-    startCountdown() {
-      this.countdownIntervalId = setInterval(() => {
+    updateCountdowns() {
+      setInterval(() => {
+        const now = new Date();
         this.data.forEach(item => {
-          item.countdown = this.getCountdown(item.end_time);
+          const endDate = new Date(item.end_time);
+          const timeDiff = endDate - now;
+
+          if (timeDiff <= 0) {
+            item.countdown = 'Le délai est écoulé';
+          } else {
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            item.countdown = `${days}j ${hours}h ${minutes}m ${seconds}s`;
+          }
         });
       }, 1000);
     },
