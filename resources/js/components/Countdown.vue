@@ -1,7 +1,8 @@
 <template>
   
-  <form @submit.prevent="uploadFiles">
+
     <div v-for="item in data" :key="item.id" class="countdown-container" :class="{ 'expanded': isExpanded }" >
+        <form @submit.prevent="uploadFiles"><input type="hidden" name="challenge_id" value="item->challenge->id">
       <div class="arrow-container" @click="toggleExpand()">
         <i class="arrow-icon" :class="{ 'expanded': isExpanded }" @click="isArrowClicked = true"></i>
       </div>
@@ -35,9 +36,9 @@
         <input class="expanded-input FontMonserrat champsTexte" type="text" placeholder="Envoyer un message..." name="message" v-model="message" ref="expandedInput" v-if="afficherChampsTexte(item)">
         <button class="expanded-button envoi FontMonserrat" type="submit">Envoyer ma participation</button>
         
-      </div>
+      </div> </form>
     </div>
-  </form>
+ 
 </template>
 
 <script>
