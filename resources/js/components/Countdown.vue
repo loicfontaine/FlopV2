@@ -61,6 +61,7 @@ data() {
     selectedImage: null,
     audioUrl: null,
     message: '',
+    challengeIdInput: null,
     form: {
       video: null,
       image: null,
