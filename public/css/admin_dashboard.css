@@ -360,6 +360,6 @@ div.container{
 }
 
 #endContestForm > * {
-    flex-basis: calc(25% - 10px); /* Ajustez la largeur en fonction de vos besoins */
-    margin: 5px; /* Espace entre les éléments */
+    flex-basis: calc(33.33% - 10px); /* Réglage pour 3 éléments par ligne */
+    margin-bottom: 10px;
 }
