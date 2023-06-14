@@ -255,10 +255,12 @@ Dashboard animateur | Couleur 3 Interact
                                                 @endif
                                             @endif
                                         </div>
-                                    @else
-                                        <p class="FontInter">Aucune participation</p>
                                     @endif
                                 @endforeach
+                                <!-- if no participation corresponding to challenge id-->
+                                @if($challenge->participation_id == null)
+                                    <p class="FontInter challengeNoParticipation">Aucune participation pour ce défi</p>
+                                @endif
                             </div>
                         </div>
                     </div>
