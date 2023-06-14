@@ -165,7 +165,6 @@ formData.append('image', this.$refs.image.files[0]);
 formData.append('video', this.$refs.video.files[0]);
 } */
 formData.append('challenge_id', this.challengeId);
-      formData.append('challenge_id', challenge_id);
       formData.append('message', this.message);
       formData.append('audioBlob', this.audioBlob);
    /*    const files = event.target.files; */
