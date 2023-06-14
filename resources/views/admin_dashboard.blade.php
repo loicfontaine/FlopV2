@@ -258,7 +258,7 @@ Dashboard animateur | Couleur 3 Interact
                                             <!-- affiche le nickname de l'user ayant soumis la participation -->
                                             {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
                                             @foreach($participation->contents as $content)
-                                                <div id="content">
+                                                <div id="content" onclick="selectWinner(this)">
                                                     @if($content->participation_type_id == 4)
                                                         <p class="FontInter contestContent">{{$content->text}}</p>
                                                     @endif
@@ -426,7 +426,7 @@ Dashboard animateur | Couleur 3 Interact
                                             <!-- affiche le nickname de l'user ayant soumis la participation -->
                                             {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
                                             @foreach($participation->contents as $content)
-                                                <div id="content">
+                                                <div id="content" onclick="selectWinner(this)">
                                                     @if($content->participation_type_id == 4)
                                                         <p class="FontInter contestContent">{{$content->text}}</p>
                                                     @endif
@@ -586,20 +586,12 @@ Dashboard animateur | Couleur 3 Interact
         document.getElementById('endContestButton').disabled = false;
     }
 
-    // Récupère tous les éléments avec l'ID "content"
-    var contentElements = document.querySelectorAll("#content");
+    function selectWinner(contentDiv) {
+    var selectWinnerDiv = contentDiv.next('.selectWinner');
+    var winnerButton = selectWinnerDiv.querySelector('input[type="radio"]');
+    winnerButton.checked = true;
+}
 
-    // Parcourt chaque élément "content"
-    contentElements.forEach(function(contentElement) {
-    // Ajoute un événement de clic à chaque élément "content"
-    contentElement.addEventListener("click", function() {
-        // Trouve l'élément "winnerButton" à l'intérieur de l'élément parent "selectWinner"
-        var winnerButton = contentElement.closest(".selectWinner").querySelector("input[type='radio']");
-        
-        // Active le bouton radio
-        winnerButton.checked = true;
-    });
-    });
 
 </script>
 @endsection
