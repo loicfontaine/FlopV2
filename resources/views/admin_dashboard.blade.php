@@ -441,7 +441,7 @@ Dashboard animateur | Couleur 3 Interact
                                             {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
                                                     @foreach($participation->contents as $content)
                                                         <div id="content">
-                                                            if($content->participation_type_id == 4)
+                                                            @if($content->participation_type_id == 4)
                                                                 <p class="FontInter contestContent">{{$content->text}}</p>
                                                             @endif
                                                             @if($content->participation_type_id == 2)
