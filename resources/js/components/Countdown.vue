@@ -9,7 +9,7 @@
         <img :src="getImage(item.is_contest)" alt="Image">
       </div>
       <div class="text-container">
-        <p class="countdown FontInter rose">{{ formatCountdown(item) }}</p>
+        <p class="countdown FontInter rose">{{ item.end_time }}</p>
         <div class="description FontInter">{{ item.description }}</div>
         <div class="titre FontInter">{{ getText(item.is_contest) }} </div>
       </div>
