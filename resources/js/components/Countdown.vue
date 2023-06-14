@@ -60,6 +60,7 @@ export default{
       selectedImage: null,
       audioUrl: null,
       message: '',
+      challenge_id: null,
       form: {
         video: null,
         image: null,
@@ -82,6 +83,7 @@ export default{
     console.log(json);
     console.log(this.data); */
     this.fetchData();
+
 },
 
 
@@ -162,11 +164,13 @@ afficherChampsAudio(item) {
         formData.append('audioBlob', this.audioBlob);
         const files = event.target.files;
         formData.append('image', this.image);
-        formData.append('video', this.video)
+        formData.append('video', this.video);
+        formData.append('challenge_id', this.challenge_id);
        /*  console.log(formData.get('audio')); */
         console.log(formData.get('image'));
         console.log(formData.get('message'));
         console.log(formData.get('video'));
+        console.log(formData.get('challenge_id'));
         axios.post('/formSubmit', formData)
           .then(response => {
             console.log(response.data);
