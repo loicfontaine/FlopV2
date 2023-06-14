@@ -34,11 +34,12 @@ class HomeController extends Controller
 
         $challengesRewards = [];
         foreach ($challenges as $challenge) {
+            $challenge->participation_types;
             if ($challenge->is_contest) {
-                $challengesRewards[$challenge->id] = ["challenge" => $challenge, "rewards" => $challenge->rewards, "participation_types" => $challenge->participation_types];
-            } else {
-                $challengesRewards[$challenge->id] = ["challenge" => $challenge, "participation_types" => $challenge->participation_types];
+                $challenge->rewards;
             }
+                $challengesRewards[$challenge->id] = $challenge;
+
         }
         // get all polls where start_date + duration > now
         $sondages = Sondage::whereRaw("DATE_ADD(start_date, INTERVAL duration MINUTE) > NOW()")->get();
@@ -48,7 +49,7 @@ class HomeController extends Controller
         foreach ($sondages as $sondage) {
             // stocke les infos du sondage dans le tableau $pollArray
             $sondage->options;
-            $pollArray[$sondage->id] = ["poll" => $sondage];
+            $pollArray[$sondage->id] = $sondage;
 
         }
 
