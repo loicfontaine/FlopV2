@@ -1,0 +1,113 @@
+{
+    "challenges": {
+      "1": {
+        "id": 1,
+        "name": "test",
+        "description": "descr",
+        "start_time": "2023-06-07 11:22:27",
+        "end_time": "2024-01-19 03:14:07",
+        "is_contest": 1,
+        "ColorCoins_earned_by_participation": 0,
+        "user_id": 8,
+        "participation_types": [
+          {
+            "id": 1,
+            "title": "audio",
+            "pivot": {
+              "challenge_id": 1,
+              "participation_type_id": 1
+            }
+          },
+          {
+            "id": 2,
+            "title": "photo",
+            "pivot": {
+              "challenge_id": 1,
+              "participation_type_id": 2
+            }
+          }
+        ],
+        "rewards": [
+          {
+            "id": 30,
+            "quantity": 2,
+            "article_id": 2,
+            "user_id": null,
+            "participation_id": null,
+            "challenge_id": 1,
+            "article": {
+              "id": 2,
+              "name": "Badge",
+              "description": null,
+              "image": "badge2.png",
+              "price": 50,
+              "nb_stock": 200,
+              "is_displayed": 1,
+              "user_id": 8
+            }
+          },
+          {
+            "id": 31,
+            "quantity": 2,
+            "article_id": 5,
+            "user_id": null,
+            "participation_id": null,
+            "challenge_id": 1,
+            "article": {
+              "id": 5,
+              "name": "Stickers",
+              "description": "Lot de 5 stickers",
+              "image": "stickers5.png",
+              "price": 50,
+              "nb_stock": 500,
+              "is_displayed": 1,
+              "user_id": 8
+            }
+          }
+        ]
+      },
+      "27": {
+        "id": 27,
+        "name": "asd",
+        "description": "asd",
+        "start_time": "2023-06-13 10:44:52",
+        "end_time": "2023-06-14 10:40:00",
+        "is_contest": 0,
+        "ColorCoins_earned_by_participation": 10,
+        "user_id": null,
+        "participation_types": [
+          {
+            "id": 4,
+            "title": "video",
+            "pivot": {
+              "challenge_id": 27,
+              "participation_type_id": 4
+            }
+          }
+        ]
+      },
+      "28": {
+        "id": 28,
+        "name": "fgh",
+        "description": "fgh",
+        "start_time": "2023-06-13 23:31:34",
+        "end_time": "2023-06-14 23:31:00",
+        "is_contest": 0,
+        "ColorCoins_earned_by_participation": 10,
+        "user_id": null,
+        "participation_types": [
+          {
+            "id": 4,
+            "title": "texte",
+            "pivot": {
+              "challenge_id": 28,
+              "participation_type_id": 4
+            }
+          }
+        ]
+      }
+    },
+    "sondages": [
+      []
+    ]
+  }
