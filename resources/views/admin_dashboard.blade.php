@@ -231,27 +231,26 @@ Dashboard animateur | Couleur 3 Interact
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsContainer-{{$challenge->id}}" class="participations-container" hidden>
                             <div class="participations-grid">
-                                @if(count($challenge->participation) == 0)
+                                @if(count($challenge->participations) == 0)
                                 <p class="FontInter">Aucune participation</p>
                                 @else
                                 @foreach($challenge->participations as $participation)
                                         <div id="participation">
                                             <!-- affiche le nickname de l'user ayant soumis la participation -->
                                             {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
-                                            <p>tout est bon pour vous?</p>
-                                                    {{-- @foreach($challenge->contents as $content)
+                                                    @foreach($participation->contents as $content)
                                                         <div id="content">
-                                                            @if($content->type == "text")
+                                                            @if($content->participation_id == 4)
                                                                 <p class="FontInter challengeContent">{{$content->text}}</p>
-                                                            @elseif($content->type == "photo")
+                                                            @elseif($content->participation_id == 2)
                                                                 <img class="challengeContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}">
-                                                            @elseif($content->type == "video")
+                                                            @elseif($content->participation_id == 3)
                                                                 <video class="challengeContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></video>
-                                                            @elseif($content->type == "audio")
+                                                            @elseif($content->participation_id == 1)
                                                                 <audio class="challengeContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></audio>
                                                             @endif
                                                         </div>
-                                                    @endforeach --}}
+                                                    @endforeach
                                                     <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
                                         </div>
                                 @endforeach
