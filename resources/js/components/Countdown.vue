@@ -28,7 +28,7 @@
         <input id="image-upload" class="expanded-input FontMonserrat champsImage" type="file" ref="image" accept="image/*" name="image" @change="handleImageUpload">
         <img class="selectedMedia" v-if="selectedImage" :src="selectedImage" alt="Image">
       </label>
-      <div v-if="afficherChampsAudio(item)"><audio v-if="audioBlob" controls>
+      <div class="partieAudio" v-if="afficherChampsAudio(item)"><audio v-if="audioBlob" controls>
         <source :src="audioUrl" type="audio/webm">
         Votre navigateur ne prend pas en charge la lecture audio
       </audio>
@@ -293,6 +293,12 @@ computed: {
 
 
 <style scoped>
+
+.partieAudio{
+  display: flex;;
+  flex-direction: column;
+  align-items: center;
+}
 .countdown-container {
 display: flex;
 align-items: center;
