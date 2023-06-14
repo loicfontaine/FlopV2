@@ -74,6 +74,7 @@ export default {
 },
 
   mounted() {
+    console.log("test cd");
     this.data = json.challenges;
     console.log(json.challenges);
     console.log(json);
