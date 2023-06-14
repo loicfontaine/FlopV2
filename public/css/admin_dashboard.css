@@ -343,12 +343,4 @@ input[type="datetime-local"] {
     width: 100%;
 }
 
-/**list concours**/
-div.container{
-    width: 100%;
-}
-
-.contestContent {
-    height: 100%;
-    width: 100%;
-}
+/**list concours/challenge**/
