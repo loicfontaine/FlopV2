@@ -433,9 +433,9 @@ Dashboard animateur | Couleur 3 Interact
                         <h3 class="FontInter contestTitle">{{$contest->name}}</h3>
                         <p class="FontInter contestDescription">{{$contest->description}}</p>
                         <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
-                        <button onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer" hidden>
+                        <button onclick="toggleParticipationsContainer(this)">Afficher les participations</button>
+                        <div class="participationsContainer" hidden>
                             @if(count($contest->participations) == 0)
                                 <p class="FontInter">Aucune participation</p>
                             @else
@@ -586,26 +586,24 @@ Dashboard animateur | Couleur 3 Interact
         
         // Cocher le bouton radio
         radioElement.checked = true;
-  });
-
-  function afficherParticipations(button) {
-    var contestId = button.dataset.contestId;
-    var participationsContainer = document.getElementById('participationsContainer-' + contestId);
-
-    if (participationsContainer.hidden) {
-        participationsContainer.hidden = false;
-        button.textContent = 'Masquer le contenu';
-    } else {
-        participationsContainer.hidden = true;
-        button.textContent = 'Afficher les participations';
-    }
-}
-
+  })};
 
     function updateWinnerId(participationId) {
         document.getElementById('winnerId').value = participationId;
         document.getElementById('endContestButton').disabled = false;
     }
-}
+
+    // Fonction pour afficher ou masquer le conteneur des participations
+    function toggleParticipationsContainer(button) {
+    var participationsContainer = button.parentElement.nextElementSibling;
+
+    if (participationsContainer.hidden) {
+        participationsContainer.hidden = false;
+        button.textContent = 'Masquer les participations';
+    } else {
+        participationsContainer.hidden = true;
+        button.textContent = 'Afficher les participations';
+    }
+    }
 </script>
 @endsection
