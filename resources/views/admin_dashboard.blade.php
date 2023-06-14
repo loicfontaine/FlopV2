@@ -425,34 +425,36 @@ Dashboard animateur | Couleur 3 Interact
                         <button onclick="afficherParticipations({{$contest->id}})">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsContainer-{{$contest->id}}" hidden>
-                            @foreach($participations as $participation)
-                            @if($participation->contest_id == $contest->id)
-                            <div id="participation">
-                                <!-- affiche le nickname de l'user ayant soumis la participation -->
-                                <p class="FontInter participationNickname">{{$participation->user->nickname}}</p>   
-                                @if($content->participation_id == $participation->id)
+                            @if(count($participations) > 1)
+                                @foreach($participations as $participation)
                                     @if($participation->contest_id == $contest->id)
-                                        @foreach($contents as $content)
-                                            <div id="content">
-                                                @if($content->type == "text")
-                                                    <p class="FontInter contestContent">{{$content->text}}</p>
-                                                @elseif($content->type == "photo")
-                                                    <img class="contestContent" src="img/contents/{{$content->text}}">
-                                                @elseif($content->type == "video")
-                                                    <video class="contestContent" src="img/contents/{{$content->text}}"></video>
-                                                @elseif($content->type == "audio")
-                                                    <audio class="contestContent" src="img/contents/{{$content->text}}"></audio>
-                                                    @endif
-                                            </div>
-                                        @endforeach
-                                        <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
+                                    <div id="participation">
+                                        <!-- affiche le nickname de l'user ayant soumis la participation -->
+                                        <p class="FontInter participationNickname">{{$participation->user->nickname}}</p>   
+                                        @if($content->participation_id == $participation->id)
+                                            @if($participation->contest_id == $contest->id)
+                                                @foreach($contents as $content)
+                                                    <div id="content">
+                                                        @if($content->type == "text")
+                                                            <p class="FontInter contestContent">{{$content->text}}</p>
+                                                        @elseif($content->type == "photo")
+                                                            <img class="contestContent" src="img/contents/{{$content->text}}">
+                                                        @elseif($content->type == "video")
+                                                            <video class="contestContent" src="img/contents/{{$content->text}}"></video>
+                                                        @elseif($content->type == "audio")
+                                                            <audio class="contestContent" src="img/contents/{{$content->text}}"></audio>
+                                                            @endif
+                                                    </div>
+                                                @endforeach
+                                                <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
+                                            @endif
+                                        @endif
+                                    </div>
                                     @endif
-                                @else
-                                <p>Il n'y a aucune participation pour ce défis</p>
-                                @endif
-                            </div>
+                                @endforeach
+                            @else
+                            <p>Il n'y a aucune participation pour ce défis</p>
                             @endif
-                            @endforeach
                          </div>
                     </div>
                     @endforeach
