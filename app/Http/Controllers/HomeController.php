@@ -44,18 +44,13 @@ class HomeController extends Controller
         $sondages = Sondage::whereRaw("DATE_ADD(start_date, INTERVAL duration MINUTE) > NOW()")->get();
 
         $pollArray = [];
-        $optionsPourLesSondages = [];
 
         foreach ($sondages as $sondage) {
             // stocke les infos du sondage dans le tableau $pollArray
-            $pollArray[$sondage->id] = ["id" => $sondage->id, "title" => $sondage->title, "description" => $sondage->description, "start_date" => $sondage->start_date, "duration" => $sondage->duration, "options" => $sondage->options];
-            // va chercher les options du sondage
-            $pollOptions = $sondage->options;
-            dd($pollOptions);
-            // stocke les options du sondage dans le tableau $pollOptions
-            $optionsPourLesSondages[$pollOptions->id] = DB::table('options')->where('poll_id', $sondage->id)->get();
+            $pollArray[$sondage->id] = ["poll" => $sondage, "options" => $sondage->options];
+
         }
 
-        return response()->json(array("challenges" => $challengesRewards, "sondages" => [$pollArray], "options" => [$optionsPourLesSondages]));
+        return response()->json(array("challenges" => $challengesRewards, "sondages" => [$pollArray]));
     }
 }
