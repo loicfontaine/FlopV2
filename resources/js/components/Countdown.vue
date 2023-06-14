@@ -413,7 +413,9 @@ border: none;
 width: 90%;
 font-size: 18px;
 margin-bottom: 10px;
+text-align: center;
 height: auto;
+padding:8px;
 }
 
 .custom-file-upload {
