@@ -574,6 +574,20 @@ Dashboard animateur | Couleur 3 Interact
         });
     };
 
+    // Récupérer tous les éléments de contenu
+    var contentItems = document.getElementsByClassName('content');
+
+    // Parcourir les éléments de contenu et ajouter un gestionnaire d'événement de clic
+    for (var i = 0; i < contentItems.length; i++) {
+        contentItems[i].addEventListener('click', function() {
+        // Récupérer la valeur du bouton radio correspondant
+        var radioId = this.getAttribute('data-radio-id');
+        var radioElement = document.getElementById(radioId);
+        
+        // Cocher le bouton radio
+        radioElement.checked = true;
+  });
+
     function afficherParticipations(id) {
     var participationsContainer = document.getElementById('participationsContainer' + id);
     var button = document.getElementById('toggleButton' + id);
@@ -590,20 +604,6 @@ Dashboard animateur | Couleur 3 Interact
         document.getElementById('winnerId').value = participationId;
         document.getElementById('endContestButton').disabled = false;
     }
-
-    // Récupérer tous les éléments de contenu
-    var contentItems = document.getElementsByClassName('content');
-
-    // Parcourir les éléments de contenu et ajouter un gestionnaire d'événement de clic
-    for (var i = 0; i < contentItems.length; i++) {
-        contentItems[i].addEventListener('click', function() {
-        // Récupérer la valeur du bouton radio correspondant
-        var radioId = this.getAttribute('data-radio-id');
-        var radioElement = document.getElementById(radioId);
-        
-        // Cocher le bouton radio
-        radioElement.checked = true;
-  });
 }
 </script>
 @endsection
