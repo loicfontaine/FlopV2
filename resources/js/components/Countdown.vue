@@ -36,7 +36,7 @@
       <button class="expanded-button audio FontMonserrat" @click="stopRecording" v-if="isRecording">Arrêter l'enregistrement</button>
       <input type="hidden" ref="audio" name="audioBlob"></div>
       <input class="expanded-input FontMonserrat champsTexte" type="text" placeholder="Envoyer un message..." name="message" v-model="message" ref="expandedInput" v-if="afficherChampsTexte(item)">
-      <button class="expanded-button envoi FontMonserrat" type="submit" @click="getItemId">Envoyer ma participation</button>
+      <button class="expanded-button envoi FontMonserrat" type="submit" @click="getItemId(item)">Envoyer ma participation</button>
       
     </div> </form>
   </div>
@@ -156,8 +156,9 @@ return participationTypes.includes('audio'); },
         console.error(error);
       });
   }, */
-  getItemId() {
+  getItemId(item) {
     return item.id;
+    console.log(item.id);
   },
   uploadFiles() {
       const formData = new FormData();
@@ -169,7 +170,7 @@ formData.append('image', this.$refs.image.files[0]);
       if (this.$refs.video && this.$refs.video.files && this.$refs.video.files.length > 0) {
 formData.append('video', this.$refs.video.files[0]);
 } */
-formData.append('challenge_id', this.getItemId());
+formData.append('challenge_id', );
       formData.append('message', this.message);
       formData.append('audioBlob', this.audioBlob);
    /*    const files = event.target.files; */
