@@ -3,7 +3,7 @@
 
     <div v-for="item in data" :key="item.id" class="countdown-container" :class="{ 'expanded': isExpanded }" >
         <form @submit.prevent="uploadFiles">
-        <input type="hidden" name="challenge_id" :value="item.challenge.id" ref="challengeIdInput">
+        <input type="hidden" name="challenge_id" :value="item.id" ref="challengeIdInput">
       <div class="arrow-container" @click="toggleExpand()">
         <i class="arrow-icon" :class="{ 'expanded': isExpanded }" @click="isArrowClicked = true"></i>
       </div>
