@@ -211,7 +211,7 @@ h2.titre {
     }
 
     #banniere {
-        height: 100px;
+        height: 300px;
         width: 100%;
         background-image: url("../img/banniereBoutique.svg");
         background-size: cover;
@@ -219,6 +219,7 @@ h2.titre {
     }
 
     #btn-boutique {
+        margin-top: 30px;
         width: fit-content;
         margin-left: auto;
         margin-right: auto;
