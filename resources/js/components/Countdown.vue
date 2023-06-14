@@ -9,7 +9,7 @@
       <img :src="getImage(item.is_contest)" alt="Image">
     </div>
     <div class="text-container">
-      <p class="countdown FontInter rose">{{ item.countdown }}</p>
+      <p class="countdown FontInter rose">{{ getCountdown(item.end_time) }}</p>
       <div class="description FontInter">{{ item.description }}</div>
       <div class="titre FontInter">{{ getText(item.is_contest) }} </div>
     </div>
@@ -29,8 +29,8 @@
         <source :src="audioUrl" type="audio/webm">
         Votre navigateur ne prend pas en charge la lecture audio
       </audio>
-      <button class="expanded-button audio enr FontMonserrat" @click="startRecording" v-if="!isRecording">Enregistrer</button>
-      <button class="expanded-button audio enr FontMonserrat" @click="stopRecording" v-if="isRecording">Arrêter l'enregistrement</button>
+      <button class="expanded-button audio FontMonserrat" @click="startRecording" v-if="!isRecording">Enregistrer</button>
+      <button class="expanded-button audio FontMonserrat" @click="stopRecording" v-if="isRecording">Arrêter l'enregistrement</button>
       <input type="hidden" ref="audio" name="audioBlob"></div>
       <input class="expanded-input FontMonserrat champsTexte" type="text" placeholder="Envoyer un message..." name="message" v-model="message" ref="expandedInput" v-if="afficherChampsTexte(item)">
       <button class="expanded-button envoi FontMonserrat" type="submit">Envoyer ma participation</button>
@@ -70,11 +70,12 @@ data() {
   };
 },
 created() {
-    this.fetchData();
-  },
-  mounted() {
-    this.startCountdown();
-  },
+  this.fetchData();
+},
+
+mounted() {
+
+},
 beforeDestroy() {
     clearInterval(this.countdownIntervalId);
   },
@@ -87,34 +88,13 @@ methods: {
       this.data = response.data.challenges; // Assign the API response to the data property
       this.data = response.data.challenges.map(item => ({
           ...item,
-          isExpanded: false,
-          countdown: null,
-        }));
-        this.updateCountdowns();
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    updateCountdowns() {
-      setInterval(() => {
-        const now = new Date();
-        this.data.forEach(item => {
-          const endDate = new Date(item.end_time);
-          const timeDiff = endDate - now;
-
-          if (timeDiff <= 0) {
-            item.countdown = 'Le délai est écoulé';
-          } else {
-            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-
-            item.countdown = `${days}j ${hours}h ${minutes}m ${seconds}s`;
-          }
-        });
-      }, 1000);
-    },
+          isExpanded: false}));
+      console.log("api", this.data);
+      this.startCountdown();
+    } catch (error) {
+      console.error(error);
+    }
+  },
   getImage(isContest) {
 return isContest === 1 ? 'img/concours.png' : 'img/défis.png';
 },
@@ -247,11 +227,6 @@ computed: {
   flex-direction: column;
   align-items: center;
 }
-.partieAudio button{
-  width:107% !important
-}
-
-
 .countdown-container {
 display: flex;
 align-items: center;
