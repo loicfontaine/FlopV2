@@ -202,10 +202,11 @@ afficherChampsAudio(item) {
       this.intervalId = null; // Réinitialiser l'ID de l'intervalle
       // Compte à rebours terminé, exécutez une action supplémentaire si nécessaire
     }
-  }, 1000); */
+  }, 1000); 
 
-/*   return this.formatTime(this.countdown); */
+  return this.formatTime(this.countdown); 
 },
+*/
   //update the countdown every second
 
 
