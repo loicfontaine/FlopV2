@@ -2,7 +2,7 @@
   
 
   <div v-for="item in data" :key="item.id" class="countdown-container" :class="{ 'expanded': item.isExpanded }" >
-      <form @submit.prevent="uploadFiles(item.id)" :class="{ 'expanded': item.isExpanded }" >
+      <form @submit.prevent="uploadFiles(item)" :class="{ 'expanded': item.isExpanded }" >
       <input type="hidden" name="challenge_id" :value="item.id" ref="challengeIdInput">
       <div class="arrow-container" @click="toggleExpand(item)">
         <i class="arrow-icon" :class="{ expanded: item.isExpanded }"></i>
@@ -163,7 +163,7 @@ formData.append('image', this.$refs.image.files[0]);
       if (this.$refs.video && this.$refs.video.files && this.$refs.video.files.length > 0) {
 formData.append('video', this.$refs.video.files[0]);
 } */
-const challenge_id = this.item;
+const challenge_id = this.item.id;
       formData.append('challenge_id', challenge_id);
       formData.append('message', this.message);
       formData.append('audioBlob', this.audioBlob);
