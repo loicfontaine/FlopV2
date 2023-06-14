@@ -75,6 +75,7 @@ class FileController extends Controller
             $image = Content::create([
                 "texte" => $fileName,
                 "participation_id" => $participation->id,
+                "participation_type" => 2,
             ]);
             $image->participation()->associate($participation);
             $image->save();
@@ -86,6 +87,7 @@ class FileController extends Controller
             $video = Content::create([
                 "texte" => $fileName,
                 "participation_id" => $participation->id,
+                "participation_type" => 3,
             ]);
             $video->participation()->associate($participation);
             $video->save();
@@ -99,11 +101,14 @@ class FileController extends Controller
             $audio = Content::create([
                 "texte" => $fileName,
                 "participation_id" => $participation->id,
+                "participation_type" => 1,
             ]);
         }
         if ($request->message) {
             $message = Content::create([
                 "texte" => $request->message,
+                "participation_id" => $participation->id,
+                "participation_type" => 4,
             ]);
             $message->participation()->associate($participation);
             $message->save(); }
