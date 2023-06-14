@@ -427,7 +427,7 @@ form .image-container-title {
   display: none;
 } 
 
-form {
+div:not(.expanded) form {
   display: flex;
 }
 
