@@ -441,9 +441,9 @@ Dashboard animateur | Couleur 3 Interact
                                                     @endif
                                                 </div>
                                             @endforeach
-                                            <div class="selectWinner">
-                                                <input type="radio" id="winnerButton" name="participationGagnante" value="{{$participation->id}}">
-                                            </div>
+                                                <div class="selectWinner">
+                                                    <input type="radio" id="winnerButton" name="participationGagnante" value="{{$participation->id}}">
+                                                </div>
                                         </div>
                                     @endforeach
                                     <button class="submit" type="submit" id="endContestButton">Terminer le concours</button>
@@ -586,20 +586,20 @@ Dashboard animateur | Couleur 3 Interact
         document.getElementById('endContestButton').disabled = false;
     }
 
-    // Sélectionnez tous les éléments contestContent avec la classe "selectable-content"
-    var selectableContents = document.querySelectorAll('.contestContent');
+    // Récupère tous les éléments avec l'ID "content"
+    var contentElements = document.querySelectorAll("#content");
 
-    // Ajoutez un gestionnaire d'événements de clic à chaque élément contestContent
-    selectableContents.forEach(function(content) {
-        content.addEventListener('click', function() {
-            // Sélectionnez le bouton radio correspondant
-            var radioBtn = content.parentNode.parentNode.querySelector('input[type="radio"]');
-            
-            // Vérifiez si le bouton radio existe et activez-le
-            if (radioBtn) {
-                radioBtn.checked = true;
-            }
-        });
+    // Parcourt chaque élément "content"
+    contentElements.forEach(function(contentElement) {
+    // Ajoute un événement de clic à chaque élément "content"
+    contentElement.addEventListener("click", function() {
+        // Trouve l'élément "winnerButton" à l'intérieur de l'élément parent "selectWinner"
+        var winnerButton = contentElement.closest(".selectWinner").querySelector("input[type='radio']");
+        
+        // Active le bouton radio
+        winnerButton.checked = true;
     });
+    });
+
 </script>
 @endsection
