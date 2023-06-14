@@ -364,13 +364,6 @@ button {
     overflow-y: auto;
 }
 
-.participations-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    padding: 10px;
-}
-
 .contestContent {
     height: 100%;
     width: 100%;
