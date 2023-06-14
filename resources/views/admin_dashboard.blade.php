@@ -138,11 +138,11 @@ Dashboard animateur | Couleur 3 Interact
             <div class="container">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Résultats du sondage en cours</h2>
                 @if($poll == null)
-                    <p class="FontInter formLabel">Aucun sondage en cours</p>
+                    <span class="FontInter formLabel">Aucun sondage en cours</span>
                 @else
-                    <p class="FontInter formLabel">Titre : {{$poll->title}}</p>
-                    <p class="FontInter formLabel">Description : {{$poll->description}}</p>
-                    <p class="FontInter formLabel">Durée : {{$poll->duration}}</p>
+                    <span class="FontInter formLabel">Titre : {{$poll->title}}</span>
+                    <span class="FontInter formLabel">Description : {{$poll->description}}</span>
+                    <span class="FontInter formLabel">Durée : {{$poll->duration}}</span>
                     <ol>
                     @foreach($poll->options as $option)
                         <li class="FontInter form">{{$option->title}}</li>
@@ -224,7 +224,7 @@ Dashboard animateur | Couleur 3 Interact
                         <h3 class="FontInter contestTitle">{{$contest->name}}</h3>
                         <p class="FontInter contestDescription">{{$contest->description}}</p>
                         <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
-                        <button onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
+                        <button class="submit optionButtonLabel" onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsHider-{{$contest->id}}" hidden>
                         <div id="participationsContainer-{{$contest->id}}" class="participationsContainer">
@@ -262,7 +262,7 @@ Dashboard animateur | Couleur 3 Interact
                                     @endforeach
                                 </form>
                                 <div>
-                                    <button type="submit" id="endContestButton">Terminer le concours</button>
+                                    <button class="submit" type="submit" id="endContestButton">Terminer le concours</button>
                                 </div>
                             @endif
                         </div>
@@ -435,7 +435,7 @@ Dashboard animateur | Couleur 3 Interact
                         <h3 class="FontInter contestTitle">{{$contest->name}}</h3>
                         <p class="FontInter contestDescription">{{$contest->description}}</p>
                         <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
-                        <button onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
+                        <button class="submit optionButtonLabel" onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsHider-{{$contest->id}}" hidden>
                         <div id="participationsContainer-{{$contest->id}}" class="participationsContainer">
@@ -473,7 +473,7 @@ Dashboard animateur | Couleur 3 Interact
                                     @endforeach
                                 </form>
                                 <div>
-                                    <button type="submit" id="endContestButton">Terminer le concours</button>
+                                    <button class="submit" type="submit" id="endContestButton">Terminer le concours</button>
                                 </div>
                             @endif
                         </div>
