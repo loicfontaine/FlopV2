@@ -221,7 +221,7 @@ Dashboard animateur | Couleur 3 Interact
                 <div class="listChallenge">
                     @foreach($challenges as $challenge)
                     <div class="challenge">
-                        <h3 class="FontInter challengeTitle">{{$challenge->title}}</h3>
+                        <h3 class="FontInter challengeTitle">{{$challenge->name}}</h3>
                         <p class="FontInter challengeDescription">{{$challenge->description}}</p>
                         <p class="FontInter challengeEndTime">{{$challenge->end_time}}</p>
                         <button onclick="afficherParticipations({{$challenge->id}})">Afficher les participations</button>
@@ -243,11 +243,11 @@ Dashboard animateur | Couleur 3 Interact
                                                             @if($content->type == "text")
                                                                 <p class="FontInter challengeContent">{{$content->text}}</p>
                                                             @elseif($content->type == "photo")
-                                                                <img class="challengeContent" src="img/contents/{{$content->text}}">
+                                                                <img class="challengeContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}">
                                                             @elseif($content->type == "video")
-                                                                <video class="challengeContent" src="img/contents/{{$content->text}}"></video>
+                                                                <video class="challengeContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></video>
                                                             @elseif($content->type == "audio")
-                                                                <audio class="challengeContent" src="img/contents/{{$content->text}}"></audio>
+                                                                <audio class="challengeContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></audio>
                                                             @endif
                                                         </div>
                                                     @endforeach
@@ -420,11 +420,11 @@ Dashboard animateur | Couleur 3 Interact
         <!-- FORMULAIRE LIST CONTEST -->
         <div id="listContest" class="adminDashboardContentItems">
             <div>
-                <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
+                <h2 class="adminDashboardContentItemsTitle FontInter">Concours en cours</h2>
                 <div class="listContest">
                     @foreach($contests as $contest)
                     <div class="contest">
-                        <h3 class="FontInter contestTitle">{{$contest->title}}</h3>
+                        <h3 class="FontInter contestTitle">{{$contest->name}}</h3>
                         <p class="FontInter contestDescription">{{$contest->description}}</p>
                         <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
                         <button onclick="afficherParticipations({{$contest->id}})">Afficher les participations</button>
@@ -446,11 +446,11 @@ Dashboard animateur | Couleur 3 Interact
                                                             @if($content->type == "text")
                                                                 <p class="FontInter contestContent">{{$content->text}}</p>
                                                             @elseif($content->type == "photo")
-                                                                <img class="contestContent" src="img/contents/{{$content->text}}">
+                                                                <img class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}">
                                                             @elseif($content->type == "video")
-                                                                <video class="contestContent" src="img/contents/{{$content->text}}"></video>
+                                                                <video class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></video>
                                                             @elseif($content->type == "audio")
-                                                                <audio class="contestContent" src="img/contents/{{$content->text}}"></audio>
+                                                                <audio class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></audio>
                                                             @endif
                                                         </div>
                                                     @endforeach
