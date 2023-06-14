@@ -138,6 +138,7 @@ class ChallengeController extends Controller
     public function endContest(Request $request)
     {
         dd($request->input('participationGagnante'));
+        $participation_id = $request->input('participationGagnante');
         $participation = Participation::findOrFail($participation_id);
         $challenge = Challenge::findOrFail($participation->challenge_id);
         // get la reward en fonction du challenge_id qui correspond à la participation
