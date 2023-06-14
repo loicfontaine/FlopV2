@@ -11,7 +11,7 @@
       <img :src="getImage(item.is_contest)" alt="Image">
     </div>
     <div class="text-container">
-      <p class="countdown FontInter rose">{{ countdowns[item.id] }}</p>
+      <p class="countdown FontInter rose">{{ item.end_time }}</p>
       <div class="description FontInter">{{ item.description }}</div>
       <div class="titre FontInter">{{ getText(item.is_contest) }} </div>
     </div>
@@ -80,7 +80,6 @@ mounted() {
   console.log(json);
   console.log(this.data); */
   this.fetchData();
-  this.startCountdown();
 
 },
 beforeDestroy() {
@@ -230,39 +229,7 @@ this.intervalId = setInterval(() => {
 
 return this.formatTime(this.countdown); 
 }, */
-startCountdown() {
-    this.updateCountdowns(); // Initial update
-    this.intervalId = setInterval(this.updateCountdowns, 1000); // Update every second
-  },
 
-  updateCountdowns() {
-    const now = moment();
-
-    this.data.forEach((item) => {
-      const end = moment(item.end_time);
-      const duration = moment.duration(end.diff(now));
-      const days = Math.floor(duration.asDays());
-      const hours = duration.hours();
-      const minutes = duration.minutes();
-      const seconds = duration.seconds();
-
-      let remainingTime = '';
-      if (days > 0) {
-        remainingTime += `${days} jour(s) `;
-      }
-      if (hours > 0) {
-        remainingTime += `${hours} heure(s) `;
-      }
-      if (minutes > 0) {
-        remainingTime += `${minutes} minute(s) `;
-      }
-      if (seconds > 0) {
-        remainingTime += `${seconds} seconde(s) `;
-      }
-
-      this.$set(this.countdowns, item.id, remainingTime.trim());
-    });
-  },
   toggleExpand() {
     if (this.isExpanded) {
       this.isExpanded = false;
