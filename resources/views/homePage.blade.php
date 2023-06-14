@@ -25,10 +25,15 @@ Accueil | Couleur 3 Interact
                 <p class="texte-live">Mickael Marquet, Michel Ndeze, Johannes Tchiakpe et Charles-Adamir Bernhard</p>
             </div>
         </div>
-        <div class="bouton" id="audio-live">
-            <p>Audio live</p>
-        </div>
     </div>      
+</div>
+<div id="boutonLiveAudio">
+    <div class="bouton" class="audio-live">
+        <p>Chat live</p>
+    </div>
+    <div class="bouton" class="audio-live">
+        <p>Audio live</p>
+    </div>
 </div>
 
 <div id="boutique">
