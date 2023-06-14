@@ -224,7 +224,7 @@ Dashboard animateur | Couleur 3 Interact
                         <h3 class="FontInter challengeTitle">{{$challenge->name}}</h3>
                         <p class="FontInter challengeDescription">{{$challenge->description}}</p>
                         <p class="FontInter challengeEndTime">{{$challenge->end_time}}</p>
-                        <button id="toggleButton-{{$participation->id}}" onclick="afficherParticipations({{$challenge->id}})">Afficher les participations</button>
+                        <button id="toggleButton-{{$challenge->id}}" onclick="afficherParticipations({{$challenge->id}})">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsContainer-{{$challenge->id}}" class="participations-container" hidden>
                             @if(count($challenge->participations) == 0)
