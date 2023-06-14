@@ -23,21 +23,35 @@ class AdminController extends Controller
     public function dashboard()
     {
         $articles = Article::all();
-            // LIST OF CHALLENGES
-            // get current datetime
-            $now = date("Y-m-d H:i:s");
-            // get all polls
-            $polls = Poll::all();
-            // get challenges that end_time is greater than $now ordered by desc
-            $challenges = Challenge::where("end_time", ">", $now)->where('is_contest', '=', 0)->orderBy("end_time", "desc")->get();
-            $contests = Challenge::where("end_time", ">", $now)->where('is_contest', '=', 1)->orderBy("end_time", "desc")->get();
-            // get all data from participation table
-            $participations = Participation::all();
-            //get all from options table
-            $options = Option::all();
-            // get contents from table contents
-            $contents = Content::all();
+        // LIST OF CHALLENGES
+        // get current datetime
+        $now = date("Y-m-d H:i:s");
+        // get all polls
+        $polls = Poll::all();
+        // get challenges that end_time is greater than $now ordered by desc
 
-         return view("admin_dashboard", compact("articles", "polls", "challenges", "contests", "participations", "options", "contents"));
+        $challenges = Challenge::where("end_time", ">", $now)->where('is_contest', '=', 0)->orderBy("end_time", "desc")->get();
+
+        foreach ($challenges as $challenge) {
+            $arrayParticipations = $challenge->participations;
+
+            foreach ($arrayParticipations as $participation) {
+                $participation->contents;
+            }
+        }
+
+        $contests = Challenge::where("end_time", ">", $now)->where('is_contest', '=', 1)->orderBy("end_time", "desc")->get();
+
+        foreach ($contests as $contest) {
+            $arrayParticipations = $contest->participations;
+
+            foreach ($arrayParticipations as $participation) {
+                $participation->contents;
+            }
+        }
+
+        dd($contests, $challenges);
+
+        return view("admin_dashboard", compact("articles", "polls", "challenges", "contests", "participations", "options", "contents"));
     }
 }
