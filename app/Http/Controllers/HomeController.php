@@ -37,6 +37,9 @@ class HomeController extends Controller
             $challenge->participation_types;
             if ($challenge->is_contest) {
                 $challenge->rewards;
+                foreach ($challenge->rewards as $reward) {
+                    $reward->article;
+                }
             }
                 $challengesRewards[$challenge->id] = $challenge;
 
