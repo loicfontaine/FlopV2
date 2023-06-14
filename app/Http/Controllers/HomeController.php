@@ -51,6 +51,7 @@ class HomeController extends Controller
             $pollArray[$sondage->id] = ["id" => $sondage->id, "title" => $sondage->title, "description" => $sondage->description, "start_date" => $sondage->start_date, "duration" => $sondage->duration, "options" => $sondage->options];
             // va chercher les options du sondage
             $pollOptions = $sondage->options;
+            dd($pollOptions);
             // stocke les options du sondage dans le tableau $pollOptions
             $optionsPourLesSondages[$pollOptions->id] = DB::table('options')->where('poll_id', $sondage->id)->get();
         }
