@@ -138,14 +138,14 @@ Dashboard animateur | Couleur 3 Interact
             <div class="container">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Résultats du sondage en cours</h2>
                 @if($poll == null)
-                    <p class="FontInter">Aucun sondage en cours</p>
+                    <p class="FontInter formLabel">Aucun sondage en cours</p>
                 @else
-                    <p class="FontInter">Titre : {{$poll->title}}</p>
-                    <p class="FontInter">Description : {{$poll->description}}</p>
-                    <p class="FontInter">Durée : {{$poll->duration}}</p>
+                    <p class="FontInter formLabel">Titre : {{$poll->title}}</p>
+                    <p class="FontInter formLabel">Description : {{$poll->description}}</p>
+                    <p class="FontInter formLabel">Durée : {{$poll->duration}}</p>
                     <ol>
                     @foreach($poll->options as $option)
-                        <li class="FontInter">{{$option->title}}</li>
+                        <li class="FontInter form">{{$option->title}}</li>
                     @endforeach
                     </ol>
                 @endif
@@ -214,10 +214,10 @@ Dashboard animateur | Couleur 3 Interact
         <!-- FORMULAIRE LIST CHALLENGE -->
         <div id="listContest" class="adminDashboardContentItems">
             <div class="container">
-                <h2 class="adminDashboardContentItemsTitle FontInter">Concours en cours</h2>
+                <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
                 <div class="listContest">
                     @if(count($challenges) == 0)
-                        <p class="FontInter">Aucun concours</p>
+                        <p class="FontInter">Aucun défi en cours</p>
                     @else
                     @foreach($challenges as $contest)
                     <div class="contest">
