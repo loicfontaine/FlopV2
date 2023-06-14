@@ -21,6 +21,12 @@ h1 {
 
 }
 
+#boutonLiveAudio{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
+
 #plus-video {
     background-color: #E60096;
     font-size: 1.5em;
@@ -41,7 +47,7 @@ h1 {
     color: white;
 }
 
-#audio-live {
+.audio-live {
     background-color:  #E60096;
     width: 60%;
     margin-left: auto;
@@ -134,7 +140,12 @@ h2.titre {
 
     #direct-live {
         width: 100%;
-        height: 300px;
+        height: 350px;
+        border:none;
+    }
+
+    iframe {
+        border: none;
     }
 
 
@@ -143,7 +154,7 @@ h2.titre {
         text-align: center;
     }
 
-    #audio-live p {
+    .audio-live p {
         font-family: 'Montserrat', sans-serif;
         color: white;
         font-size: 1.5em;
@@ -153,7 +164,7 @@ h2.titre {
         padding-bottom: 20px;
     }
 
-    #audio-live {
+    .audio-live {
      margin-top:20px;
     }
 
@@ -309,18 +320,18 @@ h2.titre {
         margin-top: 0px !important;
     }
 
-    #audio-live {
+    .audio-live {
         width: 50%;
     }
 
-  #audio-live {
+  .audio-live {
     margin-top: 20px;
     margin-top: 20px;
         padding-top: 10px;
         padding-bottom: 10px;
     }
 
-  #audio-live p {
+  .audio-live p {
         font-family: 'Montserrat', sans-serif;
         font-size: 1.5em;
         color: white;
