@@ -231,17 +231,17 @@ Dashboard animateur | Couleur 3 Interact
                     @else
                     @foreach($challenges as $contest)
                     <div class="contest">
-                        <h3 class="FontInter listH2">Titre</h3>
+                        <h3 class="FontInter ">Titre</h3>
                         <br>
-                        <p class="FontInter listP">{{$contest->name}}</p>
+                        <p class="FontInter ">{{$contest->name}}</p>
                         <br>
-                        <h3 class="FontInter listH2">Description</h3>
+                        <h3 class="FontInter ">Description</h3>
                         <br>
-                        <p class="FontInter listP">{{$contest->description}}</p>
+                        <p class="FontInter ">{{$contest->description}}</p>
                         <br>
-                        <h3 class="FontInter listH2">Fini à</h3>
+                        <h3 class="FontInter ">Fini à</h3>
                         <br>
-                        <p class="FontInter listP">{{$contest->end_time}}</p>
+                        <p class="FontInter ">{{$contest->end_time}}</p>
                         <br>
                         <button class="submit optionButtonLabel" onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
@@ -399,17 +399,17 @@ Dashboard animateur | Couleur 3 Interact
                     @else
                     @foreach($contests as $contest)
                     <div class="contest">
-                        <h3 class="FontInter listH2">Titre</h3>
+                        <h3 class="FontInter ">Titre</h3>
                         <br>
-                        <p class="FontInter listP">{{$contest->name}}</p>
+                        <p class="FontInter ">{{$contest->name}}</p>
                         <br>
-                        <h3 class="FontInter listH2">Description</h3>
+                        <h3 class="FontInter ">Description</h3>
                         <br>
-                        <p class="FontInter listP">{{$contest->description}}</p>
+                        <p class="FontInter ">{{$contest->description}}</p>
                         <br>
-                        <h3 class="FontInter listH2">Fini à</h3>
+                        <h3 class="FontInter ">Fini à</h3>
                         <br>
-                        <p class="FontInter listP">{{$contest->end_time}}</p>
+                        <p class="FontInter ">{{$contest->end_time}}</p>
                         <br>
                         <button class="submit optionButtonLabel" onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
