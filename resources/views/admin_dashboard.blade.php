@@ -248,17 +248,13 @@ Dashboard animateur | Couleur 3 Interact
                                                             <audio class="challengeContent" src="img/contents/{{$content->text}}"></audio>
                                                             @endif
                                                     </div>
-                                                    @endforeach
-                                                    <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
-                                                    @endif
-                                                </div>
-                                            @endforeach
-                                            <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
+                                                @endforeach
+                                                <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
+                                            @endif
                                         @endif
-                                    @endif
-                                </div>
-                                @endif
-                            @endforeach
+                                                </div>
+                                        @endif
+                                    @endforeach
                         @else
                         <p>Il n'y a aucune participation pour ce défis</p>
                         @endif
