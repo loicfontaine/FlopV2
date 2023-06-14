@@ -461,7 +461,7 @@ Dashboard animateur | Couleur 3 Interact
                                     @endif
                                 @endforeach
                                 <!-- if no participation corresponding to challenge id-->
-                                @if($challenge->participation_id == null)
+                                @if($contest->participation_id == null)
                                     <p class="FontInter contestNoParticipation">Aucune participation pour ce concours</p>
                                 @endif
                             </div>
