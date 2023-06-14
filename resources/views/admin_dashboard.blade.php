@@ -431,36 +431,34 @@ Dashboard animateur | Couleur 3 Interact
                                 <!-- affiche le nickname de l'user ayant soumis la participation -->
                                 <p class="FontInter participationNickname">{{$participation->user->nickname}}</p>   
                                 @if($content->participation_id == $participation->id)
-                                @if($participation->contest_id == $contest->id)
-                                @foreach($contents as $content)
-                                        <div id="content">
-                                            @if($content->type == "text")
-                                                <p class="FontInter contestContent">{{$content->text}}</p>
-                                            @elseif($content->type == "photo")
-                                                <img class="contestContent" src="img/contents/{{$content->text}}">
-                                            @elseif($content->type == "video")
-                                                <video class="contestContent" src="img/contents/{{$content->text}}"></video>
-                                            @elseif($content->type == "audio")
-                                                <audio class="contestContent" src="img/contents/{{$content->text}}"></audio>
-                                                @endif
+                                    @if($participation->contest_id == $contest->id)
+                                        @foreach($contents as $content)
+                                            <div id="content">
+                                                @if($content->type == "text")
+                                                    <p class="FontInter contestContent">{{$content->text}}</p>
+                                                @elseif($content->type == "photo")
+                                                    <img class="contestContent" src="img/contents/{{$content->text}}">
+                                                @elseif($content->type == "video")
+                                                    <video class="contestContent" src="img/contents/{{$content->text}}"></video>
+                                                @elseif($content->type == "audio")
+                                                    <audio class="contestContent" src="img/contents/{{$content->text}}"></audio>
+                                                    @endif
                                             </div>
                                         @endforeach
                                         <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
                                     @endif
+                                @else
+                                <p>Il n'y a aucune participation pour ce défis</p>
                                 @endif
-                        </div>
-                        @else
-                        <p>Il n'y a aucune participation pour ce défis</p>
-                         @endif
-                    @endforeach
+                            </div>
+                            @endif
+                            @endforeach
+                         </div>
                     </div>
-                </div>
-                @endforeach
+                    @endforeach
                 </div>
             </div>
         </div>
-    </div>
-</div>
 <!-- Composants qui s'affichent et se cachent ici -->
 <script>
     //console.log($articles);
