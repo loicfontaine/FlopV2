@@ -376,3 +376,9 @@ div.container{
     align-items: center;
   }
   
+.selectWinner{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
