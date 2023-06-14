@@ -75,7 +75,7 @@ Dashboard animateur | Couleur 3 Interact
             </svg>
         </div>
     </div>
-<div class="adminDashboardContent">
+    <div class="adminDashboardContent">
         <!-- WELCOME MESSAGE -->
         <div id="welcomeMessage" class="adminDashboardContentItems display">
             <div>
@@ -465,7 +465,7 @@ Dashboard animateur | Couleur 3 Interact
                 </div>
             </div>
         </div>
-</div>
+    </div>
 <!-- Composants qui s'affichent et se cachent ici -->
 <script>
     //console.log($articles);
