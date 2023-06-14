@@ -67,7 +67,6 @@ data() {
       image: null,
       message: '',
       audioBlob: null,
-      challengeId: null,
     },
     data: [],
   };
@@ -414,6 +413,7 @@ border: none;
 width: 90%;
 font-size: 18px;
 margin-bottom: 10px;
+height: auto;
 }
 
 .custom-file-upload {
