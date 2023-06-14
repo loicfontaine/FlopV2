@@ -69,7 +69,7 @@ class FileController extends Controller
             $participation->challenge_id = 1;
         $participation->save();
         
-try {
+
         if ($request->image != "undefined") {
             $fileName = $this->storeFile($request->image);
             $image = Content::create([
@@ -107,9 +107,7 @@ try {
             ]);
             $message->participation()->associate($participation);
             $message->save(); }
-        } catch (\Exception $e) {
-            session()->flash('error', 'Ta participation n\'a pas pu être uploadée !');
-        }
+        
             session()->flash('success', 'Ta participation a bien été uploadée !');
             return response()->json(['success' => 'You have successfully your participation.']);
         }
