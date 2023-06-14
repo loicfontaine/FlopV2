@@ -128,13 +128,18 @@ h2.titre {
     }
 
     #video {
-        width: 45%;
+        width: 50%;
         height: min-content;
     }
 
     #direct-live {
         width: 100%;
         height: 300px;
+    }
+
+    #video-live {
+        width: 100%;
+        height: 300px; 
     }
 
     #texte {
