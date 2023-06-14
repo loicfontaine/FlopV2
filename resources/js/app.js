@@ -10,12 +10,11 @@ const testFormApp = createApp(TestForm);
 
 app.mount("#app");
 // Enregistrer les composants
-app.component(
+/* app.component(
     "chat-messages",
     require("./components/ChatMessages.vue").default
 );
-app.component("chat-form", require("./components/ChatForm.vue").default);
-
+app.component("chat-form", require("./components/ChatForm.vue").default); */
 
 chatApp.mount("#chat");
 testFormApp.mount("#test-form");
