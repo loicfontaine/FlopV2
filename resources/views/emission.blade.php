@@ -30,7 +30,6 @@ COMEDY CLUB | Couleur 3 Interact
     <button id='accesChat'>
         Accéder au chat
     </button>
-    <div id="chat"></div>
     <div class='chatTest hidden'>
         <div class='container-chat'>
             <div class='container-message'>
