@@ -19,3 +19,11 @@
 <input type="submit" value="Valider">
 </form>
 </div>
+
+<script>
+  window.sondageData = {
+    timeLeft: {{ $timeLeft }},
+    dernierSondage: @json($dernierSondage),
+    reponses: @json($reponses)
+  };
+</script>
