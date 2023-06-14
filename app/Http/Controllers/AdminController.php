@@ -30,7 +30,7 @@ class AdminController extends Controller
         // get current datetime
         $now = now();
         // get last poll created
-        $poll = Poll::orderBy("created_at", "desc")->first();
+        $poll = Poll::orderBy("id", "desc")->first();
         $poll->options;
 
         session()->flash('error', 'No polls found');
