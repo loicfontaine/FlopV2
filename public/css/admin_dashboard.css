@@ -364,6 +364,15 @@ div.container{
 
 #contentContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+.contest {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
