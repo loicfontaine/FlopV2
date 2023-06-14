@@ -250,6 +250,10 @@ computed: {
   flex-direction: column;
   align-items: center;
 }
+
+.partieAudio .expanded-button{
+  width: 107% !important;
+}
 .countdown-container {
 display: flex;
 align-items: center;
