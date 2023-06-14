@@ -49,9 +49,11 @@ class AdminController extends Controller
                 $participation->contents;
             }
         }
+        echo "<pre>";
+        print_r($contests);
+        print_r($challenges);
+        echo "</pre>";
 
-        dd($contests, $challenges);
-
-        return view("admin_dashboard", compact("articles", "polls", "challenges", "contests", "participations", "options", "contents"));
+        return view("admin_dashboard", compact("articles", "polls", "challenges", "contests"));
     }
 }
