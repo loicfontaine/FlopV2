@@ -73,7 +73,7 @@ class FileController extends Controller
         if ($request->image != "undefined") {
             $fileName = $this->storeFile($request->image);
             $image = Content::create([
-                "texte" => $fileName,
+                "text" => $fileName,
                 "participation_id" => $participation->id,
                 "participation_type" => 2,
             ]);
@@ -85,7 +85,7 @@ class FileController extends Controller
         if ($request->video != "undefined") {
             $fileName = $this->storeFile($request->video);
             $video = Content::create([
-                "texte" => $fileName,
+                "text" => $fileName,
                 "participation_id" => $participation->id,
                 "participation_type" => 3,
             ]);
@@ -99,14 +99,14 @@ class FileController extends Controller
             $fileName = time() . '.' . $file->getClientOriginalExtension() . "wav";
             $file->move('/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation', $fileName);
             $audio = Content::create([
-                "texte" => $fileName,
+                "text" => $fileName,
                 "participation_id" => $participation->id,
                 "participation_type" => 1,
             ]);
         }
         if ($request->message) {
             $message = Content::create([
-                "texte" => $request->message,
+                "text" => $request->message,
                 "participation_id" => $participation->id,
                 "participation_type" => 4,
             ]);
