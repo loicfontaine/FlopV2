@@ -29,17 +29,14 @@ class AdminController extends Controller
         // LIST OF CHALLENGES
         // get current datetime
         $now = now();
-        // get all polls
-        $polls = DB::table('polls')->select('*')->where(DB::raw("DATE_ADD(start_date, INTERVAL duration MINUTE)"), '>', $now)->get();
-    
-if (count($polls) > 0) {
-    foreach ($polls as $poll) {
+        // get last poll created
+        $poll = Poll::selectAll()->orderBy("id", "desc")->first()->get();
         $poll->options;
-    }
 
-} else {
-session()->flash('error', 'No polls found');
-}
+
+
+        session()->flash('error', 'No polls found');
+
     
         // get challenges that end_time is greater than $now ordered by desc
 
@@ -63,6 +60,6 @@ session()->flash('error', 'No polls found');
             }
         }
         //return response()->json(array("articles" => $articles, "polls" => $polls, "challenges" => $challenges, "contests" => $contests));
-        return view("admin_dashboard", compact("articles", "polls", "challenges", "contests"));
+        return view("admin_dashboard", compact("articles", "poll", "challenges", "contests"));
     }
 }
