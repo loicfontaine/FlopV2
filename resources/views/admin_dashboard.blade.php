@@ -232,7 +232,7 @@ Dashboard animateur | Couleur 3 Interact
                                 <p class="FontInter">Aucune participation</p>
                                 @else
                                 @foreach($challenge->participations as $participation)
-                                        <div id="participation">
+                                        <div id="contentContainer">
                                             <!-- affiche le nickname de l'user ayant soumis la participation -->
                                             {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
                                                     @foreach($participation->contents as $content)
@@ -436,7 +436,7 @@ Dashboard animateur | Couleur 3 Interact
                                     @csrf
                                     <input type="hidden" name="winner" id="winnerId" value="">
                                     @foreach($contest->participations as $participation)
-                                        <div id="participation">
+                                        <div id="contentContainer">
                                             <!-- affiche le nickname de l'user ayant soumis la participation -->
                                             {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
                                             @foreach($participation->contents as $content)
