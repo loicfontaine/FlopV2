@@ -589,6 +589,8 @@ Dashboard animateur | Couleur 3 Interact
         });
     }
 
+    participationsContainer.hidden = true;
+
     function afficherParticipations(button) {
         var contestId = button.dataset.contestId;
         var participationsContainer = document.getElementById('participationsContainer-' + contestId);
@@ -601,9 +603,6 @@ Dashboard animateur | Couleur 3 Interact
             button.textContent = 'Afficher les participations';
         }
 }
-
-
-
 
     function updateWinnerId(participationId) {
         document.getElementById('winnerId').value = participationId;
