@@ -244,13 +244,13 @@ Dashboard animateur | Couleur 3 Interact
                                                                 <p class="FontInter contestContent">{{$content->text}}</p>
                                                             @endif
                                                             @if($content->participation_type_id == 2)
-                                                                <img class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}">
+                                                                <img class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}">
                                                             @endif
                                                             @if($content->participation_type_id == 3)
-                                                                <video class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></video>
+                                                                <video class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}"></video>
                                                             @endif
                                                             @if($content->participation_type_id == 1)
-                                                                <audio class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></audio>
+                                                                <audio class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}"></audio>
                                                             @endif
                                                         </div>
                                                     @endforeach
@@ -441,17 +441,17 @@ Dashboard animateur | Couleur 3 Interact
                                             {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
                                                     @foreach($participation->contents as $content)
                                                         <div id="content">
-                                                            @if($content->participation_type_id == 4)
+                                                            if($content->participation_type_id == 4)
                                                                 <p class="FontInter contestContent">{{$content->text}}</p>
                                                             @endif
                                                             @if($content->participation_type_id == 2)
-                                                                <img class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}">
+                                                                <img class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}">
                                                             @endif
                                                             @if($content->participation_type_id == 3)
-                                                                <video class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></video>
+                                                                <video class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}"></video>
                                                             @endif
                                                             @if($content->participation_type_id == 1)
-                                                                <audio class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></audio>
+                                                                <audio class="contestContent" src="{{ asset('/storage/app/public/participation/' . $content->text) }}"></audio>
                                                             @endif
                                                         </div>
                                                     @endforeach
