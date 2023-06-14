@@ -297,22 +297,22 @@ input[type="text"]::placeholder {
     justify-content: center;
 }
 
-.perso {
+p .perso {
     color: aqua;
 }
 
-.vert {
+p .vert {
     color: green;
 }
 
-.rouge {
+p .rouge {
     color: red;
 }
 
-.orange {
+p .orange {
     color: orange;
 }
 
-.violet {
+p .violet {
     color: purple;
 }
