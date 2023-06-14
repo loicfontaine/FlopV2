@@ -348,8 +348,6 @@ div.container{
     width: 100%;
 }
 
-
-
 .contestContent {
     height: 100%;
     width: 100%;
@@ -362,4 +360,10 @@ div.container{
 #endContestForm > * {
     flex-basis: 50%;
     box-sizing: border-box;
+}
+
+#contentContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
