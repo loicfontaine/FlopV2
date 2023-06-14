@@ -227,7 +227,7 @@ Dashboard animateur | Couleur 3 Interact
                         <button onclick="afficherParticipations({{$challenge->id}})">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsContainer-{{$challenge->id}}" class="participations-container" hidden>
-                            @if(count($participations) > 1)
+                            @if(count($participations->id) > 1)
                             <div class="participations-grid">
                                 @foreach($participations as $participation)
                                     @if($participation->challenge_id == $challenge->id)
