@@ -97,7 +97,7 @@ class UserController extends Controller
             //get challenge from each participations
             if ($participations->isEmpty()) {
                 session()->flash('error', 'Tu n\'as pas encore participé à un challenge !');
-                return view('dashboard');
+                return view("dashboard", compact("challengesEtParticipations"));
             }
 
             $challengesEtParticipations = [];
