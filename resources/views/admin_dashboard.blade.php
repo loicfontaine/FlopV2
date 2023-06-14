@@ -136,22 +136,23 @@ Dashboard animateur | Couleur 3 Interact
         <div id="listPoll" class="adminDashboardContentItems">
             <div>
                 <h2 class="adminDashboardContentItemsTitle FontInter">Sondages en cours</h2>
+                @if(count($polls) == 0)
+                    <p class="FontInter">Aucun poll en cours</p>
+                @else  
                 @foreach($polls as $poll)
                 <div class="poll">
                     <h3 class="FontInter pollTitle">{{$poll->title}}</h3>
                     <p class="FontInter pollDescription">{{$poll->description}}</p>
-                    <p class="FontInter pollEndTime">{{$poll->end_time}}</p>
                     <div id="options">
                         @foreach($options as $option)
-                        @if($option->poll_id == $poll->id)
                         <div id="option">
                             <p>{{$option->text}}</p>
                         </div>
-                        @endif
                         @endforeach
                     </div>
                 </div>
                 @endforeach
+                @endif
             </div>
         </div>
         <!-- FORMULAIRE CREATE CHALLENGE -->
