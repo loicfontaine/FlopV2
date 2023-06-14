@@ -219,6 +219,9 @@ Dashboard animateur | Couleur 3 Interact
             <div>
                 <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
                 <div class="listChallenge">
+                    @if(count($challenges) == 0)
+                    <p class="FontInter">Aucun défi</p>
+                    @else
                     @foreach($challenges as $challenge)
                     <div class="challenge">
                         <h3 class="FontInter challengeTitle">{{$challenge->name}}</h3>
@@ -227,18 +230,16 @@ Dashboard animateur | Couleur 3 Interact
                         <button onclick="afficherParticipations({{$challenge->id}})">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsContainer-{{$challenge->id}}" class="participations-container" hidden>
-                            @if($challenge->winner_participation_id != null)
-                                <p class="FontInter challengeWinner">Gagnant : {{$challenge->winner_participation_id}}</p>
-                            @endif
                             <div class="participations-grid">
-                                @foreach($participations as $participation)
-                                    @if($participation->challenge_id == $challenge->id)
+                                @if(count($challenge->participation) == 0)
+                                <p class="FontInter">Aucune participation</p>
+                                @else
+                                @foreach($challenge->participations as $participation)
                                         <div id="participation">
                                             <!-- affiche le nickname de l'user ayant soumis la participation -->
-                                            <p class="FontInter participationNickname">{{$participation->user->nickname}}</p>
-                                            @if($content->participation_id == $participation->id)
-                                                @if($participation->challenge_id == $challenge->id)
-                                                    @foreach($contents as $content)
+                                            {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
+                                            <p>tout est bon pour vous?</p>
+                                                    {{-- @foreach($challenge->contents as $content)
                                                         <div id="content">
                                                             @if($content->type == "text")
                                                                 <p class="FontInter challengeContent">{{$content->text}}</p>
@@ -250,13 +251,11 @@ Dashboard animateur | Couleur 3 Interact
                                                                 <audio class="challengeContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></audio>
                                                             @endif
                                                         </div>
-                                                    @endforeach
+                                                    @endforeach --}}
                                                     <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
-                                                @endif
-                                            @endif
                                         </div>
-                                    @endif
                                 @endforeach
+                                @endif
                                 <!-- if no participation corresponding to challenge id-->
                                 @if($challenge->participation_id == null)
                                     <p class="FontInter challengeNoParticipation">Aucune participation pour ce défi</p>
@@ -265,6 +264,7 @@ Dashboard animateur | Couleur 3 Interact
                         </div>
                     </div>
                     @endforeach
+                    @endif
                 </div>
             </div>
         </div>
@@ -439,24 +439,20 @@ Dashboard animateur | Couleur 3 Interact
                                         <div id="participation">
                                             <!-- affiche le nickname de l'user ayant soumis la participation -->
                                             <p class="FontInter participationNickname">{{$participation->user->nickname}}</p>
-                                            @if($content->participation_id == $participation->id)
-                                                @if($participation->contest_id == $contest->id)
-                                                    @foreach($contents as $content)
-                                                        <div id="content">
-                                                            @if($content->type == "text")
-                                                                <p class="FontInter contestContent">{{$content->text}}</p>
-                                                            @elseif($content->type == "photo")
-                                                                <img class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}">
-                                                            @elseif($content->type == "video")
-                                                                <video class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></video>
-                                                            @elseif($content->type == "audio")
-                                                                <audio class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></audio>
-                                                            @endif
-                                                        </div>
-                                                    @endforeach
-                                                    <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
-                                                @endif
-                                            @endif
+                                                @foreach($contents as $content)
+                                                    <div id="content">
+                                                        @if($content->type == "text")
+                                                            <p class="FontInter contestContent">{{$content->text}}</p>
+                                                        @elseif($content->type == "photo")
+                                                            <img class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}">
+                                                        @elseif($content->type == "video")
+                                                            <video class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></video>
+                                                        @elseif($content->type == "audio")
+                                                            <audio class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></audio>
+                                                        @endif
+                                                    </div>
+                                                @endforeach
+                                                <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
                                         </div>
                                     @endif
                                 @endforeach

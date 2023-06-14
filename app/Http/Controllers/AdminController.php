@@ -27,7 +27,7 @@ class AdminController extends Controller
         // get current datetime
         $now = date("Y-m-d H:i:s");
         // get all polls
-        $polls = Poll::all();
+        $polls = Poll::whereRaw("DATE_ADD(start_date, INTERVAL duration MINUTE) > NOW()")->get();
         // get challenges that end_time is greater than $now ordered by desc
 
         $challenges = Challenge::where("end_time", ">", $now)->where('is_contest', '=', 0)->orderBy("end_time", "desc")->get();
