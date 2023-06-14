@@ -163,7 +163,7 @@ afficherChampsAudio(item) {
         console.log(formData.get('image'));
         console.log(formData.get('message'));
         console.log(formData.get('video'));
-        axios.post('/formSubmit', formData)
+        axios.post('/participer', formData)
           .then(response => {
             console.log(response.data);
             // Traitez la réponse du serveur ici
