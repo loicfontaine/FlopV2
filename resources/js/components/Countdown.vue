@@ -88,13 +88,20 @@ methods: {
       this.data = response.data.challenges; // Assign the API response to the data property
       this.data = response.data.challenges.map(item => ({
           ...item,
-          isExpanded: false,
-          countdown: null,
-        }));
-        this.updateCountdowns();
-        setInterval(this.updateCountdown, 1000);
-      } catch (error) {
-        console.error(error);
+          isExpanded: false}));
+      console.log("api", this.data);
+      this.startCountdown();
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  getCountdown(endTime) {
+      const now = new Date();
+      const endDate = new Date(endTime);
+      const timeDiff = endDate - now;
+
+      if (timeDiff <= 0) {
+        return 'Le délai est écoulé';
       }
 
       const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
@@ -104,28 +111,8 @@ methods: {
 
       return `${days}j ${hours}h ${minutes}m ${seconds}s`;
     },
-    updateCountdown() {
-  const now = new Date();
-  this.data.forEach(item => {
-    const endDate = new Date(item.end_time);
-    const timeDiff = endDate - now;
-
-    if (timeDiff <= 0) {
-      item.countdown = 'Le délai est écoulé';
-    } else {
-      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-
-      item.countdown = `${days}j ${hours}h ${minutes}m ${seconds}s`;
-    }
-  });
-},
-
-    updateCountdowns() {
-      setInterval(() => {
-        const now = new Date();
+    startCountdown() {
+      this.countdownIntervalId = setInterval(() => {
         this.data.forEach(item => {
           item.countdown = this.getCountdown(item.end_time);
         });
