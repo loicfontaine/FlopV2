@@ -427,6 +427,10 @@ form .image-container-title {
   display: none;
 } 
 
+form {
+  display: flex;
+}
+
 .description{
   font-size: 15px;
   margin-top: 10px;
