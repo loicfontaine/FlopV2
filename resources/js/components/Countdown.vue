@@ -1,37 +1,38 @@
 <template>
   
   <form @submit.prevent="uploadFiles">
-    <div class="countdown-container" :class="{ 'expanded': isExpanded }" >
-      <div class="arrow-container" @click="toggleExpand">
+    <div v-for="item in data" :key="item.id" class="countdown-container" :class="{ 'expanded': isExpanded }" >
+      <div class="arrow-container" @click="toggleExpand()">
         <i class="arrow-icon" :class="{ 'expanded': isExpanded }" @click="isArrowClicked = true"></i>
       </div>
       <div class="image-container-title">
-        <img src="img/défis.png" alt="Image">
+        <img :src="getImage(item.is_contest)" alt="Image">
       </div>
       <div class="text-container">
-        <p class="countdown FontInter rose">{{ formatTime(countdown) }}</p>
-        <div class="titre FontInter">Participe au défi en cours !</div>
+        <p class="countdown FontInter rose">{{ formatCountdown(item) }}</p>
+        <div class="description FontInter">{{ item.description }}</div>
+        <div class="titre FontInter">{{ getText(item.is_contest) }} </div>
       </div>
       <div class="expanded-content" v-if="isExpanded">
-        <label for="video-upload" class="custom-file-upload FontMonserrat">
+        <label for="video-upload" class="custom-file-upload FontMonserrat" v-if="afficherChampsVideo(item)">
           Choisir une vidéo
           <input id="video-upload" class="expanded-input FontMonserrat champsVideo" type="file" accept="video/*" ref="video" name="video" @change="handleVideoUpload">
           <video class="selectedMedia" v-if="selectedVideo" :src="selectedVideo" controls></video>
         </label>
 
-        <label for="image-upload" class="custom-file-upload FontMonserrat">
+        <label for="image-upload" class="custom-file-upload FontMonserrat" v-if="afficherChampsPhoto(item)">
           Choisir une image
           <input id="image-upload" class="expanded-input FontMonserrat champsImage" type="file" ref="image" accept="image/*" name="image" @change="handleImageUpload">
           <img class="selectedMedia" v-if="selectedImage" :src="selectedImage" alt="Image">
         </label>
-        <audio v-if="audioBlob" controls>
+        <div v-if="afficherChampsAudio(item)"><audio v-if="audioBlob" controls>
           <source :src="audioUrl" type="audio/webm">
           Votre navigateur ne prend pas en charge la lecture audio
         </audio>
         <button class="expanded-button audio FontMonserrat" @click="startRecording" v-if="!isRecording">Enregistrer</button>
         <button class="expanded-button audio FontMonserrat" @click="stopRecording" v-if="isRecording">Arrêter l'enregistrement</button>
-        <input class="expanded-input FontMonserrat champsTexte" type="text" placeholder="Envoyer un message..." name="message" v-model="message" ref="expandedInput">
-        <input type="hidden" ref="audio" name="audioBlob">
+        <input type="hidden" ref="audio" name="audioBlob"></div>
+        <input class="expanded-input FontMonserrat champsTexte" type="text" placeholder="Envoyer un message..." name="message" v-model="message" ref="expandedInput" v-if="afficherChampsTexte(item)">
         <button class="expanded-button envoi FontMonserrat" type="submit">Envoyer ma participation</button>
         
       </div>
@@ -40,7 +41,7 @@
 </template>
 
 <script>
-
+import json from './../../../public/data/challenges.json';
 import axios from 'axios';
 export default {
   data() {
@@ -63,32 +64,79 @@ export default {
         message: '',
         audioBlob: null,
       },
-      data: null,
+      data: [],
     };
   },
   created() {
-    this.startCountdown();
   },
-  mounted() {
-  axios.get('https://flop-pingouin.heig-vd.ch/api/home')
-    .then(response => {
-      this.data = response.data;
-    })
-    .catch(error => {
-      console.error(error);
-    });
-    console.log(this.data);
+  beforeDestroy() {
+  clearInterval(this.intervalId);
 },
 
-    /* axios.get('/api/home')
+  mounted() {
+
+    this.data = json.challenges;
+    console.log(json.challenges);
+    console.log(json);
+    console.log(this.data);
+    axios.get('/api/home')
         .then(response => {
             console.log(response.challenges);
         })
         .catch(error => {
             console.log(error);
-        }); */
+        });
+    this.data = response.challenges;
+},
+
 
   methods: {
+    getImage(isContest) {
+  return isContest === 1 ? 'img/concours.png' : 'img/défis.png';
+},
+getText(isContest) {
+  return isContest === 1 ? 'Participe et gagne un des prix !' : 'Participe et gagne des ColorCoins !';
+},
+afficherChampsVideo(item) {
+  const participationTypes = [];
+  item.participation_types.forEach((participationType) => {
+    participationTypes.push(participationType.title);
+  });
+  return participationTypes.includes('video');
+
+},
+
+afficherChampsPhoto(item) {
+  const participationTypes = [];
+  item.participation_types.forEach((participationType) => {
+    participationTypes.push(participationType.title);
+  });
+  return participationTypes.includes('photo'); 
+},
+afficherChampsTexte(item) {
+  const participationTypes = [];
+  item.participation_types.forEach((participationType) => {
+    participationTypes.push(participationType.title);
+  });
+  return participationTypes.includes('texte'); 
+},
+afficherChampsAudio(item) {
+  const participationTypes = [];
+  item.participation_types.forEach((participationType) => {
+    participationTypes.push(participationType.title);
+  });
+  return participationTypes.includes('audio'); },
+
+    /* loadData() {
+      axios.get('./././public/data/challenges.json')
+        .then(response => {
+          this.data = response.data;
+          console.log(this.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }, */
     uploadFiles() {
         const formData = new FormData();
         /* formData.append('audio', this.$refs.audio.files[0]); */
@@ -96,8 +144,6 @@ export default {
         formData.append('message', this.message);
         formData.append('video', this.$refs.video.files[0]);
         formData.append('audioBlob', this.audioBlob);
-        //NISA A ADAPATER POUR M'ENVOYER LE CHALLENGE ID
-        //formData.append('challengeId', this.data.challenges[0].id);
        /*  console.log(formData.get('audio')); */
         console.log(formData.get('image'));
         console.log(formData.get('message'));
@@ -113,21 +159,21 @@ export default {
           });
       },
       
-    startCountdown() {
+   /*  startCountdown() {
       const currentDate = new Date();
-      const targetDate = new Date(currentDate.getFullYear(), 5, 16, 0, 0, 0); // 1er juin (mois indexé à partir de zéro)
+      //get endtime from json
+      const targetDate = new Date(currentDate.getFullYear(), 5, 16, 0, 0, 0); //
       const remainingTime = targetDate.getTime() - currentDate.getTime();
 
       this.countdown = Math.ceil(remainingTime / 1000); // Conversion en secondes
 
       this.intervalId = setInterval(() => {
-        this.countdown--;
         if (this.countdown <= 0) {
           clearInterval(this.intervalId);
           // Compte à rebours terminé, exécutez une action supplémentaire si nécessaire
         }
       }, 1000); // Mettez à jour le compte à rebours chaque seconde
-    },
+    }, */
     formatTime(time) {
       const hours = Math.floor(time / 3600);
       const minutes = Math.floor((time % 3600) / 60);
@@ -138,6 +184,31 @@ export default {
     padNumber(number) {
       return String(number).padStart(2, '0');
     },
+    formatCountdown(item) {
+  const endTime = new Date(item.end_time);
+  const now = new Date();
+  const timeRemaining = endTime.getTime() - now.getTime();
+  this.countdown = Math.ceil(timeRemaining / 1000); // Conversion en secondes
+
+  if (this.intervalId) {
+    // Une autre mise à jour du compte à rebours est déjà en cours, ne rien faire
+    return this.formatTime(this.countdown);
+  }
+
+  this.intervalId = setInterval(() => {
+    this.countdown--;
+    if (this.countdown <= 0) {
+      clearInterval(this.intervalId);
+      this.intervalId = null; // Réinitialiser l'ID de l'intervalle
+      // Compte à rebours terminé, exécutez une action supplémentaire si nécessaire
+    }
+  }, 1000);
+
+/*   return this.formatTime(this.countdown); */
+},
+  //update the countdown every second
+
+
     toggleExpand() {
       if (this.isExpanded) {
         this.isExpanded = false;
@@ -348,4 +419,10 @@ export default {
  #image-upload, #video-upload {
   display: none;
 } 
+
+.description{
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 </style>
