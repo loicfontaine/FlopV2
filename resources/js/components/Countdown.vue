@@ -157,8 +157,8 @@ return participationTypes.includes('audio'); },
       });
   }, */
   getItemId(item) {
-    return item.id;
     console.log(item.id);
+    return item.id;
   },
   uploadFiles() {
       const formData = new FormData();
