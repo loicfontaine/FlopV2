@@ -96,7 +96,7 @@ export default{
       try {
         const response = await axios.get('https://api.example.com/data');
         this.data = response.data; // Assign the API response to the data property
-        console.log(this.data);
+        console.log("api", this.data);
       } catch (error) {
         console.error(error);
       }
