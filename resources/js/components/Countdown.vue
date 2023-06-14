@@ -62,12 +62,12 @@ data() {
     selectedImage: null,
     audioUrl: null,
     message: '',
-    challengeId: null,
     form: {
       video: null,
       image: null,
       message: '',
       audioBlob: null,
+      challengeId: null,
     },
     data: [],
   };
