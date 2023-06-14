@@ -49,7 +49,7 @@ class FileController extends Controller
     dir: false
     link: false
         */
-        if (Participation::where("user_id", "=", $request->input("user_id"))->where("event_id", "=", $request->input("event_id"))->first()) {
+        if (Participation::where("user_id", "=", $request->input("user_id"))->where("challenge_id", "=", $request->input("challenge_id"))->first()) {
             session()->flash('error', 'Tu as déjà participer à ce défi !');
         } else {
 
@@ -62,7 +62,7 @@ class FileController extends Controller
     
         $participation = new Participation();
            $participation->user_id = $userId;
-            //$participation->event_id = $request->input("challenge_id");
+            //$participation->challenge_id = $request->input("challenge_id");
             $participation->challenge_id = 1;
         $participation->save();
         
