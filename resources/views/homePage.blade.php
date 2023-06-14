@@ -95,5 +95,12 @@ Accueil | Couleur 3 Interact
         window.location.href = 'emission';
     })
 
+    boutique = document.getElementById("btn-boutique")
+    //si clique sur boutique, redirige sur page boutique
+    boutique.addEventListener("click", function(){
+        window.location.href = 'boutique';
+    })
+
+
 </script>
 @endsection

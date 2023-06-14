@@ -7,6 +7,9 @@
     .container-video {
         width: 50% !important;
     }
+    .bouton-chat {
+        width: 50% !important;
+    }
 
 }
 
@@ -215,10 +218,10 @@ p.pseudo {
     border:none;
     font-size: 18px;
     border-radius: 8px;
-    width: 355px;
+    width: 80%;
     height: 57px;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .bouton-chat {
@@ -231,7 +234,7 @@ p.pseudo {
     background-color: #E60096;
     border:none;
     border-radius: 8px;
-    width: 20em;
+    width: 80%;
     height: 60px;
 }
 
@@ -284,4 +287,11 @@ input[type="text"]::placeholder {
 
 #direct-live  {
     width: 100%;
+}
+
+#send-message {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
