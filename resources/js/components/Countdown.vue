@@ -2,7 +2,7 @@
   
 
     <div v-for="item in data" :key="item.id" class="countdown-container" :class="{ 'expanded': isExpanded }" >
-        <form @submit.prevent="uploadFiles">
+        <form @submit.prevent="uploadFiles" :class="{ 'expanded': isExpanded }" >
         <input type="hidden" name="challenge_id" :value="item.id" ref="challengeIdInput">
       <div class="arrow-container" @click="toggleExpand()">
         <i class="arrow-icon" :class="{ 'expanded': isExpanded }" @click="isArrowClicked = true"></i>
@@ -159,15 +159,15 @@ afficherChampsAudio(item) {
         if (this.$refs.video && this.$refs.video.files && this.$refs.video.files.length > 0) {
   formData.append('video', this.$refs.video.files[0]);
 } */
-const challengeIdInput = this.$refs.challengeIdInput;
+/* const challengeIdInput = this.$refs.challengeIdInput; */
         formData.append('message', this.message);
         formData.append('audioBlob', this.audioBlob);
-        const files = event.target.files;
+     /*    const files = event.target.files; */
         formData.append('image', this.image);
         formData.append('video', this.video)
        /*  console.log(formData.get('audio')); */
         console.log(formData.get('image'));
-       console.log(challengeIdInput.value);
+       /* console.log(challengeIdInput); */
         console.log(formData.get('message'));
         console.log(formData.get('video'));
         axios.post('/formSubmit', formData)
@@ -445,5 +445,9 @@ form .image-container-title {
   font-size: 15px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+form:not(.expanded) {
+  display: flex;
 }
 </style>
