@@ -49,16 +49,18 @@ class FileController extends Controller
     dir: false
     link: false
         */
-        if (Participation::where("user_id", "=", $request->input("user_id"))->where("challenge_id", "=", $request->input("challenge_id"))->first()) {
-            session()->flash('error', 'Tu as déjà participer à ce défi !');
-        } else {
-
         if(Auth::check()) {
             $userId = Auth::user()->id;
         } else {
             //erreur session
             return response()->json(['error' => 'You must be logged in.']);
         }
+
+        if (Participation::where("user_id", "=", $userId)->where("challenge_id", "=", $request->input("challenge_id"))->first()) {
+            session()->flash('error', 'Tu as déjà participer à ce défi !');
+        } else {
+
+
     
         $participation = new Participation();
            $participation->user_id = $userId;
@@ -111,7 +113,7 @@ try {
             session()->flash('error', 'Ta participation n\'a pas pu être uploadée !');
         }
             session()->flash('success', 'Ta participation a bien été uploadée !');
-            return response()->json(['success' => 'You have successfully uploaded audio.']);
+            return response()->json(['success' => 'You have successfully your participation.']);
         }
     }
     
