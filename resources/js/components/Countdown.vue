@@ -151,13 +151,13 @@ afficherChampsAudio(item) {
     uploadFiles() {
         const formData = new FormData();
         /* formData.append('audio', this.$refs.audio.files[0]); */
-        if (this.$refs.image && this.$refs.image.files.length > 0) {
-    formData.append('image', this.$refs.image.files[0]);
-  }
+        if (this.$refs.image && this.$refs.image.files && this.$refs.image.files.length > 0) {
+  formData.append('image', this.$refs.image.files[0]);
+}
         formData.append('message', this.message);
-        if (this.$refs.video && this.$refs.video.files.length > 0) {
-    formData.append('video', this.$refs.video.files[0]);
-  }
+        if (this.$refs.video && this.$refs.video.files && this.$refs.video.files.length > 0) {
+  formData.append('video', this.$refs.video.files[0]);
+}
         formData.append('audioBlob', this.audioBlob);
        /*  console.log(formData.get('audio')); */
         console.log(formData.get('image'));
