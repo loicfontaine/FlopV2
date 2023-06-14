@@ -155,7 +155,7 @@ Dashboard animateur | Couleur 3 Interact
                     <h3 class="FontInter ">Options</h3>
                     <ol>
                     @foreach($poll->options as $option)
-                        <li class="FontInter listP">{{$option->title}}</li>
+                        <li class="FontInter">{{$option->title}}</li>
                     @endforeach
                     </ol>
                 @endif
