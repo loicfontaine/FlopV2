@@ -14,8 +14,7 @@ Accueil | Couleur 3 Interact
 <div id="app"></div> 
 <div id="video-container">
     <div id="video">
-    <iframe width="100%" height="100%" src="https://www.rts.ch/play/embed?urn=urn:rts:video:8841634&subdivisions=false" allowfullscreen allow="geolocation *; autoplay; encrypted-media"></iframe>
-        <img id="direct-live" src="{{asset('img/directVideo1.jpg')}}" alt="Image">
+        <iframe  id="direct-live" src="https://www.rts.ch/play/embed?urn=urn:rts:video:8841634&subdivisions=false" allowfullscreen allow="geolocation *; autoplay; encrypted-media"></iframe>
     </div>
     <div id="video-side">
         <div id="texte-container">
