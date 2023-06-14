@@ -93,7 +93,7 @@ try {
     
         }
 
-        if ($request->audioBlob != "undefined") {
+        if ($request->audioBlob) {
             $file = $request->audioBlob;
             $fileName = time() . '.' . $file->getClientOriginalExtension() . "wav";
             $file->move('/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation', $fileName);
@@ -102,15 +102,14 @@ try {
                 "participation_id" => $participation->id,
             ]);
 
-            if ($request->message) {
-                $message = Content::create([
-                    "texte" => $request->message,
-                ]);
-                $message->participation()->associate($participation);
-                $message->save(); }
-
 
         }
+        if ($request->message) {
+            $message = Content::create([
+                "texte" => $request->message,
+            ]);
+            $message->participation()->associate($participation);
+            $message->save(); }
         } catch (\Exception $e) {
             session()->flash('error', 'Ta participation n\'a pas pu être uploadée !');
         }
