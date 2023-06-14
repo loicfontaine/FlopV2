@@ -74,21 +74,20 @@ export default {
 },
 
   mounted() {
-
     this.data = json.challenges;
     console.log(json.challenges);
     console.log(json);
     console.log(this.data);
-   /*  axios.get('https://flop-pingouin.heig-vd.ch/api/home')
+},
+
+
+    /* axios.get('/api/home')
         .then(response => {
             console.log(response.challenges);
-            this.data = response.challenges;
         })
         .catch(error => {
             console.log(error);
         }); */
-},
-
 
   methods: {
     getImage(isContest) {
