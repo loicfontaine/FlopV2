@@ -74,11 +74,11 @@ export default{
 },
 
   mounted() {
-    console.log("test cd");
+    /* console.log("test cd");
     this.data = json.challenges;
     console.log(json.challenges);
     console.log(json);
-    console.log(this.data);
+    console.log(this.data); */
     this.fetchData();
 },
 
@@ -216,9 +216,6 @@ afficherChampsAudio(item) {
 
   return this.formatTime(this.countdown); 
 }, */
-  //update the countdown every second
-
-
     toggleExpand() {
       if (this.isExpanded) {
         this.isExpanded = false;
@@ -245,8 +242,6 @@ afficherChampsAudio(item) {
       this.isRecording = false;
       this.mediaRecorder.stop();
       this.mediaRecorder.stream.getAudioTracks()[0].stop();
-      //NEW LOIC
-
     },
     
     onDataAvailable(event) {
@@ -277,7 +272,6 @@ afficherChampsAudio(item) {
     
   },
 }
-
 </script>
 
 
