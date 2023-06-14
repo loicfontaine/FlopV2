@@ -75,6 +75,7 @@ Route::post('participer', [ParticipationController::class, 'participate']);
 
 Route::resource('challenge', ChallengeController::class);
 Route::get('/challenge/{id}', [ChallengeController::class, 'show']);
+Route::post('/challenge/endContest', [ChallengeController::class, 'endContest']);
 
 Route::resource('article', ArticleController::class);
 
