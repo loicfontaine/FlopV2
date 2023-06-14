@@ -1,8 +1,8 @@
-body{
-    color: #FFFFFF;
+body {
+    color: #ffffff;
 }
 
-.adminDashboardMenuItems{
+.adminDashboardMenuItems {
     background-color: #303030;
     padding: 20px;
     border-radius: 10px;
@@ -13,7 +13,7 @@ body{
     cursor: pointer;
 }
 
-.adminDashboardMenuChat{
+.adminDashboardMenuChat {
     background-color: #303030;
     padding: 20px;
     border-radius: 10px;
@@ -24,39 +24,39 @@ body{
     cursor: pointer;
 }
 
-.adminDashboardMenuItemsLabel{
+.adminDashboardMenuItemsLabel {
     margin: 0;
     text-align: center;
     font-size: 2.5em;
     align-self: center;
 }
 
-.adminDashboardMenuItemsIcons{
+.adminDashboardMenuItemsIcons {
     align-self: center;
     margin-right: 15px;
 }
 
-.adminDashboardContent{
+.adminDashboardContent {
     justify-content: center;
     display: flex;
     width: 50%;
 }
 
-#adminDashboardContainer{
+#adminDashboardContainer {
     display: flex;
     flex-direction: row;
 }
 
-#adminDashboardMenu{
+#adminDashboardMenu {
     width: 50%;
 }
 
 /* Active section appears in pink */
-.active{
-    background-color:#E60096;
+.active {
+    background-color: #e60096;
 }
 
-.adminDashboardContentItems.display{
+.adminDashboardContentItems.display {
     background-color: #303030;
     border-radius: 10px;
     display: flex;
@@ -66,39 +66,39 @@ body{
     padding: 5em;
 }
 
-.adminDashboardContentItems{
+.adminDashboardContentItems {
     display: none;
 }
 
-.adminDashboardContentItemsTitle{
+.adminDashboardContentItemsTitle {
     margin-top: 0;
 }
 
-#welcomeMessage{
+#welcomeMessage {
     background-color: #000000;
     padding-top: -4em;
 }
 
-.adminDashboardContentItems#welcomeMessage{
+.adminDashboardContentItems#welcomeMessage {
     padding: 0;
 }
 
 /** Formulaire */
 input.form {
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     height: 3em;
     width: 100%;
     margin-top: 0.4em;
     margin-left: auto;
-    margin-right:auto;
+    margin-right: auto;
     margin-bottom: 2em;
     border-radius: 8px;
     box-shadow: none;
     border: none;
     background-color: #000000;
-    color: #F4F1E9;
+    color: #f4f1e9;
 }
 
 input.optionForm {
@@ -107,9 +107,8 @@ input.optionForm {
 
 input.form:focus {
     outline: none !important;
-    border:2px solid #E60096;
-  }
-
+    border: 2px solid #e60096;
+}
 
 hr#separation {
     width: 226px;
@@ -129,10 +128,10 @@ hr.separation2 {
 }
 
 .submit {
-    background-color: #E60096; 
+    background-color: #e60096;
     font-size: 18px;
     color: white;
-    border:none;
+    border: none;
     border-radius: 8px;
     height: 3em;
     width: 80%;
@@ -154,7 +153,7 @@ hr.separation2 {
     margin-bottom: 2em;
 }
 
-.optionButtonLabel{
+.optionButtonLabel {
     font-size: 1em;
     font-weight: bold;
     width: 45%;
@@ -169,45 +168,45 @@ hr.separation2 {
 
 /** Checkbox */
 .checkbox-group {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .checkbox-group-legend {
-	font-size: 1.5rem;
-	font-weight: 700;
-	color: #9c9c9c;
-	text-align: center;
-	margin-bottom: 1.25rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #9c9c9c;
+    text-align: center;
+    margin-bottom: 1.25rem;
 }
 
 .checkbox-input {
     display: none;
     &:checked + .checkbox-tile {
-		background-color: #E60096;
-	}
+        background-color: #e60096;
+    }
 }
 
 fieldset {
     border: none;
-}   
+}
 
 .checkbox-tile {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 13rem;
-	height: 8rem;
-	border-radius: 0.5rem;
-	background-color: #585956;
-	transition: 0.15s ease;
-	cursor: pointer;
-	position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 13rem;
+    height: 8rem;
+    border-radius: 0.5rem;
+    background-color: #585956;
+    transition: 0.15s ease;
+    cursor: pointer;
+    position: relative;
     margin: 0.5rem;
 }
 
@@ -216,10 +215,10 @@ fieldset {
 }
 
 .checkbox-label {
-	color: #F4F1E9;
+    color: #f4f1e9;
     font-size: 1.4rem;
-	transition: .375s ease;
-	text-align: center;
+    transition: 0.375s ease;
+    text-align: center;
 }
 
 span.formLabel {
@@ -258,7 +257,7 @@ button.buttonLabel {
     background-color: white;
     width: 30%;
     border-radius: 1em;
-    margin-bottom:15px;
+    margin-bottom: 15px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -271,7 +270,7 @@ button.buttonLabel {
     text-align: center;
     font-weight: bold;
     margin-top: 12px;
-    margin-bottom : 0px;
+    margin-bottom: 0px;
     height: min-content;
 }
 
@@ -282,7 +281,7 @@ button.buttonLabel {
 }
 
 .price {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 18px;
     color: #000000;
     margin: 0;
@@ -298,7 +297,7 @@ button.buttonLabel {
     margin-bottom: 0.7em;
 }
 
-.articlesQuantity{
+.articlesQuantity {
     width: 60%;
     height: 1.5em;
     margin-top: 0.4em;
@@ -311,18 +310,17 @@ button.buttonLabel {
 
 /** date and time */
 input[type="datetime-local"] {
-     color: #FFFFFF;
-     background-color: #000000;
-     border: none;
-     font-size: 2em;
-     cursor: pointer;
-    }
+    color: #ffffff;
+    background-color: #000000;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+}
 
 /** poll */
 #createPoll {
     width: 100%;
 }
-
 
 /** réponse aux défis */
 
@@ -334,4 +332,21 @@ input[type="datetime-local"] {
     width: 100%;
     margin: 20px 50px 20px 50px;
     padding: 5em;
+}
+
+/**list défis**/
+.createPoll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+/**list concours**/
+.listChallenge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
