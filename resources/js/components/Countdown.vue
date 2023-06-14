@@ -43,7 +43,7 @@
 <script>
 import json from './../../../public/data/challenges.json';
 import axios from 'axios';
-export default {
+export default{
   data() {
     return {
       countdown: 0,
@@ -267,7 +267,9 @@ afficherChampsAudio(item) {
     },
     
   },
-};
+}
+
+}
 </script>
 
 
