@@ -51,7 +51,7 @@ class AdminController extends Controller
                 $participation->contents;
             }
         }
-
-        return view("admin_dashboard", compact("articles", "polls", "challenges", "contests"));
+        return response()->json(array("articles" => $articles, "polls" => $polls, "challenges" => $challenges, "contests" => $contests));
+        //return view("admin_dashboard", compact("articles", "polls", "challenges", "contests"));
     }
 }

@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/home', [HomeController::class, 'getInfo'])->name('home');
+
+Route::get('/admin', [AdminController::class, 'dashboard']);
