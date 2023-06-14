@@ -355,27 +355,47 @@ div.container{
     width: 100%;
 }
 
+<<<<<<< HEAD
 #endContestForm {
+=======
+#contentContainer {
+>>>>>>> main
     display: flex;
     flex-wrap: wrap;
   }
   
+<<<<<<< HEAD
   #endContestForm > * {
+=======
+  #contentContainer > * {
+>>>>>>> main
     flex-basis: 25%; /* Chaque enfant occupe 25% de la largeur parente */
     box-sizing: border-box; /* Inclure la taille de la bordure et du padding dans les dimensions */
   }
   
   /* Optionnel : Espacement entre les éléments */
+<<<<<<< HEAD
   #endContestForm > * + * {
+=======
+  #contentContainer > * + * {
+>>>>>>> main
     margin-left: 1%; /* Ajouter un espace de 1% entre les éléments */
   }
   
   /* Optionnel : Ajuster les marges pour chaque ligne */
+<<<<<<< HEAD
   #endContestForm > :nth-child(4n+1) {
+=======
+  #contentContainer > :nth-child(4n+1) {
+>>>>>>> main
     margin-left: 0; /* Réinitialiser la marge à zéro pour le premier élément de chaque ligne */
   }
   
   /* Optionnel : Ajuster la marge inférieure pour les éléments de la dernière ligne si nécessaire */
+<<<<<<< HEAD
   #endContestForm > :nth-last-child(-n+4) {
+=======
+  #contentContainer > :nth-last-child(-n+4) {
+>>>>>>> main
     margin-bottom: 1rem; /* Ajouter une marge inférieure de 1rem pour les éléments de la dernière ligne */
   }
