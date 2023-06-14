@@ -426,7 +426,6 @@ Dashboard animateur | Couleur 3 Interact
                         <button onclick="afficherParticipations({{$contest->id}})">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsContainer-{{$contest->id}}" class="participations-container" hidden>
-                            <div class="participations-grid">
                             @if(count($contest->participations) == 0)
                                 <p class="FontInter">Aucune participation</p>
                             @else
@@ -462,7 +461,6 @@ Dashboard animateur | Couleur 3 Interact
                                 </form>
                                 <button type="submit" id="endContestButton">Terminer le concours</button>
                             @endif
-                            </div>
                         </div>
                     </div>
                     @endforeach
