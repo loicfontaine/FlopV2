@@ -158,6 +158,7 @@ return participationTypes.includes('audio'); },
   }, */
   uploadFiles() {
       const formData = new FormData();
+      this.form.challengeId = this.challengeId;
       /* formData.append('audio', this.$refs.audio.files[0]); */
       /* if (this.$refs.image && this.$refs.image.files && this.$refs.image.files.length > 0) {
 formData.append('image', this.$refs.image.files[0]);
@@ -165,7 +166,7 @@ formData.append('image', this.$refs.image.files[0]);
       if (this.$refs.video && this.$refs.video.files && this.$refs.video.files.length > 0) {
 formData.append('video', this.$refs.video.files[0]);
 } */
-formData.append('challenge_id', this.challengeId);
+formData.append('challenge_id', this.form.challengeId);
       formData.append('message', this.message);
       formData.append('audioBlob', this.audioBlob);
    /*    const files = event.target.files; */
