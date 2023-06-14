@@ -431,7 +431,7 @@ Dashboard animateur | Couleur 3 Interact
                             @if(count($contest->participations) == 0)
                                 <p class="FontInter">Aucune participation</p>
                             @else
-                                <form id="endContestForm" action="{{ route('endContest') }}" method="POST">
+                                <form id="endContestForm" action="{{ route('/challenge/endContest') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="winner" id="winnerId" value="">
                                     @foreach($contest->participations as $participation)
