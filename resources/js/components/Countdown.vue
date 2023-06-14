@@ -346,6 +346,7 @@ afficherChampsAudio(item) {
 .countdown-container.expanded .image-container-title {
   padding: 0px;
   height: 20%;
+  width:auto;
 }
 
 .countdown-container.expanded .image-container-title img {
