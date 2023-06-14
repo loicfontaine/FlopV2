@@ -12,8 +12,8 @@
     }
 
     #direct-live {
-        width: 100% !important;
-        height: 350px !important;
+        width: 700px!important;
+        height: auto !important;
 
     }
 
@@ -292,7 +292,7 @@ input[type="text"]::placeholder {
 }       
 
 #direct-live  {
-    width: 100%;
+    width: 250px;
     height: 250px;
 }
 
