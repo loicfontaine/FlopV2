@@ -143,7 +143,7 @@ Dashboard animateur | Couleur 3 Interact
                     <p class="FontInter">Description : {{$poll->description}}</p>
                     <p class="FontInter">Durée : {{$poll->duration}}</p>
                     @foreach($poll->options as $option)
-                        <p class="FontInter">{{$option->name}}</p>$
+                        <p class="FontInter">{{$option->name}}</p>
                     @endforeach
                 @endif
             </div>
