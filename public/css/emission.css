@@ -287,6 +287,7 @@ input[type="text"]::placeholder {
 
 #direct-live  {
     width: 100%;
+    height: auto;
 }
 
 #send-message {
