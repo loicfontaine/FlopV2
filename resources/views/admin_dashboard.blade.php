@@ -446,9 +446,9 @@ Dashboard animateur | Couleur 3 Interact
                                             </div>
                                         </div>
                                     @endforeach
+                                    <button class="submit" type="submit" id="endContestButton">Terminer le concours</button>
                                 </form>
                                 <div>
-                                    <button class="submit" type="submit" id="endContestButton">Terminer le concours</button>
                                 </div>
                             @endif
                         </div>
