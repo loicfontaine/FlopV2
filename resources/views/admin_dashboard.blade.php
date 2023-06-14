@@ -455,7 +455,7 @@ Dashboard animateur | Couleur 3 Interact
                                                 </div>
                                             @endforeach
                                             <label for="winnerButton">Sélectionner comme gagnant :</label>
-                                            <input type="radio" id="winnerButton" name="{{$participation->id}}" value="{{$participation->id}}">
+                                            <input type="radio" id="winnerButton" name="participationGagnante" value="{{$participation->id}}">
                                         </div>
                                     @endforeach
                                     <button type="submit" id="endContestButton">Terminer le concours</button>
