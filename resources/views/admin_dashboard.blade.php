@@ -123,6 +123,7 @@ Dashboard animateur | Couleur 3 Interact
                     </div>
 
                 </form>
+                <br>
                 <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un sondage de musique</h2>
                 <form method="POST" action="{{ route('createMusic') }}">
                     @csrf
