@@ -194,7 +194,7 @@ afficherChampsAudio(item) {
     padNumber(number) {
       return String(number).padStart(2, '0');
     },
-    formatCountdown(item) {
+    /* formatCountdown(item) {
   const endTime = new Date(item.end_time);
   const now = new Date();
   const timeRemaining = endTime.getTime() - now.getTime();
@@ -215,8 +215,7 @@ afficherChampsAudio(item) {
   }, 1000); 
 
   return this.formatTime(this.countdown); 
-},
-*/
+}, */
   //update the countdown every second
 
 
@@ -279,7 +278,6 @@ afficherChampsAudio(item) {
   },
 }
 
-}
 </script>
 
 
