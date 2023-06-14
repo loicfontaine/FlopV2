@@ -299,6 +299,10 @@ computed: {
   flex-direction: column;
   align-items: center;
 }
+.partieAuio button.expanded-button{
+  width:100%;
+}
+
 .countdown-container {
 display: flex;
 align-items: center;
