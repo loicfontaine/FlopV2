@@ -226,7 +226,7 @@ Dashboard animateur | Couleur 3 Interact
                         <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
                         <button onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer" hidden>
+                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer" hidden="hidden">
                             @if(count($contest->participations) == 0)
                                 <p class="FontInter">Aucune participation</p>
                             @else
@@ -435,7 +435,7 @@ Dashboard animateur | Couleur 3 Interact
                         <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
                         <button onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer" hidden>
+                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer" hidden="hidden">
                             @if(count($contest->participations) == 0)
                                 <p class="FontInter">Aucune participation</p>
                             @else
