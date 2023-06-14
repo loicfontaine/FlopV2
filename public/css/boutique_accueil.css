@@ -102,7 +102,7 @@ hr.separation {
 
 .item {
     background-color: white;
-    width: 173px;
+    width: 45%;
     height: fit-content;
     border-radius: 8px;
     margin: 15px 15px 15px 15px;
@@ -148,4 +148,5 @@ svg.cc {
     grid-template-columns: 1fr 1fr;
     grid-gap:10px;
     justify-items: center;
+    width: 90%;
 }
