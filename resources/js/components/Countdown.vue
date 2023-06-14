@@ -303,9 +303,6 @@ computed: {
   width:107% !important
 }
 
-.partieAudio button.enr{
-  width:277% !important
-}
 
 .countdown-container {
 display: flex;
