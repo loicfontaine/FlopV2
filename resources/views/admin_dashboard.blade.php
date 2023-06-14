@@ -419,8 +419,11 @@ Dashboard animateur | Couleur 3 Interact
         <!-- FORMULAIRE LIST CONTEST -->
         <div id="listContest" class="adminDashboardContentItems">
             <div>
-                <h2 class="adminDashboardContentItemsTitle FontInter">Concours en cours</h2>
+                <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
                 <div class="listContest">
+                    @if(count($contests) == 0)
+                    <p class="FontInter">Aucun défi</p>
+                    @else
                     @foreach($contests as $contest)
                     <div class="contest">
                         <h3 class="FontInter contestTitle">{{$contest->name}}</h3>
@@ -429,36 +432,40 @@ Dashboard animateur | Couleur 3 Interact
                         <button onclick="afficherParticipations({{$contest->id}})">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsContainer-{{$contest->id}}" class="participations-container" hidden>
-                            @if($contest->winner_participation_id != null)
-                                <p class="FontInter contestWinner">Gagnant : {{$contest->winner_participation_id}}</p>
-                            @endif
                             <div class="participations-grid">
-                                @foreach($participations as $participation)
-                                    @if($participation->contest_id == $contest->id)
+                                @if(count($contest->participations) == 0)
+                                <p class="FontInter">Aucune participation</p>
+                                @else
+                                @foreach($contest->participations as $participation)
                                         <div id="participation">
                                             <!-- affiche le nickname de l'user ayant soumis la participation -->
-                                            <p class="FontInter participationNickname">{{$participation->user->nickname}}</p>
-                                                @foreach($contents as $content)
-                                                    <div id="content">
-                                                        @if($content->type == "text")
-                                                            <p class="FontInter contestContent">{{$content->text}}</p>
-                                                        @elseif($content->type == "photo")
-                                                            <img class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}">
-                                                        @elseif($content->type == "video")
-                                                            <video class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></video>
-                                                        @elseif($content->type == "audio")
-                                                            <audio class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></audio>
-                                                        @endif
-                                                    </div>
-                                                @endforeach
-                                                <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
+                                            {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
+                                                    @foreach($participation->contents as $content)
+                                                        <div id="content">
+                                                            @if($content->participation_id == 4)
+                                                                <p class="FontInter contestContent">{{$content->text}}</p>
+                                                            @elseif($content->participation_id == 2)
+                                                                <img class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}">
+                                                            @elseif($content->participation_id == 3)
+                                                                <video class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></video>
+                                                            @elseif($content->participation_id == 1)
+                                                                <audio class="contestContent" src="/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation/{{$content->text}}"></audio>
+                                                            @endif
+                                                        </div>
+                                                    @endforeach
+                                                    <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
                                         </div>
-                                    @endif
                                 @endforeach
+                                @endif
+                                <!-- if no participation corresponding to contest id-->
+                                @if($contest->participation_id == null)
+                                    <p class="FontInter contestNoParticipation">Aucune participation pour ce défi</p>
+                                @endif
                             </div>
                         </div>
                     </div>
                     @endforeach
+                    @endif
                 </div>
             </div>
         </div>
