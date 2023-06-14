@@ -355,27 +355,27 @@ div.container{
     width: 100%;
 }
 
-#contentContainer {
+#endContestForm {
     display: flex;
     flex-wrap: wrap;
   }
   
-  #contentContainer > * {
+  #endContestForm > * {
     flex-basis: 25%; /* Chaque enfant occupe 25% de la largeur parente */
     box-sizing: border-box; /* Inclure la taille de la bordure et du padding dans les dimensions */
   }
   
   /* Optionnel : Espacement entre les éléments */
-  #contentContainer > * + * {
+  #endContestForm > * + * {
     margin-left: 1%; /* Ajouter un espace de 1% entre les éléments */
   }
   
   /* Optionnel : Ajuster les marges pour chaque ligne */
-  #contentContainer > :nth-child(4n+1) {
+  #endContestForm > :nth-child(4n+1) {
     margin-left: 0; /* Réinitialiser la marge à zéro pour le premier élément de chaque ligne */
   }
   
   /* Optionnel : Ajuster la marge inférieure pour les éléments de la dernière ligne si nécessaire */
-  #contentContainer > :nth-last-child(-n+4) {
+  #endContestForm > :nth-last-child(-n+4) {
     margin-bottom: 1rem; /* Ajouter une marge inférieure de 1rem pour les éléments de la dernière ligne */
   }
