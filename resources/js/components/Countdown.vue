@@ -167,7 +167,7 @@ const challengeIdInput = this.$refs.challengeIdInput;
         formData.append('video', this.video)
        /*  console.log(formData.get('audio')); */
         console.log(formData.get('image'));
-       console.log(challengeIdInput);
+       console.log(challengeIdInput.value);
         console.log(formData.get('message'));
         console.log(formData.get('video'));
         axios.post('/formSubmit', formData)
