@@ -162,7 +162,6 @@ return participationTypes.includes('audio'); },
   },
   uploadFiles() {
       const formData = new FormData();
-      this.form.challengeId = this.challengeId;
       /* formData.append('audio', this.$refs.audio.files[0]); */
       /* if (this.$refs.image && this.$refs.image.files && this.$refs.image.files.length > 0) {
 formData.append('image', this.$refs.image.files[0]);
@@ -170,7 +169,7 @@ formData.append('image', this.$refs.image.files[0]);
       if (this.$refs.video && this.$refs.video.files && this.$refs.video.files.length > 0) {
 formData.append('video', this.$refs.video.files[0]);
 } */
-formData.append('challenge_id', );
+
       formData.append('message', this.message);
       formData.append('audioBlob', this.audioBlob);
    /*    const files = event.target.files; */
@@ -180,7 +179,6 @@ formData.append('challenge_id', );
       console.log(formData.get('image'));
      /* console.log(challengeIdInput); */
       console.log(formData.get('message'));
-      console.log(formData.get('challenge_id'));
       console.log(formData.get('video'));
       axios.post('/formSubmit', formData)
         .then(response => {
