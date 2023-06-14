@@ -37,7 +37,9 @@ if (count($polls) > 0) {
         $poll->options;
     }
 
-} 
+} else {
+session()->flash('error', 'No polls found');
+}
     
         // get challenges that end_time is greater than $now ordered by desc
 
