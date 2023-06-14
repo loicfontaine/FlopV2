@@ -49,6 +49,9 @@ class FileController extends Controller
     dir: false
     link: false
         */
+        if (Participation::where("user_id", "=", $request->input("user_id"))->where("event_id", "=", $request->input("event_id"))->first()) {
+            session()->flash('error', 'Tu as déjà participer à ce défi !');
+        } else {
 
         if(Auth::check()) {
             $userId = Auth::user()->id;
@@ -63,7 +66,7 @@ class FileController extends Controller
             $participation->challenge_id = 1;
         $participation->save();
         
-
+try {
         if ($request->image != "undefined") {
             $fileName = $this->storeFile($request->image);
             $content = Content::create([
@@ -94,11 +97,26 @@ class FileController extends Controller
                 "texte" => $fileName,
                 "participation_id" => $participation->id,
             ]);
+
+            if ($request->message) {
+                $content = Content::create([
+                    "texte" => $request->message,
+                ]);
+                $content->participation()->associate($participation);
+                $content->save(); }
+
+
+        }
+        } catch (\Exception $e) {
+            session()->flash('error', 'Ta participation n\'a pas pu être uploadée !');
+        }
             $content->participation()->associate($participation);
             $content->save();
+            session()->flash('success', 'Ta participation a bien été uploadée !');
             return response()->json(['success' => 'You have successfully uploaded audio.']);
         }
     }
+    
 
     private function storeFile($file)
     {

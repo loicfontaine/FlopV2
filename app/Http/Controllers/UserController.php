@@ -41,7 +41,7 @@ class UserController extends Controller
             'password' => $request->input('password'),
             "color_coins" => 10,
         ]);
-
+        session()->flash('success', 'Ton compte a bien été créé ! Connecte toi !');
         redirect("/home")->with("success", "L'utilisateur " . $request->input('name') . " a été créé");
     }
 
@@ -90,10 +90,16 @@ class UserController extends Controller
         //dd(Auth::user()->id);
 
         if (Auth::check() == false) {
+            session()->flash('error', 'Tu dois être connecté !');
             return redirect("/login");
         } else {
             $participations = User::findOrFail(Auth::user()->id)->participations;
             //get challenge from each participations
+            if ($participations->isEmpty()) {
+                session()->flash('error', 'Tu n\'as pas encore participé à un challenge !');
+                return view('dashboard');
+            }
+
             $challengesEtParticipations = [];
             foreach ($participations as $participation) {
                 $challengesEtParticipations[$participation->id] = [$participation, $participation->challenge];
