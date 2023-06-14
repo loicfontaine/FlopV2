@@ -61,7 +61,6 @@ data() {
     selectedImage: null,
     audioUrl: null,
     message: '',
-    challengeIdInput: null,
     form: {
       video: null,
       image: null,
@@ -164,10 +163,9 @@ formData.append('image', this.$refs.image.files[0]);
       if (this.$refs.video && this.$refs.video.files && this.$refs.video.files.length > 0) {
 formData.append('video', this.$refs.video.files[0]);
 } */
-const challengeIdInput = this.$refs.challengeIdInput;
+formData.append('challenge_id', this.item.id);
       formData.append('message', this.message);
       formData.append('audioBlob', this.audioBlob);
-      formData.append('challengeId', challengeIdInput);
    /*    const files = event.target.files; */
       formData.append('image', this.image);
       formData.append('video', this.video)
