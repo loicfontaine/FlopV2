@@ -266,11 +266,13 @@ afficherChampsAudio(item) {
     handleImageUpload(event) {
       const file = event.target.files[0];
       this.form.image = file;
+      this.image = file;
       this.selectedImage = URL.createObjectURL(file);
     },
     handleVideoUpload(event) {
       const file = event.target.files[0];
       this.form.video = file;
+      this.video = file;
       this.selectedVideo = URL.createObjectURL(file);
     },},
   
