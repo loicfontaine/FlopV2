@@ -140,19 +140,19 @@ Dashboard animateur | Couleur 3 Interact
                 @if($poll == null)
                     <span class="FontInter">Aucun sondage en cours</span>
                 @else
-                    <h3 class="FontInter listH2">Titre</h3>
+                    <h3 class="FontInter ">Titre</h3>
                     <br>
-                    <p class="FontInter listP">{{$poll->title}}</p>
+                    <p class="FontInter ">{{$poll->title}}</p>
                     <br>
-                    <h3 class="FontInter listH2">Description</span>
+                    <h3 class="FontInter ">Description</span>
                     <br>
-                    <p class="FontInter listP">{{$poll->description}}</p>
+                    <p class="FontInter ">{{$poll->description}}</p>
                     <br>
-                    <h3 class="FontInter listH2">Durée</h3>
+                    <h3 class="FontInter ">Durée</h3>
                     <br>
-                    <p class="FontInter listP">{{$poll->duration}}</p>
+                    <p class="FontInter ">{{$poll->duration}}</p>
                     <br>
-                    <h3 class="FontInter listH2">Options</h3>
+                    <h3 class="FontInter ">Options</h3>
                     <ol>
                     @foreach($poll->options as $option)
                         <li class="FontInter form">{{$option->title}}</li>
