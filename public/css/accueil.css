@@ -213,14 +213,14 @@ h2.titre {
     #banniere {
         height: 300px;
         width: 100%;
-        background-image: url("../img/banniereBoutique_.png");
+        background-image: url("../img/banniereBoutique.png");
         background-size: cover;
         background-repeat: no-repeat;
     }
 
     #btn-boutique {
         width: fit-content;
-        margin-left: 70%;
+        margin-left: auto;
         margin-right: auto;
         padding:20px;
     }
