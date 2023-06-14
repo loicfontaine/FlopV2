@@ -133,25 +133,18 @@ Dashboard animateur | Couleur 3 Interact
             </div>
         </div>
         <!-- FORMULAIRE LIST POLLs -->
-        <div id="listPoll" class="adminDashboardContentItems">
+        <div id="lastPoll" class="adminDashboardContentItems">
             <div>
-                <h2 class="adminDashboardContentItemsTitle FontInter">Sondages en cours</h2>
-                @if(count($polls) == 0)
-                    <p class="FontInter">Aucun poll en cours</p>
-                @else  
-                @foreach($polls as $poll)
-                <div class="poll">
-                    <h3 class="FontInter pollTitle">{{$poll->title}}</h3>
-                    <p class="FontInter pollDescription">{{$poll->description}}</p>
-                    <div id="options">
-                        @foreach($options as $option)
-                        <div id="option">
-                            <p>{{$option->text}}</p>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-                @endforeach
+                <h2 class="adminDashboardContentItemsTitle FontInter">Résultats du sondage en cours</h2>
+                @if($poll == null)
+                    <p class="FontInter">Aucun sondage en cours</p>
+                @else
+                    <p class="FontInter">Titre : {{$poll->title}}</p>
+                    <p class="FontInter">Description : {{$poll->description}}</p>
+                    <p class="FontInter">Durée : {{$poll->duration}}</p>
+                    @foreach($poll->options as $option)
+                        <p class="FontInter">{{$option->name}}</p>$
+                    @endforeach
                 @endif
             </div>
         </div>

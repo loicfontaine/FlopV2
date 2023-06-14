@@ -28,10 +28,10 @@ Accueil | Couleur 3 Interact
     </div>      
 </div>
 <div id="boutonLiveAudio">
-    <div class="bouton" class="audio-live">
+    <div class="bouton audio-live" id="live">
         <p>Chat live</p>
     </div>
-    <div class="bouton" class="audio-live">
+    <div class="bouton audio-live">
         <p>Audio live</p>
     </div>
 </div>
@@ -94,7 +94,7 @@ Accueil | Couleur 3 Interact
 </div>
 
 <script>
-    video = document.getElementById("video")
+    video = document.getElementById("live")
     //si clique sur video, redirige sur page emission
     video.addEventListener("click", function(){
         window.location.href = 'emission';
