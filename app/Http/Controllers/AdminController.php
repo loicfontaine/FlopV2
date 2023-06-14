@@ -52,7 +52,7 @@ class AdminController extends Controller
                 $participation->contents;
             }
         }
-dd($polls);
+
         return view("admin_dashboard", compact("articles", "polls", "challenges", "contests"));
     }
 }
