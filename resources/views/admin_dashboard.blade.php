@@ -585,5 +585,21 @@ Dashboard animateur | Couleur 3 Interact
         document.getElementById('winnerId').value = participationId;
         document.getElementById('endContestButton').disabled = false;
     }
+
+    // Sélectionnez tous les éléments contestContent avec la classe "selectable-content"
+    var selectableContents = document.querySelectorAll('.contestContent');
+
+    // Ajoutez un gestionnaire d'événements de clic à chaque élément contestContent
+    selectableContents.forEach(function(content) {
+        content.addEventListener('click', function() {
+            // Sélectionnez le bouton radio correspondant
+            var radioBtn = content.parentNode.parentNode.querySelector('input[type="radio"]');
+            
+            // Vérifiez si le bouton radio existe et activez-le
+            if (radioBtn) {
+                radioBtn.checked = true;
+            }
+        });
+    });
 </script>
 @endsection
