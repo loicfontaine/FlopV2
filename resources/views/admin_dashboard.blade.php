@@ -224,7 +224,7 @@ Dashboard animateur | Couleur 3 Interact
                         <h3 class="FontInter contestTitle">{{$contest->name}}</h3>
                         <p class="FontInter contestDescription">{{$contest->description}}</p>
                         <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
-                        <button onclick="afficherParticipations({{$contest->id}})">Afficher les participations</button>
+                        <button onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsContainer-{{$contest->id}}" class="participationsContainer" hidden>
                             @if(count($contest->participations) == 0)
@@ -433,7 +433,7 @@ Dashboard animateur | Couleur 3 Interact
                         <h3 class="FontInter contestTitle">{{$contest->name}}</h3>
                         <p class="FontInter contestDescription">{{$contest->description}}</p>
                         <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
-                        <button onclick="afficherParticipations({{$contest->id}})">Afficher les participations</button>
+                        <button onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsContainer-{{$contest->id}}" class="participationsContainer" hidden>
                             @if(count($contest->participations) == 0)
@@ -588,15 +588,15 @@ Dashboard animateur | Couleur 3 Interact
         radioElement.checked = true;
   });
 
-  function afficherParticipations(id) {
-    var participationsContainer = document.getElementById('participationsContainer-' + id);
-    var button = document.getElementById('toggleButton-' + id);
+  function afficherParticipations(button) {
+    var contestId = button.dataset.contestId;
+    var participationsContainer = document.getElementById('participationsContainer-' + contestId);
 
-    if (participationsContainer.hasAttribute('hidden')) {
-        participationsContainer.removeAttribute('hidden');
+    if (participationsContainer.hidden) {
+        participationsContainer.hidden = false;
         button.textContent = 'Masquer le contenu';
     } else {
-        participationsContainer.setAttribute('hidden', 'true');
+        participationsContainer.hidden = true;
         button.textContent = 'Afficher les participations';
     }
 }
