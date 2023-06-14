@@ -110,8 +110,6 @@ try {
         } catch (\Exception $e) {
             session()->flash('error', 'Ta participation n\'a pas pu être uploadée !');
         }
-            $content->participation()->associate($participation);
-            $content->save();
             session()->flash('success', 'Ta participation a bien été uploadée !');
             return response()->json(['success' => 'You have successfully uploaded audio.']);
         }
