@@ -358,3 +358,15 @@ input[type="datetime-local"] {
 button {
     margin: 10px 0;
 }
+
+.participations-container {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.participations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
