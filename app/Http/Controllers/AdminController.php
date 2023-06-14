@@ -30,7 +30,6 @@ class AdminController extends Controller
         $now = now();
         // get all polls
         $polls = DB::table('polls')->select('*')->where(DB::raw("DATE_ADD(start_date, INTERVAL duration MINUTE)"), '>', $now)->get();
-
         // get challenges that end_time is greater than $now ordered by desc
 
         $challenges = Challenge::where("end_time", ">", $now)->where('is_contest', '=', 0)->orderBy("end_time", "desc")->get();
