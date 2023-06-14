@@ -214,10 +214,10 @@ Dashboard animateur | Couleur 3 Interact
         <!-- FORMULAIRE LIST CHALLENGE -->
         <div id="listContest" class="adminDashboardContentItems">
             <div class="container">
-                <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
+                <h2 class="adminDashboardContentItemsTitle FontInter">Concours en cours</h2>
                 <div class="listContest">
                     @if(count($challenges) == 0)
-                    <p class="FontInter">Aucun défi</p>
+                        <p class="FontInter">Aucun concours</p>
                     @else
                     @foreach($challenges as $contest)
                     <div class="contest">
@@ -261,7 +261,7 @@ Dashboard animateur | Couleur 3 Interact
                                     @endforeach
                                 </form>
                                 <div>
-                                    <button type="submit" id="endContestButton">Terminer le défi</button>
+                                    <button type="submit" id="endContestButton">Terminer le concours</button>
                                 </div>
                             @endif
                         </div>
@@ -426,7 +426,7 @@ Dashboard animateur | Couleur 3 Interact
                 <h2 class="adminDashboardContentItemsTitle FontInter">Concours en cours</h2>
                 <div class="listContest">
                     @if(count($contests) == 0)
-                    <p class="FontInter">Aucun concours</p>
+                        <p class="FontInter">Aucun concours</p>
                     @else
                     @foreach($contests as $contest)
                     <div class="contest">
@@ -607,6 +607,5 @@ Dashboard animateur | Couleur 3 Interact
         document.getElementById('winnerId').value = participationId;
         document.getElementById('endContestButton').disabled = false;
     }
-}
 </script>
 @endsection
