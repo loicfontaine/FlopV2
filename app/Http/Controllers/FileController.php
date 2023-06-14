@@ -57,7 +57,7 @@ class FileController extends Controller
         }
 
         if (Participation::where("user_id", "=", $userId)->where("challenge_id", "=", $request->input("challenge_id"))->first()) {
-            session()->flash('error', 'Tu as déjà participer à ce défi !');
+            session()->flash('error', 'Tu as déjà participé à ce défi !');
         } else {
 
 
@@ -71,41 +71,41 @@ class FileController extends Controller
 try {
         if ($request->image != "undefined") {
             $fileName = $this->storeFile($request->image);
-            $content = Content::create([
+            $image = Content::create([
                 "texte" => $fileName,
                 "participation_id" => $participation->id,
             ]);
-            $content->participation()->associate($participation);
-            $content->save();
-            return response()->json(['success' => 'You have successfully uploaded image.']);
+            $image->participation()->associate($participation);
+            $image->save();
+            
         }
 
         if ($request->video != "undefined") {
             $fileName = $this->storeFile($request->video);
-            $content = Content::create([
+            $video = Content::create([
                 "texte" => $fileName,
                 "participation_id" => $participation->id,
             ]);
-            $content->participation()->associate($participation);
-            $content->save();
-            return response()->json(['success' => 'You have successfully uploaded video.']);
+            $video->participation()->associate($participation);
+            $video->save();
+    
         }
 
         if ($request->audioBlob != "undefined") {
             $file = $request->audioBlob;
             $fileName = time() . '.' . $file->getClientOriginalExtension() . "wav";
             $file->move('/home/projart/2023/50/flop/flop-laravel/storage/app/public/participation', $fileName);
-            $content = Content::create([
+            $audio = Content::create([
                 "texte" => $fileName,
                 "participation_id" => $participation->id,
             ]);
 
             if ($request->message) {
-                $content = Content::create([
+                $message = Content::create([
                     "texte" => $request->message,
                 ]);
-                $content->participation()->associate($participation);
-                $content->save(); }
+                $message->participation()->associate($participation);
+                $message->save(); }
 
 
         }
