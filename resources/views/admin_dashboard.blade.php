@@ -141,11 +141,18 @@ Dashboard animateur | Couleur 3 Interact
                     <span class="FontInter">Aucun sondage en cours</span>
                 @else
                     <span class="FontInter formLabel">Titre</span>
+                    <br>
                     <span class="FontInter ">{{$poll->title}}</span>
+                    <br>
                     <span class="FontInter formLabel">Description</span>
+                    <br>
                     <span class="FontInter ">{{$poll->description}}</span>
+                    <br>
                     <span class="FontInter formLabel">Durée</span>
+                    <br>
                     <span class="FontInter ">{{$poll->duration}}</span>
+                    <br>
+                    <span class="FontInter formLabel">Options</span>
                     <ol>
                     @foreach($poll->options as $option)
                         <li class="FontInter form">{{$option->title}}</li>
@@ -224,9 +231,18 @@ Dashboard animateur | Couleur 3 Interact
                     @else
                     @foreach($challenges as $contest)
                     <div class="contest">
-                        <h3 class="FontInter contestTitle">{{$contest->name}}</h3>
-                        <p class="FontInter contestDescription">{{$contest->description}}</p>
-                        <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
+                        <span class="FontInter formLabel">Titre</span>
+                        <br>
+                        <span class="FontInter ">{{$contest->name}}</span>
+                        <br>
+                        <span class="FontInter formLabel">Description</span>
+                        <br>
+                        <span class="FontInter ">{{$contest->description}}</span>
+                        <br>
+                        <span class="FontInter formLabel">Fini à</span>
+                        <br>
+                        <span class="FontInter ">{{$contest->end_time}}</span>
+                        <br>
                         <button class="submit optionButtonLabel" onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsHider-{{$contest->id}}" hidden>
@@ -384,12 +400,18 @@ Dashboard animateur | Couleur 3 Interact
                     @else
                     @foreach($contests as $contest)
                     <div class="contest">
-                        <p class="FontInter">Titre</p>
-                        <p class="FontInter contestTitle">{{$contest->name}}</p>
-                        <p class="FontInter">Description</p>
-                        <p class="FontInter contestDescription">{{$contest->description}}</p>
-                        <p class="FontInter">Fini à</p>
-                        <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
+                        <span class="FontInter formLabel">Titre</span>
+                        <br>
+                        <span class="FontInter ">{{$contest->name}}</span>
+                        <br>
+                        <span class="FontInter formLabel">Description</span>
+                        <br>
+                        <span class="FontInter ">{{$contest->description}}</span>
+                        <br>
+                        <span class="FontInter formLabel">Fini à</span>
+                        <br>
+                        <span class="FontInter ">{{$contest->end_time}}</span>
+                        <br>
                         <button class="submit optionButtonLabel" onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsHider-{{$contest->id}}" hidden>
