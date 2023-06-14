@@ -216,10 +216,10 @@ Dashboard animateur | Couleur 3 Interact
             <div class="container">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
                 <div class="listContest">
-                    @if(count($contests) == 0)
+                    @if(count($challenges) == 0)
                     <p class="FontInter">Aucun défi</p>
                     @else
-                    @foreach($contests as $contest)
+                    @foreach($challenges as $contest)
                     <div class="contest">
                         <h3 class="FontInter contestTitle">{{$contest->name}}</h3>
                         <p class="FontInter contestDescription">{{$contest->description}}</p>
