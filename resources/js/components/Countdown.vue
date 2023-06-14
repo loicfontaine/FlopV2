@@ -9,7 +9,7 @@
         <img :src="getImage(item.is_contest)" alt="Image">
       </div>
       <div class="text-container">
-        <p class="countdown FontInter rose">{{ item.end_time }}</p>
+        <p class="countdown FontInter rose">{{ formatCountdown(item) }}</p>
         <div class="description FontInter">{{ item.description }}</div>
         <div class="titre FontInter">{{ getText(item.is_contest) }} </div>
       </div>
@@ -79,6 +79,7 @@ export default {
     console.log(json.challenges);
     console.log(json);
     console.log(this.data);
+    this.fetchData();
 },
 
 
@@ -91,6 +92,15 @@ export default {
         }); */
 
   methods: {
+    async fetchData() {
+      try {
+        const response = await axios.get('https://api.example.com/data');
+        this.data = response.data; // Assign the API response to the data property
+        console.log(this.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
     getImage(isContest) {
   return isContest === 1 ? 'img/concours.png' : 'img/défis.png';
 },
@@ -174,7 +184,7 @@ afficherChampsAudio(item) {
         }
       }, 1000); // Mettez à jour le compte à rebours chaque seconde
     }, */
-    /* formatTime(time) {
+    formatTime(time) {
       const hours = Math.floor(time / 3600);
       const minutes = Math.floor((time % 3600) / 60);
       const seconds = time % 60;
@@ -202,7 +212,7 @@ afficherChampsAudio(item) {
       this.intervalId = null; // Réinitialiser l'ID de l'intervalle
       // Compte à rebours terminé, exécutez une action supplémentaire si nécessaire
     }
-  }, 1000); */
+  }, 1000);
 
 /*   return this.formatTime(this.countdown); */
 },
@@ -258,7 +268,7 @@ afficherChampsAudio(item) {
       const file = event.target.files[0];
       this.form.video = file;
       this.selectedVideo = URL.createObjectURL(file);
-    },
+    },},
   
   computed: {
     audioUrl() {
