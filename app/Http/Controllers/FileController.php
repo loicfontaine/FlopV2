@@ -49,7 +49,6 @@ class FileController extends Controller
     dir: false
     link: false
         */
-        dd($request->all());
 
         if(Auth::check()) {
             $userId = Auth::user()->id;
@@ -101,8 +100,6 @@ try {
                 "texte" => $fileName,
                 "participation_id" => $participation->id,
             ]);
-
-
         }
         if ($request->message) {
             $message = Content::create([
