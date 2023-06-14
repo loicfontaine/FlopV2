@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import json from './../../../public/data/challenges.json';
+/* import json from './../../../public/data/challenges.json'; */
 import axios from 'axios';
 import moment from 'moment';
 export default{
@@ -88,7 +88,6 @@ methods: {
       this.data = response.data.challenges; // Assign the API response to the data property
       this.data = response.data.challenges.map(item => ({
           ...item,
-<<<<<<< HEAD
           isExpanded: false}));
       console.log("api", this.data);
       this.startCountdown();
@@ -114,20 +113,6 @@ methods: {
     },
     startCountdown() {
       this.countdownIntervalId = setInterval(() => {
-=======
-          isExpanded: false,
-          countdown: null,
-        }));
-        this.updateCountdowns();
-      } catch (error) {
-        console.error(error);
-      }
-    },
-
-    updateCountdowns() {
-      setInterval(() => {
-        const now = new Date();
->>>>>>> cd_front
         this.data.forEach(item => {
           item.countdown = this.getCountdown(item.end_time);
         });
