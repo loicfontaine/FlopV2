@@ -4,8 +4,8 @@
   <div v-for="item in data" :key="item.id" class="countdown-container" :class="{ 'expanded': isExpanded }" >
       <form @submit.prevent="uploadFiles" :class="{ 'expanded': isExpanded }" >
       <input type="hidden" name="challenge_id" :value="item.id" ref="challengeIdInput">
-    <div class="arrow-container" @click="toggleExpand()">
-      <i class="arrow-icon" :class="{ 'expanded': isExpanded }" @click="isArrowClicked = true"></i>
+      <div class="arrow-container" @click="toggleExpand(item)">
+        <i class="arrow-icon" :class="{ expanded: item.isExpanded }"></i>
     </div>
     <div class="image-container-title">
       <img :src="getImage(item.is_contest)" alt="Image">
@@ -100,6 +100,9 @@ methods: {
     try {
       const response = await axios.get('https://flop-pingouin.heig-vd.ch/api/home');
       this.data = response.data.challenges; // Assign the API response to the data property
+      this.data = response.data.challenges.map(item => ({
+          ...item,
+          isExpanded: false}));
       console.log("api", this.data);
     } catch (error) {
       console.error(error);
@@ -230,13 +233,9 @@ this.intervalId = setInterval(() => {
 return this.formatTime(this.countdown); 
 }, */
 
-  toggleExpand() {
-    if (this.isExpanded) {
-      this.isExpanded = false;
-    } else {
-      this.isExpanded = true;
-    }
-  },
+toggleExpand(item) {
+      item.isExpanded = !item.isExpanded;
+    },
   startRecording() {
     this.isRecording = true;
     this.chunks = [];
