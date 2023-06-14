@@ -227,15 +227,16 @@ Dashboard animateur | Couleur 3 Interact
                         <button onclick="afficherParticipations({{$challenge->id}})">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsContainer-{{$challenge->id}}" class="participations-container" hidden>
+                            @if(count($participations) > 1)
                             <div class="participations-grid">
                                 @foreach($participations as $participation)
                                     @if($participation->challenge_id == $challenge->id)
                                     <div id="participation">
                                         <!-- affiche le nickname de l'user ayant soumis la participation -->
                                         <p class="FontInter participationNickname">{{$participation->user->nickname}}</p>
-                                            @if($content->participation_id == $participation->id)
-                                                @if($participation->challenge_id == $challenge->id)
-                                                    @foreach($contents as $content)
+                                        @if($content->participation_id == $participation->id)
+                                            @if($participation->challenge_id == $challenge->id)
+                                                @foreach($contents as $content)
                                                     <div id="content">
                                                         @if($content->type == "text")
                                                             <p class="FontInter challengeContent">{{$content->text}}</p>
@@ -428,8 +429,9 @@ Dashboard animateur | Couleur 3 Interact
                         <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
                         <button onclick="afficherParticipations({{$contest->id}})">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="participationsContainer-{{$contest->id}}" hidden>
+                        <div id="participationsContainer-{{$contest->id}}" class="participations-container" hidden>
                             @if(count($participations) > 1)
+                            <div class="participations-grid">
                                 @foreach($participations as $participation)
                                     @if($participation->contest_id == $contest->id)
                                     <div id="participation">
