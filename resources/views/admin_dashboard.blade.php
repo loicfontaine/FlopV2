@@ -88,7 +88,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE CREATE POLL -->
         <div id="createPoll" class="adminDashboardContentItems">
-            <div>
+            <div class="container">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un sondage</h2>
                 <form method="POST" action="{{route('poll.store')}}" accept-charset="UTF-8">
                     @csrf
@@ -134,7 +134,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE LIST POLLs -->
         <div id="lastPoll" class="adminDashboardContentItems">
-            <div>
+            <div class="container">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Résultats du sondage en cours</h2>
                 @if($poll == null)
                     <p class="FontInter">Aucun sondage en cours</p>
@@ -152,7 +152,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE CREATE CHALLENGE -->
         <div id="createChallenge" class="adminDashboardContentItems">
-            <div>
+            <div class="container">
                 <h2 class="adminDashboardContentTitle FontInter">Lancer un défi</h2>
                 <form method="POST" action="{{route('challenge.store')}}" accept-charset="UTF-8">
                     @csrf
@@ -212,7 +212,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE LIST CHALLENGE -->
         <div id="listChallenge" class="adminDashboardContentItems">
-            <div>
+            <div class="container">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
                 <div class="listChallenge">
                     @if(count($challenges) == 0)
@@ -264,7 +264,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE CREATE CONTEST -->
         <div id="createContest" class="adminDashboardContentItems">
-            <div>
+            <div class="container">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Lancer un concours</h2>
                 <form method="POST" action="{{route('challenge.store')}}" accept-charset="UTF-8">
                     @csrf
@@ -413,7 +413,7 @@ Dashboard animateur | Couleur 3 Interact
         </div>
         <!-- FORMULAIRE LIST CONTEST -->
         <div id="listContest" class="adminDashboardContentItems">
-            <div>
+            <div class="container">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
                 <div class="listContest">
                     @if(count($contests) == 0)
