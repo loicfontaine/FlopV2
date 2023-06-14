@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChallengeRequest;
 use Illuminate\Http\Request;
 use App\Models\Challenge;
 // use carbon
@@ -135,7 +136,7 @@ class ChallengeController extends Controller
     }
 
     // fonction qui permet de terminer un contest, la vue nous envoie l'id du gagnant, l'id de la participation et l'id du reward
-    public function endContest(Request $request)
+    public function endContest(ChallengeRequest $request)
     {
         dd($request->all);
         $participation = Participation::findOrFail($participation_id);
