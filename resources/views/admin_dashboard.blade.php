@@ -226,7 +226,8 @@ Dashboard animateur | Couleur 3 Interact
                         <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
                         <button onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer" hidden>
+                        <div id="participationsHider-{{$contest->id}}" hidden>
+                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer">
                             @if(count($contest->participations) == 0)
                                 <p class="FontInter">Aucune participation</p>
                             @else
@@ -264,6 +265,7 @@ Dashboard animateur | Couleur 3 Interact
                                     <button type="submit" id="endContestButton">Terminer le concours</button>
                                 </div>
                             @endif
+                        </div>
                         </div>
                     </div>
                     @endforeach
@@ -435,7 +437,8 @@ Dashboard animateur | Couleur 3 Interact
                         <p class="FontInter contestEndTime">{{$contest->end_time}}</p>
                         <button onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer" hidden>
+                        <div id="participationsHider-{{$contest->id}}" hidden>
+                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer">
                             @if(count($contest->participations) == 0)
                                 <p class="FontInter">Aucune participation</p>
                             @else
@@ -473,6 +476,7 @@ Dashboard animateur | Couleur 3 Interact
                                     <button type="submit" id="endContestButton">Terminer le concours</button>
                                 </div>
                             @endif
+                        </div>
                         </div>
                     </div>
                     @endforeach
@@ -589,11 +593,9 @@ Dashboard animateur | Couleur 3 Interact
         });
     }
 
-    participationsContainer.hidden = true;
-
     function afficherParticipations(button) {
         var contestId = button.dataset.contestId;
-        var participationsContainer = document.getElementById('participationsContainer-' + contestId);
+        var participationsContainer = document.getElementById('participationsHider-' + contestId);
 
         if (participationsContainer.hidden) {
             participationsContainer.hidden = false;
