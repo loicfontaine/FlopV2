@@ -590,17 +590,18 @@ Dashboard animateur | Couleur 3 Interact
     }
 
     function afficherParticipations(button) {
-    var contestId = button.dataset.contestId;
-    var participationsContainer = document.getElementById('participationsContainer-' + contestId);
+        var contestId = button.dataset.contestId;
+        var participationsContainer = document.getElementById('participationsContainer-' + contestId);
 
-    if (participationsContainer.hidden) {
-        participationsContainer.hidden = false;
-        button.textContent = 'Masquer le contenu';
-    } else {
-        participationsContainer.hidden = true;
-        button.textContent = 'Afficher les participations';
+        if (participationsContainer.style.display === 'none') {
+            participationsContainer.style.display = 'block';
+            button.textContent = 'Masquer les participations';
+        } else {
+            participationsContainer.style.display = 'none';
+            button.textContent = 'Afficher les participations';
+        }
     }
-    }
+
 
 
     function updateWinnerId(participationId) {
