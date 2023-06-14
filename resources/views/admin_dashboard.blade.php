@@ -399,15 +399,15 @@ Dashboard animateur | Couleur 3 Interact
                     @else
                     @foreach($contests as $contest)
                     <div class="contest">
-                        <h3 class="FontInter listh2">Titre</h3>
+                        <h3 class="FontInter listH2">Titre</h3>
                         <br>
                         <p class="FontInter listP">{{$contest->name}}</p>
                         <br>
-                        <h3 class="FontInter listh2">Description</h3>
+                        <h3 class="FontInter listH2">Description</h3>
                         <br>
-                        <param class="FontInter listP">{{$contest->description}}</param>
+                        <p class="FontInter listP">{{$contest->description}}</p>
                         <br>
-                        <h3 class="FontInter listh2">Fini à</h3>
+                        <h3 class="FontInter listH2">Fini à</h3>
                         <br>
                         <p class="FontInter listP">{{$contest->end_time}}</p>
                         <br>
