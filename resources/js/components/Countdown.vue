@@ -159,7 +159,7 @@ afficherChampsAudio(item) {
         if (this.$refs.video && this.$refs.video.files && this.$refs.video.files.length > 0) {
   formData.append('video', this.$refs.video.files[0]);
 } */
-const challengeIdInput = this.$refs.challengeId;
+const challengeIdInput = this.$refs.challengeIdInput;
         formData.append('message', this.message);
         formData.append('audioBlob', this.audioBlob);
         const files = event.target.files;
