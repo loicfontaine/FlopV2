@@ -11,6 +11,12 @@
         width: 50% !important;
     }
 
+    #direct-live {
+        width: 100% !important;
+        height: 350px !important;
+
+    }
+
 }
 
 .FontInter {  
@@ -287,7 +293,11 @@ input[type="text"]::placeholder {
 
 #direct-live  {
     width: 100%;
-    height: auto;
+    height: 250px;
+}
+
+iframe {
+    border:none;
 }
 
 #send-message {

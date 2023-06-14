@@ -19,8 +19,8 @@ COMEDY CLUB | Couleur 3 Interact
         <div id="direct-live">
             <iframe  id="video-live" src="https://www.rts.ch/play/embed?urn=urn:rts:video:8841634&subdivisions=false" allowfullscreen allow="geolocation *; autoplay; encrypted-media"></iframe>
         </div>
-        <h2 class='titre2'>Sum 41</h2>
-        <h2 class='titre2'>In to Deep</h2>
+<!--         <h2 class='titre2'>Sum 41</h2>
+        <h2 class='titre2'>In to Deep</h2> -->
     </div>
     <div class='programme'>
         <h1 class='titre-programme'><span class='red'>LIVE</span><br>
