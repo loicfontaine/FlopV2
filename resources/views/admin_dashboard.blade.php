@@ -226,7 +226,8 @@ Dashboard animateur | Couleur 3 Interact
                         <p class="FontInter challengeEndTime">{{$challenge->end_time}}</p>
                         <button onclick="afficherParticipations({{$challenge->id}})">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="participationsContainer-{{$challenge->id}}" hidden>
+                        <div id="participationsContainer-{{$challenge->id}}" class="participations-container" hidden>
+                        <div class="participations-grid">
                             @foreach($participations as $participation)
                             @if($participation->challenge_id == $challenge->id)
                             <div id="participation">
@@ -249,6 +250,7 @@ Dashboard animateur | Couleur 3 Interact
                                         @endif
                                     @endif
                                 @endforeach
+                            </div>    
                             </div>
                             <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
                             @else
