@@ -461,7 +461,6 @@ Dashboard animateur | Couleur 3 Interact
                 </div>
             </div>
         </div>
-    </div>    
 <!-- Composants qui s'affichent et se cachent ici -->
 <script>
     //console.log($articles);
