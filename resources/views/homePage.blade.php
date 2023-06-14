@@ -12,6 +12,7 @@ Accueil | Couleur 3 Interact
     </div>
 @endif
 <div id="app"></div> 
+<div id="survey"></div>
 <div id="video-container">
     <div id="video">
             <iframe  id="direct-live" src="https://www.rts.ch/play/embed?urn=urn:rts:video:8841634&subdivisions=false" allowfullscreen allow="geolocation *; autoplay; encrypted-media"></iframe>
