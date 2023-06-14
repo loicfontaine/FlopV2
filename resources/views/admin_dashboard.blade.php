@@ -249,20 +249,24 @@ Dashboard animateur | Couleur 3 Interact
                                                     </div>
                                                     @endforeach
                                                     <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
-                                                @endif
-                                            @endif
-                                    </div>
-                                    @else
-                                    <p>Il n'y a aucune participation pour ce défis</p>
+                                                    @endif
+                                                </div>
+                                            @endforeach
+                                            <button onclick="enregistrerParticipationGagnante({{$participation->id}})">Sélectionner comme gagnant</button>
+                                        @endif
                                     @endif
-                                @endforeach
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
+                                </div>
+                                @endif
+                            @endforeach
+                        @else
+                        <p>Il n'y a aucune participation pour ce défis</p>
+                        @endif
+                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
+    </div>
         <!-- FORMULAIRE CREATE CONTEST -->
         <div id="createContest" class="adminDashboardContentItems">
             <div>
