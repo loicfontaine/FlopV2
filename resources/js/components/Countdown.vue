@@ -1,176 +1,130 @@
 <template>
-  
+  <div>
+    <div v-for="item in data" :key="item.id" class="countdown-container" :class="{ 'expanded': item.isExpanded }">
+      <div class="arrow-container" @click="toggleExpand(item)">
+        <i class="arrow-icon" :class="{ 'expanded': item.isExpanded }" @click="isArrowClicked = true"></i>
+      </div>
+      <div class="image-container-title">
+        <img :src="getImage(item.is_contest)" alt="Image">
+      </div>
+      <div class="text-container">
+        <p class="countdown FontInter rose">{{ item.end_time }}</p>
+        <div class="description FontInter">{{ item.description }}</div>
+        <div class="titre FontInter">{{ getText(item.is_contest) }} </div>
+      </div>
+      <div class="expanded-content" v-if="item.isExpanded">
+        <label for="video-upload" class="custom-file-upload FontMonserrat" v-if="afficherChampsVideo(item)">
+          Choisir une vidéo
+          <input id="video-upload" class="expanded-input FontMonserrat champsVideo" type="file" accept="video/*" ref="video" name="video" @change="handleVideoUpload">
+          <video class="selectedMedia" v-if="selectedVideo" :src="selectedVideo" controls></video>
+        </label>
 
-  <div v-for="item in data" :key="item.id" class="countdown-container" :class="{ 'expanded': isExpanded }" >
-      <form @submit.prevent="uploadFiles" :class="{ 'expanded': isExpanded }" >
-      <input type="hidden" name="challenge_id" :value="item.id" ref="challengeIdInput">
-    <div class="arrow-container" @click="toggleExpand()">
-      <i class="arrow-icon" :class="{ 'expanded': isExpanded }" @click="isArrowClicked = true"></i>
+        <label for="image-upload" class="custom-file-upload FontMonserrat" v-if="afficherChampsPhoto(item)">
+          Choisir une image
+          <input id="image-upload" class="expanded-input FontMonserrat champsImage" type="file" ref="image" accept="image/*" name="image" @change="handleImageUpload">
+          <img class="selectedMedia" v-if="selectedImage" :src="selectedImage" alt="Image">
+        </label>
+        <div v-if="afficherChampsAudio(item)">
+          <audio v-if="audioBlob" controls>
+            <source :src="audioUrl" type="audio/webm">
+            Votre navigateur ne prend pas en charge la lecture audio
+          </audio>
+          <button class="expanded-button audio FontMonserrat" @click="startRecording" v-if="!isRecording">Enregistrer</button>
+          <button class="expanded-button audio FontMonserrat" @click="stopRecording" v-if="isRecording">Arrêter l'enregistrement</button>
+          <input type="hidden" ref="audio" name="audioBlob">
+        </div>
+        <input class="expanded-input FontMonserrat champsTexte" type="text" placeholder="Envoyer un message..." name="message" v-model="message" ref="expandedInput" v-if="afficherChampsTexte(item)">
+        <button class="expanded-button envoi FontMonserrat" type="submit">Envoyer ma participation</button>
+      </div>
     </div>
-    <div class="image-container-title">
-      <img :src="getImage(item.is_contest)" alt="Image">
-    </div>
-    <div class="text-container">
-      <p class="countdown FontInter rose">{{ item.end_time }}</p>
-      <div class="description FontInter">{{ item.description }}</div>
-      <div class="titre FontInter">{{ getText(item.is_contest) }} </div>
-    </div>
-    <div class="expanded-content" v-if="isExpanded">
-      <label for="video-upload" class="custom-file-upload FontMonserrat" v-if="afficherChampsVideo(item)">
-        Choisir une vidéo
-        <input id="video-upload" class="expanded-input FontMonserrat champsVideo" type="file" accept="video/*" ref="video" name="video" @change="handleVideoUpload">
-        <video class="selectedMedia" v-if="selectedVideo" :src="selectedVideo" controls></video>
-      </label>
-
-      <label for="image-upload" class="custom-file-upload FontMonserrat" v-if="afficherChampsPhoto(item)">
-        Choisir une image
-        <input id="image-upload" class="expanded-input FontMonserrat champsImage" type="file" ref="image" accept="image/*" name="image" @change="handleImageUpload">
-        <img class="selectedMedia" v-if="selectedImage" :src="selectedImage" alt="Image">
-      </label>
-      <div v-if="afficherChampsAudio(item)"><audio v-if="audioBlob" controls>
-        <source :src="audioUrl" type="audio/webm">
-        Votre navigateur ne prend pas en charge la lecture audio
-      </audio>
-      <button class="expanded-button audio FontMonserrat" @click="startRecording" v-if="!isRecording">Enregistrer</button>
-      <button class="expanded-button audio FontMonserrat" @click="stopRecording" v-if="isRecording">Arrêter l'enregistrement</button>
-      <input type="hidden" ref="audio" name="audioBlob"></div>
-      <input class="expanded-input FontMonserrat champsTexte" type="text" placeholder="Envoyer un message..." name="message" v-model="message" ref="expandedInput" v-if="afficherChampsTexte(item)">
-      <button class="expanded-button envoi FontMonserrat" type="submit">Envoyer ma participation</button>
-      
-    </div> </form>
   </div>
-
 </template>
 
 <script>
 import json from './../../../public/data/challenges.json';
 import axios from 'axios';
-import moment from 'moment';
-export default{
-data() {
-  return {
-    countdowns: {},
-    intervalId: null,
-    isExpanded: false,
-    isArrowClicked: false,
-    isRecording: false,
-    mediaRecorder: null,
-    chunks: [],
-    audioBlob: null,
-    selectedVideo: null,
-    selectedImage: null,
-    audioUrl: null,
-    message: '',
-    form: {
-      video: null,
-      image: null,
-      message: '',
+
+export default {
+  data() {
+    return {
+      isRecording: false,
+      mediaRecorder: null,
+      chunks: [],
       audioBlob: null,
-    },
-    data: [],
-  };
-},
-created() {
-},
-
-mounted() {
-  /* console.log("test cd");
-  this.data = json.challenges;
-  console.log(json.challenges);
-  console.log(json);
-  console.log(this.data); */
-  this.fetchData();
-
-},
-beforeDestroy() {
-  clearInterval(this.intervalId);
-},
-
-
-  /* axios.get('/api/home')
-      .then(response => {
-          console.log(response.challenges);
-      })
-      .catch(error => {
-          console.log(error);
-      }); */
-
-methods: {
-  async fetchData() {
-    try {
-      const response = await axios.get('https://flop-pingouin.heig-vd.ch/api/home');
-      this.data = response.data.challenges; // Assign the API response to the data property
-      console.log("api", this.data);
-    } catch (error) {
-      console.error(error);
-    }
+      selectedVideo: null,
+      selectedImage: null,
+      audioUrl: null,
+      message: '',
+      form: {
+        video: null,
+        image: null,
+        message: '',
+        audioBlob: null,
+      },
+      data: [],
+    };
   },
-  getImage(isContest) {
-return isContest === 1 ? 'img/concours.png' : 'img/défis.png';
-},
-getText(isContest) {
-return isContest === 1 ? 'Participe et gagne un des prix !' : 'Participe et gagne des ColorCoins !';
-},
-afficherChampsVideo(item) {
-const participationTypes = [];
-item.participation_types.forEach((participationType) => {
-  participationTypes.push(participationType.title);
-});
-return participationTypes.includes('video');
 
-},
+  created() {
+  },
 
-afficherChampsPhoto(item) {
-const participationTypes = [];
-item.participation_types.forEach((participationType) => {
-  participationTypes.push(participationType.title);
-});
-return participationTypes.includes('photo'); 
-},
-afficherChampsTexte(item) {
-const participationTypes = [];
-item.participation_types.forEach((participationType) => {
-  participationTypes.push(participationType.title);
-});
-return participationTypes.includes('texte'); 
-},
-afficherChampsAudio(item) {
-const participationTypes = [];
-item.participation_types.forEach((participationType) => {
-  participationTypes.push(participationType.title);
-});
-return participationTypes.includes('audio'); },
+  beforeDestroy() {
+    clearInterval(this.intervalId);
+  },
 
-  /* loadData() {
-    axios.get('./././public/data/challenges.json')
-      .then(response => {
-        this.data = response.data;
-        console.log(this.data);
-      })
-      .catch(error => {
+  mounted() {
+    this.fetchData();
+  },
+
+  methods: {
+    async fetchData() {
+      try {
+        const response = await axios.get('https://flop-pingouin.heig-vd.ch/api/home');
+        this.data = response.data.challenges.map(item => ({
+          ...item,
+          isExpanded: false,
+        }));
+        console.log("api", this.data);
+      } catch (error) {
         console.error(error);
-      });
-  }, */
-  uploadFiles() {
-      const formData = new FormData();
-      /* formData.append('audio', this.$refs.audio.files[0]); */
-      /* if (this.$refs.image && this.$refs.image.files && this.$refs.image.files.length > 0) {
-formData.append('image', this.$refs.image.files[0]);
+      }
+    },
 
-      if (this.$refs.video && this.$refs.video.files && this.$refs.video.files.length > 0) {
-formData.append('video', this.$refs.video.files[0]);
-} */
-/* const challengeIdInput = this.$refs.challengeIdInput; */
+    getImage(isContest) {
+      return isContest === 1 ? 'img/concours.png' : 'img/défis.png';
+    },
+
+    getText(isContest) {
+      return isContest === 1 ? 'Participe et gagne un des prix !' : 'Participe et gagne des ColorCoins !';
+    },
+
+    afficherChampsVideo(item) {
+      const participationTypes = item.participation_types.map(participationType => participationType.title);
+      return participationTypes.includes('video');
+    },
+
+    afficherChampsPhoto(item) {
+      const participationTypes = item.participation_types.map(participationType => participationType.title);
+      return participationTypes.includes('photo');
+    },
+
+    afficherChampsTexte(item) {
+      const participationTypes = item.participation_types.map(participationType => participationType.title);
+      return participationTypes.includes('texte');
+    },
+
+    afficherChampsAudio(item) {
+      const participationTypes = item.participation_types.map(participationType => participationType.title);
+      return participationTypes.includes('audio');
+    },
+
+    uploadFiles(item) {
+      const formData = new FormData();
       formData.append('message', this.message);
       formData.append('audioBlob', this.audioBlob);
-   /*    const files = event.target.files; */
-      formData.append('image', this.image);
-      formData.append('video', this.video)
-     /*  console.log(formData.get('audio')); */
-      console.log(formData.get('image'));
-     /* console.log(challengeIdInput); */
-      console.log(formData.get('message'));
-      console.log(formData.get('video'));
+      formData.append('image', this.form.image);
+      formData.append('video', this.form.video);
+
       axios.post('/formSubmit', formData)
         .then(response => {
           console.log(response.data);
@@ -181,115 +135,64 @@ formData.append('video', this.$refs.video.files[0]);
           // Traitez les erreurs ici
         });
     },
-    
- /*  startCountdown() {
-    const currentDate = new Date();
-    //get endtime from json
-    const targetDate = new Date(currentDate.getFullYear(), 5, 16, 0, 0, 0); //
-    const remainingTime = targetDate.getTime() - currentDate.getTime();
 
-    this.countdown = Math.ceil(remainingTime / 1000); // Conversion en secondes
+    toggleExpand(item) {
+      item.isExpanded = !item.isExpanded;
+    },
 
-    this.intervalId = setInterval(() => {
-      if (this.countdown <= 0) {
-        clearInterval(this.intervalId);
-        // Compte à rebours terminé, exécutez une action supplémentaire si nécessaire
+    startRecording() {
+      this.isRecording = true;
+      this.chunks = [];
+
+      navigator.mediaDevices.getUserMedia({ audio: true })
+        .then((stream) => {
+          this.mediaRecorder = new MediaRecorder(stream);
+          this.mediaRecorder.addEventListener('dataavailable', this.onDataAvailable);
+          this.mediaRecorder.addEventListener('stop', this.onRecordingStop);
+          this.mediaRecorder.start();
+        })
+        .catch((error) => {
+          console.error('Erreur lors de l\'accès à l\'enregistrement audio :', error);
+        });
+    },
+
+    stopRecording() {
+      this.isRecording = false;
+      this.mediaRecorder.stop();
+      this.mediaRecorder.stream.getAudioTracks()[0].stop();
+    },
+
+    onDataAvailable(event) {
+      if (event.data.size > 0) {
+        this.chunks.push(event.data);
       }
-    }, 1000); // Mettez à jour le compte à rebours chaque seconde
-  }, */
-  formatTime(time) {
-    const hours = Math.floor(time / 3600);
-    const minutes = Math.floor((time % 3600) / 60);
-    const seconds = time % 60;
+    },
 
-    return `${this.padNumber(hours)}:${this.padNumber(minutes)}:${this.padNumber(seconds)}`;
-  },
-  padNumber(number) {
-    return String(number).padStart(2, '0');
-  },
-  /* formatCountdown(item) {
-const endTime = new Date(item.end_time);
-const now = new Date();
-const timeRemaining = endTime.getTime() - now.getTime();
-this.countdown = Math.ceil(timeRemaining / 1000); // Conversion en secondes
+    onRecordingStop() {
+      this.audioBlob = new Blob(this.chunks, { type: 'audio/webm' });
+      //export audioBlod to a file
+    },
 
-if (this.intervalId) {
-  // Une autre mise à jour du compte à rebours est déjà en cours, ne rien faire
-  return this.formatTime(this.countdown);
-}
+    handleImageUpload(event) {
+      const file = event.target.files[0];
+      this.form.image = file;
+      this.selectedImage = URL.createObjectURL(file);
+    },
 
-this.intervalId = setInterval(() => {
-  this.countdown--;
-  if (this.countdown <= 0) {
-    clearInterval(this.intervalId);
-    this.intervalId = null; // Réinitialiser l'ID de l'intervalle
-    // Compte à rebours terminé, exécutez une action supplémentaire si nécessaire
-  }
-}, 1000); 
+    handleVideoUpload(event) {
+      const file = event.target.files[0];
+      this.form.video = file;
+      this.selectedVideo = URL.createObjectURL(file);
+    },
+  },
 
-return this.formatTime(this.countdown); 
-}, */
-
-  toggleExpand() {
-    if (this.isExpanded) {
-      this.isExpanded = false;
-    } else {
-      this.isExpanded = true;
-    }
+  computed: {
+    audioUrl() {
+      return this.audioBlob ? URL.createObjectURL(this.audioBlob) : null;
+    },
   },
-  startRecording() {
-    this.isRecording = true;
-    this.chunks = [];
-
-    navigator.mediaDevices.getUserMedia({ audio: true })
-      .then((stream) => {
-        this.mediaRecorder = new MediaRecorder(stream);
-        this.mediaRecorder.addEventListener('dataavailable', this.onDataAvailable);
-        this.mediaRecorder.addEventListener('stop', this.onRecordingStop);
-        this.mediaRecorder.start();
-      })
-      .catch((error) => {
-        console.error('Erreur lors de l\'accès à l\'enregistrement audio :', error);
-      });
-  },
-  stopRecording() {
-    this.isRecording = false;
-    this.mediaRecorder.stop();
-    this.mediaRecorder.stream.getAudioTracks()[0].stop();
-  },
-  
-  onDataAvailable(event) {
-    if (event.data.size > 0) {
-      this.chunks.push(event.data);
-    }
-  },
-  onRecordingStop() {
-    this.audioBlob = new Blob(this.chunks, { type: 'audio/webm' });
-    //export audioBlod to a file  
-
-  },
-  handleImageUpload(event) {
-    const file = event.target.files[0];
-    this.form.image = file;
-    this.image = file;
-    this.selectedImage = URL.createObjectURL(file);
-  },
-  handleVideoUpload(event) {
-    const file = event.target.files[0];
-    this.form.video = file;
-    this.video = file;
-    this.selectedVideo = URL.createObjectURL(file);
-  },},
-
-computed: {
-  audioUrl() {
-    return this.audioBlob ? URL.createObjectURL(this.audioBlob) : '';
-  },
-  
-},
-}
+};
 </script>
-
 
 
 <style>
