@@ -231,17 +231,17 @@ Dashboard animateur | Couleur 3 Interact
                     @else
                     @foreach($challenges as $contest)
                     <div class="contest">
-                        <span class="FontInter formLabel">Titre</span>
+                        <h3 class="FontInter listH2">Titre</h3>
                         <br>
-                        <span class="FontInter ">{{$contest->name}}</span>
+                        <p class="FontInter listP">{{$contest->name}}</p>
                         <br>
-                        <span class="FontInter formLabel">Description</span>
+                        <h3 class="FontInter listH2">Description</h3>
                         <br>
-                        <span class="FontInter ">{{$contest->description}}</span>
+                        <p class="FontInter listP">{{$contest->description}}</p>
                         <br>
-                        <span class="FontInter formLabel">Fini à</span>
+                        <h3 class="FontInter listH2">Fini à</h3>
                         <br>
-                        <span class="FontInter ">{{$contest->end_time}}</span>
+                        <p class="FontInter listP">{{$contest->end_time}}</p>
                         <br>
                         <button class="submit optionButtonLabel" onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
@@ -274,7 +274,6 @@ Dashboard animateur | Couleur 3 Interact
                                                 </div>
                                             @endforeach
                                             <div class="selectWinner">
-                                                <label for="winnerButton">Sélectionner comme gagnant :</label>
                                                 <input type="radio" id="winnerButton" name="participationGagnante" value="{{$participation->id}}">
                                             </div>
                                         </div>
@@ -400,17 +399,17 @@ Dashboard animateur | Couleur 3 Interact
                     @else
                     @foreach($contests as $contest)
                     <div class="contest">
-                        <span class="FontInter formLabel">Titre</span>
+                        <h3 class="FontInter ">Titre</h3>
                         <br>
-                        <span class="FontInter ">{{$contest->name}}</span>
+                        <p class="FontInter listP">{{$contest->name}}</p>
                         <br>
-                        <span class="FontInter formLabel">Description</span>
+                        <h3 class="FontInter ">Description</h3>
                         <br>
-                        <span class="FontInter ">{{$contest->description}}</span>
+                        <param class="FontInter listP">{{$contest->description}}</param>
                         <br>
-                        <span class="FontInter formLabel">Fini à</span>
+                        <h3 class="FontInter ">Fini à</h3>
                         <br>
-                        <span class="FontInter ">{{$contest->end_time}}</span>
+                        <p class="FontInter listP">{{$contest->end_time}}</p>
                         <br>
                         <button class="submit optionButtonLabel" onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         <!-- div avec un id en fonction de l'id de la participation -->
@@ -443,7 +442,6 @@ Dashboard animateur | Couleur 3 Interact
                                                 </div>
                                             @endforeach
                                             <div class="selectWinner">
-                                                <label for="winnerButton">Sélectionner comme gagnant :</label>
                                                 <input type="radio" id="winnerButton" name="participationGagnante" value="{{$participation->id}}">
                                             </div>
                                         </div>

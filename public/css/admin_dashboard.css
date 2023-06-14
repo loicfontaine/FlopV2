@@ -390,3 +390,18 @@ div.container{
     align-items: center;
     flex-wrap: wrap;
 }
+
+.listH2{
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.listH3{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.listP{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
