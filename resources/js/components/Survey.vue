@@ -1,5 +1,5 @@
 <template>
-    <div v-for="item in data" :key="item.id" class="countdown-container" :class="{ 'expanded': item.isExpanded }" >
+    <div v-for="item in data" :key="item.id" class="survey-container" :class="{ 'expanded': item.isExpanded }" >
         <form @submit.prevent="uploadFiles(item)" :class="{ 'expanded': item.isExpanded }" >
   
         <div class="arrow-container" @click="toggleExpand(item)">
@@ -186,9 +186,6 @@ text-align: center;
 height: auto;
 padding:8px;
 }
-
-
-
 
 
 .description{
