@@ -438,12 +438,12 @@ Dashboard animateur | Couleur 3 Interact
                                                     @if($content->participation_type_id == 1)
                                                         <audio controls class="contestContent" type="audio/wav" src="{{ asset('/storage/participation/' . $content->text)}}"></audio>
                                                     @endif
-                                                
+                                                </div>
                                             @endforeach
                                                 <div class="selectWinner">
                                                     <input type="radio" id="winnerButton" name="participationGagnante" value="{{$participation->id}}">
                                                 </div>
-                                        </div>
+                                    </div>
                                     @endforeach
                                         
                                     </div>
@@ -451,8 +451,6 @@ Dashboard animateur | Couleur 3 Interact
                                         <button class="submit" type="submit" id="endContestButton">Terminer le concours</button>
                                     </div>
                                 </form>
-                                <div>
-                                </div>
                             @endif
                         </div>
                         </div>
