@@ -79,7 +79,7 @@ export default {
 
 <style scoped>
 
-options {
+.options {
 display: flex;
 flex-direction: column;
 align-items: center;
