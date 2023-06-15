@@ -80,16 +80,20 @@ export default {
 <style scoped>
 
 .options {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    flex-direction: row;
+    flex-wrap: wrap;
 
 }
 
 .option-label {
-margin-bottom: 10px;
+    margin: 10px;
+    background-color: black;
+    padding: 10px;
+    border-radius: 8px;
 }
 
 .survey-container {
