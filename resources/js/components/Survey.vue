@@ -62,17 +62,16 @@ export default {
         alert('Veuillez choisir une option');
         return;
       }
-
-       axios.post('/answer', {
-          optionId: item.selectedOption
-        })
+      const reponse = {
+        sondage_id: item.id,
+        option_id: item.selectedOption
+      };
+      axios.post('/answer', reponse)
         .then(response => {
           console.log(response.data);
-          // Traitez la réponse du serveur ici
         })
         .catch(error => {
           console.error(error);
-          // Traitez les erreurs ici
         });
     }
   },        
