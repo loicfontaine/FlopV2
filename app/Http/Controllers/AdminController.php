@@ -65,7 +65,6 @@ class AdminController extends Controller
             }
         }
         
-        dd($contests);
         //return response()->json(array("articles" => $articles, "polls" => $polls, "challenges" => $challenges, "contests" => $contests));
         return view("admin_dashboard", compact("articles", "poll", "challenge", "contests", "nbVotes"));
     }
