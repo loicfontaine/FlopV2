@@ -64,7 +64,7 @@ export default {
       }
       const reponse = {
         sondage_id: item.id,
-        option_id: item.option.id
+        option_id: item.options.find(option => option.id === item.selectedOption).id
       };
       axios.post('/answer', reponse)
         .then(response => {
