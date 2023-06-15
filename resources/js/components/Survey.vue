@@ -14,7 +14,7 @@
         </div>
         <div class="expanded-content" v-if="item.isExpanded">
           <div class="options">
-            <label v-for="option in item.options" :key="option.id" class="option-label">
+            <label v-for="option in item.options" :key="option.id" class="option-label FontInter">
               <input type="radio" :name="'option-' + item.id" :value="option.id" v-model="item.selectedOption">
               {{ option.title }}
             </label>
@@ -78,6 +78,14 @@ export default {
 </script>
 
 <style scoped>
+
+options {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+}
 
 .survey-container {
 display: flex;
