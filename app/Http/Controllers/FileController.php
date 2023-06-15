@@ -66,8 +66,8 @@ class FileController extends Controller
         } else {
 
             $user = User::findOrFail($userId);
-            $challenge = Challenge::findOrFail($request->input("challenge_id"));
-            $user->color_coins += $challenge->ColorCoins_earned_by_participation;
+        
+            $user->color_coins += 10;
             $user->save();
 
     
