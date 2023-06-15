@@ -337,7 +337,6 @@ padding-top: 10px;
 }
 
 .countdown {
-font-size: 28px;
 font-weight: bold;
 margin-bottom: 10px; /* Ajout de la marge inférieure */
 }

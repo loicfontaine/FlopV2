@@ -91,7 +91,6 @@ export default {
 
 <style scoped>
 .countdown {
-font-size: 28px;
 font-weight: bold;
 margin-bottom: 10px; /* Ajout de la marge inférieure */
 }
