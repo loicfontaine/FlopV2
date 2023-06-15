@@ -439,7 +439,7 @@ Dashboard animateur | Couleur 3 Interact
                                         @endforeach
                                         </div>
                                         <div class="selectWinner">
-                                            <input type="radio" id="winnerButton" name="participationGagnante" value="{{$participation->id}}">
+                                            <input type="radio" id="winnerButton" name="participationGagnante" value="{{$contest->id}}">
                                         </div>
                                     @endforeach
                                 </div>
