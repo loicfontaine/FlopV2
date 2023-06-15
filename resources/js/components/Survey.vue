@@ -25,11 +25,30 @@
 <script>
 import axios from 'axios';
 export default {
-  data() {
-    return {
-      textField: ''
-    };
-  },
+    data() {
+  return {
+    countdowns: {},
+    countdownIntervalId: null,
+    data: [],
+    intervalId: null,
+    isExpanded: false,
+    isArrowClicked: false,
+    isRecording: false,
+    mediaRecorder: null,
+    chunks: [],
+    audioBlob: null,
+    selectedVideo: null,
+    selectedImage: null,
+    audioUrl: null,
+    message: '',
+    form: {
+      video: null,
+      image: null,
+      message: '',
+      audioBlob: null,
+    },
+  };
+},
   created() {
     this.fetchData();
   },
@@ -42,7 +61,10 @@ export default {
     } catch (error) {
       console.error(error);
     }
-  }
+  },
+  toggleExpand(item) {
+      item.isExpanded = !item.isExpanded;
+    }
   }
 };
 </script>
