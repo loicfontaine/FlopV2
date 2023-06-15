@@ -8,15 +8,7 @@
       <div class="image-container-title">
         <img src="img/sondages.png" alt="Image">
       </div>
-      <div class="text-container">
-        <p class="countdown FontInter rose">{{ getCountdown(item.end_time) }}</p>
-        <div class="description FontInter">{{ item.description }}</div>
-        <div class="titre FontInter">{{ getText(item.is_contest) }} </div>
-      </div>
-      <div class="expanded-content" v-if="item.isExpanded">
-        <button class="expanded-button envoi FontMonserrat" type="submit">Envoyer ma participation</button>
-        
-      </div> </form>
+      </form>
     </div> 
     
     </template>
@@ -38,7 +30,11 @@ export default {
     try {
       const response = await axios.get('https://flop-pingouin.heig-vd.ch/api/home');
       this.data = response.data.sondages; // Assign the API response to the data property
+      this.data = response.data.sondages.map(item => ({
+          ...item,
+          isExpanded: false}));
       console.log("api survey", this.data);
+
     } catch (error) {
       console.error(error);
     }
