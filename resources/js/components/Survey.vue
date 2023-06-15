@@ -117,7 +117,7 @@ margin-bottom: 10px; /* Ajout de la marge inférieure */
     border-radius: 8px;
 }
 
-.option-label input[type="radio"]:checked + label::before {
+input[type="radio"]:checked + label::before {
     background-color: pink !important;
 }
 .survey-container {
