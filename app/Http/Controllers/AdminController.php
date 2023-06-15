@@ -32,6 +32,10 @@ class AdminController extends Controller
         // get last poll created
         $poll = Poll::orderBy("id", "desc")->first();
         $poll->options;
+        $nbVotes = [];
+        foreach($poll->options as $option){
+            $nbVotes[$option->id] = count($option->users);
+        }
 
 
 
@@ -62,6 +66,6 @@ class AdminController extends Controller
             }
         }
         //return response()->json(array("articles" => $articles, "polls" => $polls, "challenges" => $challenges, "contests" => $contests));
-        return view("admin_dashboard", compact("articles", "poll", "challenge", "contests"));
+        return view("admin_dashboard", compact("articles", "poll", "challenge", "contests", "nbVotes"));
     }
 }

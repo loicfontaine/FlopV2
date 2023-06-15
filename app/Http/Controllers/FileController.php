@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Participation;
 use App\Models\Content;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class FileController extends Controller
@@ -63,7 +64,7 @@ class FileController extends Controller
             return response()->json(['error' => 'You already participated to this challenge.']);
         } else {
 
-
+            User::findOrFail($userId)->increment('points', 10);
     
         $participation = new Participation();
            $participation->user_id = $userId;
