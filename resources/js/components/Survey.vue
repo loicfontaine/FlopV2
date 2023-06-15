@@ -14,7 +14,7 @@
         </div>
         <div class="expanded-content" v-if="item.isExpanded">
           <div class="options">
-            <label v-for="option in item.options" :key="option.id" class="option-label FontInter custom-radio">
+            <label v-for="option in item.options" :key="option.id" class="option-label FontInter">
               <input type="radio" :name="'option-' + item.id" :value="option.id" v-model="item.selectedOption">
               {{ option.title }}
             </label>
@@ -93,30 +93,7 @@ export default {
 </script>
 
 <style scoped>
-.custom-radio input[type="radio"] {
-  display: none; /* Masque le bouton radio par défaut */
-}
 
-.custom-radio label {
-  position: relative;
-  padding-left: 30px; /* Espace pour la boîte du bouton */
-  cursor: pointer;
-}
-
-.custom-radio label:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 20px; /* Largeur de la boîte */
-  height: 20px; /* Hauteur de la boîte */
-  border: 2px solid black; /* Bordure de la boîte */
-  border-radius: 4px; /* Coins arrondis de la boîte */
-}
-
-.custom-radio input[type="radio"]:checked + label:before {
-  background-color: red; /* Couleur de fond de la boîte lorsqu'elle est cochée */
-}
 .countdown {
     font-size: 20px;
 font-weight: bold;
