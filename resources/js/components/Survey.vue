@@ -32,7 +32,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      data: []
+      data: [],
     };
   },
   created() {
@@ -57,16 +57,16 @@ export default {
       item.isExpanded = !item.isExpanded;
     },
   sendChoice(item) {
+    const formData = new FormData();
+    formData.append('sondage_id', item.id);
+    formData.append('option', item.selectedOption);
+
       if (item.selectedOption === null) {
         // Vérifie si aucune option n'a été sélectionnée
         alert('Veuillez choisir une option');
         return;
       }
-      const reponse = {
-        sondage_id: item.id,
-        option_id: item.options.find(option => option.id === item.selectedOption).id
-      };
-      axios.post('/answer', reponse)
+      axios.post('/answer', formData)
         .then(response => {
           console.log(response.data);
           window.location.reload();
