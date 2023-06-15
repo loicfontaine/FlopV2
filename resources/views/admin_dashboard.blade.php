@@ -419,10 +419,9 @@ Dashboard animateur | Couleur 3 Interact
                                 <p class="FontInter">Aucune participation</p>
                             @else
                                 <form id="endContestForm" action="{{ route('endContest') }}" method="POST">
-                                    @csrf
+                                    <div id="contentContainer">                                    @csrf
                                     <input type="hidden" name="winner" id="winnerId" value="">
                                     @foreach($contest->participations as $participation)
-                                        <div id="contentContainer">
                                             <!-- affiche le nickname de l'user ayant soumis la participation -->
                                             {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
                                             @foreach($participation->contents as $content)
@@ -439,13 +438,15 @@ Dashboard animateur | Couleur 3 Interact
                                                     @if($content->participation_type_id == 1)
                                                         <audio controls class="contestContent" type="audio/wav" src="{{ asset('/storage/participation/' . $content->text)}}"></audio>
                                                     @endif
-                                                </div>
+                                                
                                             @endforeach
                                                 <div class="selectWinner">
                                                     <input type="radio" id="winnerButton" name="participationGagnante" value="{{$participation->id}}">
                                                 </div>
                                         </div>
                                     @endforeach
+                                        
+                                    </div>
                                     <div class="selectWinner">
                                         <button class="submit" type="submit" id="endContestButton">Terminer le concours</button>
                                     </div>
