@@ -33,22 +33,25 @@ class AdminController extends Controller
         $poll = Poll::orderBy("id", "desc")->first();
         $poll->options;
 
-        session()->flash('error', 'No polls found');
 
 
         // get challenges that end_time is greater than $now ordered by desc
 
-        $challenges = Challenge::where("end_time", ">", $now)->where('is_contest', '=', 0)->orderBy("end_time", "desc")->get();
-
-        foreach ($challenges as $challenge) {
+        $challenge = Challenge::where('is_contest', '=', 0)->orderBy("id", "desc")->first();
+      
             $arrayParticipations = $challenge->participations;
-
             foreach ($arrayParticipations as $participation) {
                 $participation->contents;
             }
-        }
+        
 
-        $contests = Challenge::where("end_time", ">", $now)->where('is_contest', '=', 1)->orderBy("end_time", "desc")->get();
+        //$contests = Challenge::where('is_contest', '=', 1)->orderBy("end_time", "desc")->get();
+    
+        $contests = Challenge::where('is_contest', 1)
+        ->join('rewards', 'challenges.id', '=', 'rewards.challenge_id')
+        ->whereNotNull('rewards.participation_id')
+        ->orderBy('end_time', 'desc')
+        ->get();
 
         foreach ($contests as $contest) {
             $arrayParticipations = $contest->participations;
