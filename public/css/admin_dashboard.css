@@ -359,8 +359,11 @@ button {
     margin: 10px 0;
 }
 
-.contestContent {
-    height: 100%;
+.participationsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
 }
 
@@ -374,9 +377,14 @@ button {
 
 .content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 100%;
+}
+
+.contestContent {
+    height: 100%;
     width: 100%;
 }
 
