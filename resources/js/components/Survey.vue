@@ -63,8 +63,7 @@ export default {
         const end = new Date(start.getTime() + durée * 60000);
         const diff = end - now;
         const minutes = Math.floor((diff / 1000) / 60);
-        const seconds = Math.floor((diff / 1000) % 60);
-        return `${minutes}:${seconds}`;
+        return `Plus que ${minutes} minutes pour répondre`;
 
     },
   sendChoice(item) {
@@ -91,6 +90,11 @@ export default {
 </script>
 
 <style scoped>
+.countdown {
+font-size: 28px;
+font-weight: bold;
+margin-bottom: 10px; /* Ajout de la marge inférieure */
+}
 
 .options {
     display: flex;
