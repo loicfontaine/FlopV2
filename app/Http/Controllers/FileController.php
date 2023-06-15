@@ -55,6 +55,7 @@ class FileController extends Controller
             $userId = Auth::user()->id;
         } else {
             //erreur session
+            session()->flash('error', 'Tu dois être connecté pour participer !');
             return response()->json(['error' => 'You must be logged in.']);
         }
 
@@ -66,8 +67,7 @@ class FileController extends Controller
     
         $participation = new Participation();
            $participation->user_id = $userId;
-            //$participation->challenge_id = $request->input("challenge_id");
-            $participation->challenge_id = 1;
+            $participation->challenge_id = $request->input("challenge_id");
         $participation->save();
         
 
