@@ -419,36 +419,35 @@ Dashboard animateur | Couleur 3 Interact
                                 <p class="FontInter">Aucune participation</p>
                             @else
                                 <form id="endContestForm" action="{{ route('endContest') }}" method="POST">
-                                    <div id="contentContainer">                                    @csrf
+                                <div id="contentContainer">                                    @csrf
                                     <input type="hidden" name="winner" id="winnerId" value="">
                                     @foreach($contest->participations as $participation)
-                                            <!-- affiche le nickname de l'user ayant soumis la participation -->
-                                            {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
-                                            <div id="content" onclick="selectWinner(this)">
-                                            @foreach($participation->contents as $content)
-                                                    @if($content->participation_type_id == 4)
-                                                        <p class="FontInter contestContent">{{$content->text}}</p>
-                                                    @endif
-                                                    @if($content->participation_type_id == 2)
-                                                        <img class="contestContent" src="{{ asset('/storage/participation/' . $content->text) }}">
-                                                    @endif
-                                                    @if($content->participation_type_id == 3)
-                                                        <video controls class="contestContent" type="video/mp4" src="{{ asset('/storage/participation/' . $content->text) }}"></video>
-                                                    @endif
-                                                    @if($content->participation_type_id == 1)
-                                                        <audio controls class="contestContent" type="audio/wav" src="{{ asset('/storage/participation/' . $content->text)}}"></audio>
-                                                    @endif
-                                            @endforeach
-                                                </div>
-                                                <div class="selectWinner">
-                                                    <input type="radio" id="winnerButton" name="participationGagnante" value="{{$participation->id}}">
-                                                </div>
+                                        <!-- affiche le nickname de l'user ayant soumis la participation -->
+                                        {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
+                                        <div id="content" onclick="selectWinner(this)">
+                                        @foreach($participation->contents as $content)
+                                                @if($content->participation_type_id == 4)
+                                                    <p class="FontInter contestContent">{{$content->text}}</p>
+                                                @endif
+                                                @if($content->participation_type_id == 2)
+                                                    <img class="contestContent" src="{{ asset('/storage/participation/' . $content->text) }}">
+                                                @endif
+                                                @if($content->participation_type_id == 3)
+                                                    <video controls class="contestContent" type="video/mp4" src="{{ asset('/storage/participation/' . $content->text) }}"></video>
+                                                @endif
+                                                @if($content->participation_type_id == 1)
+                                                    <audio controls class="contestContent" type="audio/wav" src="{{ asset('/storage/participation/' . $content->text)}}"></audio>
+                                                @endif
+                                        @endforeach
+                                        </div>
+                                        <div class="selectWinner">
+                                            <input type="radio" id="winnerButton" name="participationGagnante" value="{{$participation->id}}">
+                                        </div>
                                     @endforeach
-                                        
-                                    </div>
-                                    <div class="selectWinner">
-                                        <button class="submit" type="submit" id="endContestButton">Terminer le concours</button>
-                                    </div>
+                                </div>
+                                <div class="selectWinner">
+                                    <button class="submit" type="submit" id="endContestButton">Terminer le concours</button>
+                                </div>
                                 </form>
                             @endif
                         </div>
