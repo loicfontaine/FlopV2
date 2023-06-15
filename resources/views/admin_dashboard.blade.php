@@ -406,7 +406,7 @@ Dashboard animateur | Couleur 3 Interact
                         <br>
                         <p class="FontInter ">{{$contest->end_time}}</p>
                         <br>
-                        <div class="submitContainer">
+                        <div class="submitContainer" onclick="toggleContent(this)">
                             <button class="submit" onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         </div>
                         <!-- div avec un id en fonction de l'id de la participation -->
@@ -416,7 +416,8 @@ Dashboard animateur | Couleur 3 Interact
                                 <p class="FontInter">Aucune participation</p>
                             @else
                                 <form id="endContestForm" action="{{ route('endContest') }}" method="POST">
-                                <div id="contentContainer">                                    @csrf
+                                <div id="contentContainer">                                    
+                                    @csrf
                                     <input type="hidden" name="winner" id="winnerId" value="">
                                     @foreach($contest->participations as $participation)
                                         <!-- affiche le nickname de l'user ayant soumis la participation -->
@@ -564,18 +565,25 @@ Dashboard animateur | Couleur 3 Interact
         });
     }
 
-    function afficherParticipations(button) {
-    var contestId = button.dataset.contestId;
-    var participationsContainer = document.getElementById('participationsContainer-' + contestId);
+//     function afficherParticipations(button) {
+//     var contestId = button.dataset.contestId;
+//     var participationsContainer = document.getElementById('participationsContainer-' + contestId);
 
-    if (participationsContainer.hidden) {
-        participationsContainer.hidden = false;
-        button.textContent = 'Masquer les participations';
-    } else {
-        participationsContainer.hidden = true;
-        button.textContent = 'Afficher les participations';
-    }
+//     if (participationsContainer.hidden) {
+//         participationsContainer.hidden = false;
+//         button.textContent = 'Masquer les participations';
+//     } else {
+//         participationsContainer.hidden = true;
+//         button.textContent = 'Afficher les participations';
+//     }
+// }
+
+function toggleContent(submitContainer) {
+    var contestId = submitContainer.querySelector('button').dataset.contestId;
+    var participationsContainer = document.getElementById('participationsHider-' + contestId);
+    participationsContainer.hidden = !participationsContainer.hidden;
 }
+
 
 
     function updateWinnerId(participationId) {
