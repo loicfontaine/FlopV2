@@ -98,19 +98,14 @@ export default {
     border-radius: 8px;
 }
 
-.survey-container {
-display: flex;
-align-items: center;
-justify-content: center;
-margin-top: 50px;
-background-color: #303030;
-border-radius: 8px;
-margin-left: auto;
-margin-right: auto;
-width: 359px;
-position: relative;
-overflow: hidden;
-transition: all 0.3s ease;
+.radio-button {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid black;
+  margin-right: 8px;
+  background-color: white;
+}
 
 }
 
