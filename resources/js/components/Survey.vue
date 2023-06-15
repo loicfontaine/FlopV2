@@ -107,7 +107,6 @@ export default {
   background-color: white;
 }
 
-}
 
 .survey-container.expanded {
 height: auto;
