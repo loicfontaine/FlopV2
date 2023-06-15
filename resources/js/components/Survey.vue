@@ -1,6 +1,6 @@
 <template>
     <div v-for="item in data" :key="item.id" class="survey-container" :class="{ 'expanded': item.isExpanded }">
-      <form @submit.prevent="uploadFiles(item)" :class="{ 'expanded': item.isExpanded }">
+      <form @submit.prevent="sendChoice(item)" :class="{ 'expanded': item.isExpanded }">
         <div class="arrow-container" @click="toggleExpand(item)">
           <i class="arrow-icon" :class="{ expanded: item.isExpanded }"></i>
         </div>
@@ -14,7 +14,7 @@
         </div>
         <div class="expanded-content" v-if="item.isExpanded">
           <div class="options">
-            <label v-for="option in item.options" :key="option.id" class="option-label">
+            <label v-for="option in item.options" :key="option.id" class="option-label FontInter">
               <input type="radio" :name="'option-' + item.id" :value="option.id" v-model="item.selectedOption">
               {{ option.title }}
             </label>
@@ -56,7 +56,7 @@ export default {
   toggleExpand(item) {
       item.isExpanded = !item.isExpanded;
     },
-  async uploadFiles(item) {
+  async sendChoice(item) {
       if (item.selectedOption === null) {
         // Vérifie si aucune option n'a été sélectionnée
         alert('Veuillez choisir une option');
@@ -78,6 +78,19 @@ export default {
 </script>
 
 <style scoped>
+
+options {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 90%;
+
+}
+
+.option-label {
+margin-bottom: 10px;
+}
 
 .survey-container {
 display: flex;
