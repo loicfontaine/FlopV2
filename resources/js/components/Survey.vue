@@ -117,6 +117,11 @@ margin-bottom: 10px; /* Ajout de la marge inférieure */
     border-radius: 8px;
 }
 
+/*faire que quand l'option-label est sélectionnée la couleur d'arrière plan change */
+.option-label input[type="radio"]:checked + span {
+    background-color: pink;
+    color: white;
+}
 .survey-container {
 display: flex;
 align-items: center;
