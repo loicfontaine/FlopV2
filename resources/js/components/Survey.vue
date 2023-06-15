@@ -8,7 +8,9 @@
       <div class="image-container-title">
         <img src="img/sondages.png" alt="Image">
       </div>
-      </form>
+      <div class="expanded-content" v-if="item.isExpanded">
+      <button class="expanded-button envoi FontMonserrat" type="submit">Envoyer</button>
+    </div></form>
     </div> 
     
     </template>
