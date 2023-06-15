@@ -141,11 +141,12 @@ class ChallengeController extends Controller
         $participation = Participation::findOrFail($participation_id);
         $challenge = Challenge::findOrFail($participation->challenge_id);
         // get la reward en fonction du challenge_id qui correspond à la participation
-        $reward = Reward::where('challenge_id', $challenge->id)->first()->get();
-        $reward->user_id = $participation->user_id;
-        $reward->participation_id = $participation_id;
-        $challenge->start_time = $challenge->end_time;
-        $challenge->save();
+        $rewards = $challenge->rewards;
+        foreach ($rewards as $reward) {
+            $reward->participation_id = $participation_id;
+        }
+        //$challenge->start_time = $challenge->end_time;
+        //$challenge->save();
         session()->flash('success', 'Le concours a bien été terminé');
         return redirect()->route('admin.dashboard');
     }
