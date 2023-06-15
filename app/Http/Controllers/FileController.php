@@ -60,6 +60,7 @@ class FileController extends Controller
 
         if (Participation::where("user_id", "=", $userId)->where("challenge_id", "=", $request->input("challenge_id"))->first()) {
             session()->flash('error', 'Tu as déjà participé à ce défi !');
+            dd("nope");
             return redirect()->route("home");
         } else {
 
@@ -114,6 +115,7 @@ class FileController extends Controller
             $message->participation()->associate($participation);
             $message->save(); }
         
+            dd("ok");
             session()->flash('success', 'Ta participation a bien été uploadée !');
             return redirect()->route('home');
         }
