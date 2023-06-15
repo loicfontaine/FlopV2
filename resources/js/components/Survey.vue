@@ -53,6 +53,9 @@ export default {
       console.error(error);
     }
   },
+  toggleExpand(item) {
+      item.isExpanded = !item.isExpanded;
+    },
   async uploadFiles(item) {
       if (item.selectedOption === null) {
         // Vérifie si aucune option n'a été sélectionnée
