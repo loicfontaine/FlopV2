@@ -114,7 +114,7 @@ class FileController extends Controller
             $message->save(); }
         
             session()->flash('success', 'Ta participation a bien été uploadée !');
-            return response()->json(['success' => 'You have successfully your participation.']);
+            return redirect()->route('home');
         }
     }
     

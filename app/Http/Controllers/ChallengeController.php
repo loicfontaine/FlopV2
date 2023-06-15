@@ -147,5 +147,6 @@ class ChallengeController extends Controller
         $challenge->start_time = $challenge->end_time;
         $challenge->save();
         session()->flash('success', 'Le concours a bien été terminé');
+        return redirect()->route('admin.dashboard');
     }
 }
