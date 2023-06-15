@@ -66,6 +66,139 @@ export default {
 </script>
 
 <style scoped>
-</style>
 
+.survey-container {
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 50px;
+background-color: #303030;
+border-radius: 8px;
+margin-left: auto;
+margin-right: auto;
+width: 359px;
+position: relative;
+overflow: hidden;
+transition: all 0.3s ease;
+
+}
+
+.survey-container.expanded {
+height: auto;
+align-items: flex-start;
+padding-bottom: 20px;
+display: flex; /* Ajouter cette ligne */
+flex-direction: column;
+}
+
+.arrow-container {
+position: absolute;
+bottom: 0;
+right: 0;
+width: 30px;
+height: 30px;
+border-radius: 50% 0 0 0;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: all 0.3s ease;
+transform: rotate(45deg);
+}
+
+.arrow-icon {
+width: 12px;
+height: 12px;
+border-right: 2px solid #fff;
+border-top: 2px solid #fff;
+transform: rotate(90deg);
+transition: all 0.3s ease;
+}
+
+.arrow-icon.expanded {
+transform: rotate(-90deg);
+}
+
+form .image-container-title {
+padding-top: 36px;
+padding-bottom: 20px;
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.image-container-title img {
+width: 100px;
+height: auto;
+border-radius: 8px;
+}
+
+.survey-container.expanded .image-container-title {
+padding: 0px;
+height: 20%;
+width:auto;
+}
+
+.survey-container.expanded .image-container-title img {
+border-radius: 0px;
+width: 100%;
+}
+
+.text-container {
+padding: 20px;
+padding-top: 10px;
+}
+
+
+.titre {
+font-size: 20px;
+font-weight: bold;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+
+.expanded-input {
+width: 85%;
+padding: 8px;
+border-radius: 8px;
+border: none;
+margin-bottom: 10px;
+color: black;
+}
+
+.expanded-content {
+width: 100%;
+bottom: 40px;
+display: flex;
+align-items: center;
+flex-direction: column;
+
+}
+.expanded-button{
+border-radius: 8px;
+background-color: #E60099;
+font-weight: bold;
+border: none;
+width: 90%;
+font-size: 18px;
+margin-bottom: 10px;
+text-align: center;
+height: auto;
+padding:8px;
+}
+
+
+
+
+
+.description{
+font-size: 15px;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+form:not(.expanded) {
+display: flex;
+}
+</style>
 
