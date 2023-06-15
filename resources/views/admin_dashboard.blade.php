@@ -257,6 +257,7 @@ Dashboard animateur | Couleur 3 Interact
                                     <input type="hidden" name="winner" id="winnerId" value="">
                                     @foreach($contest->participations as $participation)
                                         <!-- affiche le nickname de l'user ayant soumis la participation -->
+                                        <p class="FontInter">{{ $participation->user->name }}</p>
                                         {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
                                         <div id="content" onclick="selectWinner(this)">
                                         @foreach($participation->contents as $content)
