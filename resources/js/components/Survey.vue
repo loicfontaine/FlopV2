@@ -63,7 +63,7 @@ export default {
         const end = new Date(start.getTime() + durée * 60000);
         const diff = end - now;
         const minutes = Math.floor((diff / 1000) / 60);
-        return `Plus que ${minutes} minutes !;
+        return `Plus que ${minutes} minutes !`;
 
     },
   sendChoice(item) {
