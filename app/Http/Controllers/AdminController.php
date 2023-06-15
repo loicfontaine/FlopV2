@@ -51,10 +51,9 @@ class AdminController extends Controller
 
         //$contests = Challenge::where('is_contest', '=', 1)->orderBy("end_time", "desc")->get();
     
-        $contests = Challenge::where('is_contest', 1)
-        ->rightJoin('rewards', 'challenges.id', '=', 'rewards.challenge_id')
+        $contests = Challenge::join('rewards', 'challenges.id', '=', 'rewards.challenge_id')
+        ->where('is_contest', 1)
         ->whereNull('rewards.participation_id')
-        ->orderBy('challenges.id', 'desc')
         ->get();
 
         foreach ($contests as $contest) {
@@ -65,6 +64,7 @@ class AdminController extends Controller
                 $participation->user;
             }
         }
+        
         dd($contests);
         //return response()->json(array("articles" => $articles, "polls" => $polls, "challenges" => $challenges, "contests" => $contests));
         return view("admin_dashboard", compact("articles", "poll", "challenge", "contests", "nbVotes"));
