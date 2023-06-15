@@ -56,6 +56,6 @@ class HomeController extends Controller
 
         }
 
-        return response()->json(array("challenges" => $challengesRewards, "sondages" => [$pollArray]));
+        return response()->json(array("challenges" => $challengesRewards, "sondages" => $pollArray));
     }
 }
