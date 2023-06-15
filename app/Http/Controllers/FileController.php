@@ -64,7 +64,7 @@ class FileController extends Controller
             return response()->json(['error' => 'You already participated to this challenge.']);
         } else {
 
-            User::findOrFail($userId)->increment('points', 10);
+            User::findOrFail($userId)->increment('color_coins ', 10);
     
         $participation = new Participation();
            $participation->user_id = $userId;
