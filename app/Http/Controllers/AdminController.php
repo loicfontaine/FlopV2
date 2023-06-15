@@ -55,6 +55,7 @@ class AdminController extends Controller
 
             foreach ($arrayParticipations as $participation) {
                 $participation->contents;
+                $participation->user;
             }
         }
         //return response()->json(array("articles" => $articles, "polls" => $polls, "challenges" => $challenges, "contests" => $contests));
