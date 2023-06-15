@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Participation;
 use App\Models\Content;
 use App\Models\User;
+use App\Models\Challenge;
 use Illuminate\Support\Facades\Auth;
 
 class FileController extends Controller
@@ -65,7 +66,8 @@ class FileController extends Controller
         } else {
 
             $user = User::findOrFail($userId);
-            $user->color_coins += 10;
+            $challenge = Challenge::findOrFail($request->input("challenge_id"));
+            $user->color_coins += $challenge->ColorCoins_earned_by_participation;
             $user->save();
 
     
