@@ -282,7 +282,6 @@ Dashboard animateur | Couleur 3 Interact
                         </div>
                         </div>
                     </div>
-                    @endforeach
                     @endif
                 </div>
             </div>
