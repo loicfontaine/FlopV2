@@ -8,7 +8,13 @@
       <div class="image-container-title">
         <img src="img/sondages.png" alt="Image">
       </div>
+      <div class="text-container">
+      <p class="countdown FontInter rose">{{ item.duration }}</p>
+      <div class="description FontInter">{{ item.description }}</div>
+      <div class="titre FontInter">Compare-toi aux autres auditeurs! </div>
+    </div>
       <div class="expanded-content" v-if="item.isExpanded">
+
       <button class="expanded-button envoi FontMonserrat" type="submit">Envoyer</button>
     </div></form>
     </div> 
