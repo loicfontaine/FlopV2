@@ -142,10 +142,10 @@ class ChallengeController extends Controller
         $participation = Participation::findOrFail($participation_id);
         $challenge = Challenge::findOrFail($participation->challenge_id);
         // get la reward en fonction du challenge_id qui correspond à la participation
-        dd($challenge->rewards);
         $rewards = $challenge->rewards;
         foreach ($rewards as $reward) {
             $reward->participation_id = $participation_id;
+            $reward->save();
         }
         //$challenge->start_time = $challenge->end_time;
         //$challenge->save();
