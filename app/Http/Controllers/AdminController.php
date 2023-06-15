@@ -52,7 +52,7 @@ class AdminController extends Controller
         //$contests = Challenge::where('is_contest', '=', 1)->orderBy("end_time", "desc")->get();
     
         $contests = Challenge::where('is_contest', 1)
-        ->leftJoin('rewards', 'challenges.id', '=', 'rewards.challenge_id')
+        ->rightJoin('rewards', 'challenges.id', '=', 'rewards.challenge_id')
         ->whereNull('rewards.participation_id')
         ->orderBy('challenges.id', 'desc')
         ->get();
