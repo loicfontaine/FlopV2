@@ -56,22 +56,24 @@ export default {
   toggleExpand(item) {
       item.isExpanded = !item.isExpanded;
     },
-  async sendChoice(item) {
+  sendChoice(item) {
       if (item.selectedOption === null) {
         // Vérifie si aucune option n'a été sélectionnée
         alert('Veuillez choisir une option');
         return;
       }
-
-      try {
-        const response = await axios.post('https://flop-pingouin.heig-vd.ch/api/upload', {
-          optionId: item.selectedOption
+      const reponse = {
+        sondage_id: item.id,
+        option_id: item.option.id
+      };
+      axios.post('/answer', reponse)
+        .then(response => {
+          console.log(response.data);
+          window.location.reload();
+        })
+        .catch(error => {
+          console.error(error);
         });
-        // Traite la réponse de l'API après l'envoi des données
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-      }
     }
   },        
   };

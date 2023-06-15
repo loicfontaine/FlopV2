@@ -168,6 +168,7 @@ formData.append('challenge_id', item.id);
       axios.post('/formSubmit', formData)
         .then(response => {
           console.log(response.data);
+          window.location.reload();
         })
         .catch(error => {
           console.error(error);
