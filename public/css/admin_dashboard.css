@@ -344,7 +344,7 @@ input[type="datetime-local"] {
 }
 
 /**list concours**/
-.listChallenge > div {
+.listContest > div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -352,9 +352,9 @@ input[type="datetime-local"] {
     width: 100%;
 }
 
-.challengeTitle,
-.challengeDescription,
-.challengeEndTime,
+.contestTitle,
+.contestDescription,
+.contestEndTime,
 button {
     margin: 10px 0;
 }
@@ -364,6 +364,14 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+}
+
+.container > * {
+    width: 100%;
+}
+
+.container > * > * {
     width: 100%;
 }
 
