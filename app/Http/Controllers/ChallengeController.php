@@ -144,7 +144,6 @@ class ChallengeController extends Controller
         $reward = Reward::where('challenge_id', $challenge->id)->first()->get();
         $reward->user_id = $participation->user_id;
         $reward->participation_id = $participation_id;
-        $reward->save();
         $challenge->start_time = $challenge->end_time;
         $challenge->save();
         session()->flash('success', 'Le concours a bien été terminé');
