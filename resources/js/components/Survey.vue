@@ -71,6 +71,9 @@ export default {
     formData.append('sondage_id', item.id);
     formData.append('option', item.selectedOption);
 
+    formData.get('sondage_id');
+    formData.get('option');
+
       if (item.selectedOption === null) {
         // Vérifie si aucune option n'a été sélectionnée
         alert('Veuillez choisir une option');
