@@ -115,7 +115,7 @@ export default {
 }
 
 .custom-radio input[type="radio"]:checked + label:before {
-  background-color: black; /* Couleur de fond de la boîte lorsqu'elle est cochée */
+  background-color: red; /* Couleur de fond de la boîte lorsqu'elle est cochée */
 }
 .countdown {
     font-size: 20px;
