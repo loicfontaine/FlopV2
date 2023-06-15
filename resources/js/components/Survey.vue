@@ -1,7 +1,27 @@
 <template>
-    <div>
-    </div>
-</template>
+    <div v-for="item in data" :key="item.id" class="countdown-container" :class="{ 'expanded': item.isExpanded }" >
+        <form @submit.prevent="uploadFiles(item)" :class="{ 'expanded': item.isExpanded }" >
+  
+        <div class="arrow-container" @click="toggleExpand(item)">
+          <i class="arrow-icon" :class="{ expanded: item.isExpanded }"></i>
+      </div>
+      <div class="image-container-title">
+        <img src="img/sondages.png" alt="Image">
+      </div>
+      <div class="text-container">
+        <p class="countdown FontInter rose">{{ getCountdown(item.end_time) }}</p>
+        <div class="description FontInter">{{ item.description }}</div>
+        <div class="titre FontInter">{{ getText(item.is_contest) }} </div>
+      </div>
+      <div class="expanded-content" v-if="item.isExpanded">
+        <button class="expanded-button envoi FontMonserrat" type="submit">Envoyer ma participation</button>
+        
+      </div> </form>
+    </div> 
+    
+    </template>
+
+
 <script>
 import axios from 'axios';
 export default {
@@ -26,4 +46,8 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+</style>
+
 
