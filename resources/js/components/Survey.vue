@@ -8,7 +8,7 @@
           <img src="img/sondages.png" alt="Image">
         </div>
         <div class="text-container">
-          <p class="countdown FontInter rose">{{ item.duration }}</p>
+          <p class="countdown FontInter rose">{{ getTimeLeft(item) }}</p>
           <div class="description FontInter">{{ item.description }}</div>
           <div class="titre FontInter">Compare-toi aux autres auditeurs! </div>
         </div>
@@ -55,6 +55,17 @@ export default {
   },
   toggleExpand(item) {
       item.isExpanded = !item.isExpanded;
+    },
+    getTimeLeft(item){
+        const now = new Date();
+        const start = new Date(item.start_date);
+        const durée = item.duration;
+        const end = new Date(start.getTime() + durée * 60000);
+        const diff = end - now;
+        const minutes = Math.floor((diff / 1000) / 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        return `${minutes}:${seconds}`;
+
     },
   sendChoice(item) {
       if (item.selectedOption === null) {
