@@ -424,8 +424,8 @@ Dashboard animateur | Couleur 3 Interact
                                     @foreach($contest->participations as $participation)
                                             <!-- affiche le nickname de l'user ayant soumis la participation -->
                                             {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
+                                            <div id="content" onclick="selectWinner(this)">
                                             @foreach($participation->contents as $content)
-                                                <div id="content" onclick="selectWinner(this)">
                                                     @if($content->participation_type_id == 4)
                                                         <p class="FontInter contestContent">{{$content->text}}</p>
                                                     @endif
@@ -438,8 +438,8 @@ Dashboard animateur | Couleur 3 Interact
                                                     @if($content->participation_type_id == 1)
                                                         <audio controls class="contestContent" type="audio/wav" src="{{ asset('/storage/participation/' . $content->text)}}"></audio>
                                                     @endif
-                                                </div>
                                             @endforeach
+                                                </div>
                                                 <div class="selectWinner">
                                                     <input type="radio" id="winnerButton" name="participationGagnante" value="{{$participation->id}}">
                                                 </div>
