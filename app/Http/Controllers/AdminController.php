@@ -64,7 +64,7 @@ class AdminController extends Controller
                 $participation->user;
             }
         }
-        
+        dd($contest);
         //return response()->json(array("articles" => $articles, "polls" => $polls, "challenges" => $challenges, "contests" => $contests));
         return view("admin_dashboard", compact("articles", "poll", "challenge", "contests", "nbVotes"));
     }
