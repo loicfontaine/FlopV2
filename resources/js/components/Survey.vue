@@ -183,6 +183,7 @@ padding-right: 20px;
 width: 100px;
 height: auto;
 border-radius: 8px;
+object-fit: cover;
 }
 
 .survey-container.expanded .image-container-title {
