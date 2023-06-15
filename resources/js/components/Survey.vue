@@ -14,8 +14,8 @@
         </div>
         <div class="expanded-content" v-if="item.isExpanded">
           <div class="options">
+            <input type="radio" :name="'option-' + item.id" :value="option.id" v-model="item.selectedOption">
             <label v-for="option in item.options" :key="option.id" class="option-label FontInter">
-              <input type="radio" :name="'option-' + item.id" :value="option.id" v-model="item.selectedOption">
               {{ option.title }}
             </label>
           </div>
@@ -119,7 +119,6 @@ margin-bottom: 10px; /* Ajout de la marge inférieure */
 
 .option-label input[type="radio"]:checked + label::before {
     background-color: pink !important;
-    color: white;
 }
 .survey-container {
 display: flex;
