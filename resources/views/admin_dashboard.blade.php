@@ -412,7 +412,7 @@ Dashboard animateur | Couleur 3 Interact
                         <p class="FontInter ">{{$contest->end_time}}</p>
                         <br>
                         <div class="submitContainer">
-                            <button class="submit optionButtonLabel" onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
+                            <button class="submit" onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         </div>
                         <!-- div avec un id en fonction de l'id de la participation -->
                         <div id="participationsHider-{{$contest->id}}" hidden>
