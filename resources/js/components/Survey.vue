@@ -104,6 +104,7 @@ export default {
   border-radius: 50%;
   border: 2px solid black;
   margin-right: 8px;
+  background-color: white;
 }
 
 .option-label input[type="radio"] {
