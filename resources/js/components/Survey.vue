@@ -1,54 +1,40 @@
 <template>
-    <div v-for="item in data" :key="item.id" class="survey-container" :class="{ 'expanded': item.isExpanded }" >
-        <form @submit.prevent="uploadFiles(item)" :class="{ 'expanded': item.isExpanded }" >
-  
+    <div v-for="item in data" :key="item.id" class="survey-container" :class="{ 'expanded': item.isExpanded }">
+      <form @submit.prevent="uploadFiles(item)" :class="{ 'expanded': item.isExpanded }">
         <div class="arrow-container" @click="toggleExpand(item)">
           <i class="arrow-icon" :class="{ expanded: item.isExpanded }"></i>
-      </div>
-      <div class="image-container-title">
-        <img src="img/sondages.png" alt="Image">
-      </div>
-      <div class="text-container">
-      <p class="countdown FontInter rose">{{ item.duration }}</p>
-      <div class="description FontInter">{{ item.description }}</div>
-      <div class="titre FontInter">Compare-toi aux autres auditeurs! </div>
+        </div>
+        <div class="image-container-title">
+          <img src="img/sondages.png" alt="Image">
+        </div>
+        <div class="text-container">
+          <p class="countdown FontInter rose">{{ item.duration }}</p>
+          <div class="description FontInter">{{ item.description }}</div>
+          <div class="titre FontInter">Compare-toi aux autres auditeurs! </div>
+        </div>
+        <div class="expanded-content" v-if="item.isExpanded">
+          <div class="options">
+            <label v-for="option in item.options" :key="option.id" class="option-label">
+              <input type="radio" :name="'option-' + item.id" :value="option.id" v-model="item.selectedOption">
+              {{ option.title }}
+            </label>
+          </div>
+          <button class="expanded-button envoi FontMonserrat" type="submit">Envoyer</button>
+        </div>
+      </form>
     </div>
-      <div class="expanded-content" v-if="item.isExpanded">
-
-      <button class="expanded-button envoi FontMonserrat" type="submit">Envoyer</button>
-    </div></form>
-    </div> 
-    
-    </template>
+  </template>
+  
 
 
 <script>
 import axios from 'axios';
 export default {
-    data() {
-  return {
-    countdowns: {},
-    countdownIntervalId: null,
-    data: [],
-    intervalId: null,
-    isExpanded: false,
-    isArrowClicked: false,
-    isRecording: false,
-    mediaRecorder: null,
-    chunks: [],
-    audioBlob: null,
-    selectedVideo: null,
-    selectedImage: null,
-    audioUrl: null,
-    message: '',
-    form: {
-      video: null,
-      image: null,
-      message: '',
-      audioBlob: null,
-    },
-  };
-},
+  data() {
+    return {
+      data: []
+    };
+  },
   created() {
     this.fetchData();
   },
@@ -59,6 +45,7 @@ export default {
       this.data = response.data.sondages; // Assign the API response to the data property
       this.data = response.data.sondages.map(item => ({
           ...item,
+          selectedOption: null,
           isExpanded: false}));
       console.log("api survey", this.data);
 
@@ -66,11 +53,25 @@ export default {
       console.error(error);
     }
   },
-  toggleExpand(item) {
-      item.isExpanded = !item.isExpanded;
+  async uploadFiles(item) {
+      if (item.selectedOption === null) {
+        // Vérifie si aucune option n'a été sélectionnée
+        alert('Veuillez choisir une option');
+        return;
+      }
+
+      try {
+        const response = await axios.post('https://flop-pingouin.heig-vd.ch/api/upload', {
+          optionId: item.selectedOption
+        });
+        // Traite la réponse de l'API après l'envoi des données
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
     }
-  }
-};
+  },        
+  };
 </script>
 
 <style scoped>
