@@ -54,6 +54,7 @@ class AdminController extends Controller
         $contests = Challenge::join('rewards', 'challenges.id', '=', 'rewards.challenge_id')
         ->where('is_contest', 1)
         ->whereNull('rewards.participation_id')
+        ->orderBy("challenges.id", "desc")
         ->select('challenges.id', 'challenges.name', 'challenges.description', 'challenges.start_time', 'challenges.end_time', 'challenges.ColorCoins_earned_by_participation')
         ->get();
 
