@@ -16,7 +16,7 @@
           <div class="options">
             <label v-for="option in item.options" :key="option.id" class="option-label FontInter">
               <input type="radio" :name="'option-' + item.id" :value="option.id" v-model="item.selectedOption">
-              <span class="radio-button"></span>{{ option.title }}
+              {{ option.title }}
             </label>
           </div>
           <button class="expanded-button envoi FontMonserrat" type="submit">Envoyer</button>
@@ -82,54 +82,36 @@ export default {
 <style scoped>
 
 .options {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
-  flex-direction: row;
-  flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    flex-direction: row;
+    flex-wrap: wrap;
+
 }
 
 .option-label {
-  margin: 10px;
-  padding: 10px;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.radio-button {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 2px solid black;
-  margin-right: 8px;
-}
-
-.option-label input[type="radio"] {
-  opacity: 0;
-  position: absolute;
-  left: -9999px;
-}
-
-.option-label input[type="radio"]:checked + .radio-button {
-  background-color: pink;
-  border-color: pink;
+    margin: 10px;
+    background-color: black;
+    padding: 10px;
+    border-radius: 8px;
 }
 
 .survey-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-  background-color: #303030;
-  border-radius: 8px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 359px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 50px;
+background-color: #303030;
+border-radius: 8px;
+margin-left: auto;
+margin-right: auto;
+width: 359px;
+position: relative;
+overflow: hidden;
+transition: all 0.3s ease;
+
 }
 
 .survey-container.expanded {
