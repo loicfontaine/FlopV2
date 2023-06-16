@@ -226,38 +226,38 @@ Dashboard animateur | Couleur 3 Interact
             <div class="container">
                 <h2 class="adminDashboardContentItemsTitle FontInter">Défis en cours</h2>
                 <div class="listContest">
-                    @if(!$challenge)
-                        <p class="FontInter">Aucun défi</p>
+                    @if(count($challenges) == 0)
+                        <p class="FontInter">Aucun défis en cours</p>
                     @else
-                  
+                    @foreach($challenges as $contest)
                     <div class="contest">
                         <h3 class="FontInter ">Titre</h3>
                         <br>
-                        <p class="FontInter ">{{$challenge->name}}</p>
+                        <p class="FontInter ">{{$contest->name}}</p>
                         <br>
                         <h3 class="FontInter ">Description</h3>
                         <br>
-                        <p class="FontInter ">{{$challenge->description}}</p>
+                        <p class="FontInter ">{{$contest->description}}</p>
                         <br>
                         <h3 class="FontInter ">Fini à</h3>
                         <br>
-                        <p class="FontInter ">{{$challenge->end_time}}</p>
+                        <p class="FontInter ">{{$contest->end_time}}</p>
                         <br>
-                        <div class="submitContainer">
-                            <button class="submit" onclick="afficherParticipations(this)" data-contest-id="{{$challenge->id}}">Afficher les participations</button>
+                        <div class="submitContainer" onclick="toggleContent(this)">
+                            <button class="submit" onclick="afficherParticipations(this)" data-contest-id="{{$contest->id}}">Afficher les participations</button>
                         </div>
                         <!-- div avec un id en fonction de l'id de la participation -->
-                        <div id="participationsHider-{{$challenge->id}}" hidden>
-                        <div id="participationsContainer-{{$challenge->id}}" class="participationsContainer">
-                            @if(count($challenge->participations) == 0)
+                        <div id="participationsHider-{{$contest->id}}" hidden>
+                        <div id="participationsContainer-{{$contest->id}}" class="participationsContainer">
+                            @if(count($contest->participations) == 0)
                                 <p class="FontInter">Aucune participation</p>
                             @else
                                 <form id="endContestForm" action="{{ route('endContest') }}" method="POST">
-                                <div id="contentContainer">                                    @csrf
+                                <div id="contentContainer">                                    
+                                    @csrf
                                     <input type="hidden" name="winner" id="winnerId" value="">
-                                    @foreach($challenge->participations as $participation)
+                                    @foreach($contest->participations as $participation)
                                         <!-- affiche le nickname de l'user ayant soumis la participation -->
-                                        <p class="FontInter">{{ $participation->user->nickname }}</p>
                                         {{-- <p class="FontInter participationNickname">{{$participation->user->nickname}}</p> --}}
                                         <div id="content" onclick="selectWinner(this)">
                                         @foreach($participation->contents as $content)
@@ -275,13 +275,20 @@ Dashboard animateur | Couleur 3 Interact
                                                 @endif
                                         @endforeach
                                         </div>
+                                        <div class="selectWinner">
+                                            <input type="radio" id="winnerButton" name="participationGagnante" value="{{$contest->id}}">
+                                        </div>
                                     @endforeach
+                                </div>
+                                <div class="selectWinner">
+                                    <button class="submit" type="submit" id="endContestButton">Terminer le défi</button>
                                 </div>
                                 </form>
                             @endif
                         </div>
                         </div>
                     </div>
+                    @endforeach
                     @endif
                 </div>
             </div>

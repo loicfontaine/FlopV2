@@ -38,20 +38,20 @@ class AdminController extends Controller
         // get challenges that end_time is greater than $now ordered by desc
 
         $challenge = Challenge::where('is_contest', '=', 0)->orderBy("id", "desc")->first();
-      
-            $arrayParticipations = $challenge->participations;
-            foreach ($arrayParticipations as $participation) {
-                $participation->contents;
-            }
-        
+
+        $arrayParticipations = $challenge->participations;
+        foreach ($arrayParticipations as $participation) {
+            $participation->contents;
+        }
+
 
         //$contests = Challenge::where('is_contest', '=', 1)->orderBy("end_time", "desc")->get();
-    
+
         $contests = Challenge::where('is_contest', 1)
-        ->join('rewards', 'challenges.id', '=', 'rewards.challenge_id')
-        ->whereNotNull('rewards.participation_id')
-        ->orderBy('id', 'desc')
-        ->get();
+            ->join('rewards', 'challenges.id', '=', 'rewards.challenge_id')
+            ->whereNotNull('rewards.participation_id')
+            ->orderBy('id', 'desc')
+            ->get();
 
         foreach ($contests as $contest) {
             $arrayParticipations = $contest->participations;
