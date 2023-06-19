@@ -8,6 +8,8 @@ Cette année, le mandat du projet consistait à développer une webApp pour l
 Notre but durant ce projet d'articulation est d'aller plus loin, en développant une webApp pour Couleur3 qui permettra aux auditeurs de pouvoir interagir avec la radio et donc de pouvoir attirer un public plus large.
 
 [**Voir le site déployé**](https://flop-pingouin.heig-vd.ch/home)
+  
+[**Voir le rapport complet**](https://www.canva.com/design/DAFj7GbG1vk/view)
 ## Trailer
 https://github.com/loicfontaine/FlopV2/assets/92462929/b619b908-6cfb-4090-823e-96e1f017f1bd
 
